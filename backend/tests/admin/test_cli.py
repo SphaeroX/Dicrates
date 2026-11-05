@@ -12,6 +12,9 @@ from tests.questions.fakes import FakeQuestionRepository
 from typer.testing import CliRunner
 
 from dicrates.admin.cli import make_app
+from dicrates.news.cycle import NewsCycleReport
+from dicrates.news.pipeline import PipelineReport
+from dicrates.news.sources import CollectReport
 from dicrates.questions.models import QuestionStatus
 from dicrates.questions.repository import QuestionRepository
 
@@ -149,3 +152,48 @@ def test_import_creates_a_draft(
     assert result.exit_code == 0, result.output
     [question] = repository.questions.values()
     assert question.status is QuestionStatus.DRAFT
+
+
+def test_list_marks_single_source_questions(
+    cli: typer.Typer, repository: FakeQuestionRepository
+) -> None:
+    single_id = create(
+        repository,
+        facts=[{"text": "Invented fact.", "source_ids": [1]}],
+        sources=[content_data()["sources"][0]],
+    )
+
+    result = runner.invoke(cli, ["questions", "list"])
+
+    line = next(line for line in result.output.splitlines() if single_id in line)
+    assert "[single source]" in line
+
+
+def test_generate_from_news_runs_one_cycle(repository: FakeQuestionRepository) -> None:
+    limits: list[int] = []
+
+    async def fake_cycle(limit: int) -> NewsCycleReport:
+        limits.append(limit)
+        return NewsCycleReport(
+            collected=CollectReport(added=12, expired=1, failed_sources=["Offline Daily"]),
+            generated=PipelineReport(drafts=2, rejected=1, discarded=0),
+        )
+
+    @asynccontextmanager
+    async def factory() -> AsyncGenerator[QuestionRepository]:
+        yield repository
+
+    cli = make_app(questions_repository=factory, news_cycle=fake_cycle)
+
+    result = runner.invoke(cli, ["questions", "generate", "--from-news", "--limit", "3"])
+
+    assert result.exit_code == 0, result.output
+    assert limits == [3]
+    assert "2 draft(s)" in result.output
+    assert "Offline Daily" in result.output
+
+
+def test_generate_needs_a_source_flag(cli: typer.Typer) -> None:
+    result = runner.invoke(cli, ["questions", "generate"])
+
+    assert result.exit_code != 0

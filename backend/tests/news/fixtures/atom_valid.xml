@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Regional Radio</title>
+  <id>urn:example:regional-radio</id>
+  <updated>2026-11-04T10:00:00Z</updated>
+  <entry>
+    <title>Neighbouring towns report on car-free squares</title>
+    <link href="https://radio.example.test/stories/car-free"/>
+    <id>urn:example:story-1</id>
+    <updated>2026-11-04T09:00:00Z</updated>
+    <summary>Two towns closed their squares to cars in 2025.</summary>
+  </entry>
+</feed>

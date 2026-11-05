@@ -18,11 +18,14 @@ from pydantic import ValidationError
 
 from dicrates.core.db import create_pool
 from dicrates.core.settings import get_settings
+from dicrates.llm.factory import LlmConfigurationError
+from dicrates.news.cycle import NewsCycleReport, run_news_cycle
 from dicrates.questions import service
 from dicrates.questions.models import Question, QuestionContent, QuestionStatus
 from dicrates.questions.repository import PostgresQuestionRepository, QuestionRepository
 
 type RepositoryFactory = Callable[[], AbstractAsyncContextManager[QuestionRepository]]
+type NewsCycle = Callable[[int], Coroutine[Any, Any, NewsCycleReport]]
 
 
 @asynccontextmanager
@@ -32,6 +35,14 @@ async def postgres_questions() -> AsyncGenerator[QuestionRepository]:
         raise typer.BadParameter("DATABASE_URL is not set")
     async with create_pool(database_url.get_secret_value(), max_size=2) as pool:
         yield PostgresQuestionRepository(pool)
+
+
+async def postgres_news_cycle(limit: int) -> NewsCycleReport:
+    settings = get_settings()
+    if settings.database_url is None:
+        raise typer.BadParameter("DATABASE_URL is not set")
+    async with create_pool(settings.database_url.get_secret_value(), max_size=2) as pool:
+        return await run_news_cycle(pool, settings, limit=limit)
 
 
 def run[T](coroutine: Coroutine[Any, Any, T]) -> T:
@@ -48,10 +59,15 @@ def _summary(question: Question) -> str:
     return (
         f"{question.id}  {question.status:<8}  {question.language}  "
         f"{question.format:<8}  {question.topic_area:<12}  {text}"
+        + ("  [single source]" if question.single_source else "")
     )
 
 
-def make_app(*, questions_repository: RepositoryFactory = postgres_questions) -> typer.Typer:
+def make_app(
+    *,
+    questions_repository: RepositoryFactory = postgres_questions,
+    news_cycle: NewsCycle = postgres_news_cycle,
+) -> typer.Typer:
     app = typer.Typer(help="Dicrates operator tools.", no_args_is_help=True)
     questions = typer.Typer(help="Review and manage the question library.", no_args_is_help=True)
     app.add_typer(questions, name="questions")
@@ -145,6 +161,30 @@ def make_app(*, questions_repository: RepositoryFactory = postgres_questions) ->
             typer.echo(f"Error: {error}", err=True)
             raise typer.Exit(code=1) from None
         report(with_repository(lambda repository: repository.create(content)))
+
+    @questions.command("generate")
+    def generate(  # pyright: ignore[reportUnusedFunction]
+        from_news: Annotated[
+            bool, typer.Option("--from-news", help="Draft questions from the news feeds.")
+        ] = False,
+        limit: Annotated[int, typer.Option(min=1, max=10, help="Maximum new questions.")] = 3,
+    ) -> None:
+        """Fetch sources and let the LLM draft questions (review them with `list`)."""
+        if not from_news:
+            raise typer.BadParameter("choose a source, e.g. --from-news")
+        try:
+            report = run(news_cycle(limit))
+        except LlmConfigurationError as error:
+            typer.echo(f"Error: {error}", err=True)
+            raise typer.Exit(code=1) from None
+        collected, generated = report.collected, report.generated
+        typer.echo(f"News: {collected.added} new item(s), {collected.expired} expired")
+        if collected.failed_sources:
+            typer.echo(f"Failed feeds: {', '.join(collected.failed_sources)}")
+        typer.echo(
+            f"Questions: {generated.drafts} draft(s), {generated.rejected} rejected by the"
+            f" automatic check, {generated.discarded} discarded"
+        )
 
     return app
 

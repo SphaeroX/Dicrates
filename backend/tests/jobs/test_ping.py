@@ -1,3 +1,5 @@
+from typing import Any
+
 import pytest
 from procrastinate.testing import InMemoryConnector
 
@@ -36,3 +38,12 @@ async def test_ping_job_runs_through_postgres(database_url: str) -> None:
             jobs = await app.job_manager.list_jobs_async(id=job_id)
 
     assert [job.status for job in jobs] == ["succeeded"]
+
+
+def test_news_questions_job_is_periodic() -> None:
+    from dicrates.jobs import tasks
+
+    assert tasks.news_questions.name == "news_questions"
+    registry: Any = app.periodic_registry
+    periodic = [entry.task.name for entry in registry.periodic_tasks.values()]
+    assert "news_questions" in periodic

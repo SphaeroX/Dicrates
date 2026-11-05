@@ -6,6 +6,7 @@ import time
 import uuid
 from collections.abc import Awaitable, Callable
 from dataclasses import dataclass
+from typing import Protocol
 
 from pydantic import BaseModel
 from pydantic_ai import Agent
@@ -55,6 +56,20 @@ class LlmResult[OutputT: BaseModel]:
     model: str
     input_tokens: int
     output_tokens: int
+
+
+class LlmTaskRunner(Protocol):
+    """What LLM tasks depend on; `LlmRunner` implements it, tests use scripted fakes."""
+
+    async def run[OutputT: BaseModel](
+        self,
+        *,
+        task: str,
+        prompt: RenderedPrompt,
+        output_type: type[OutputT],
+        user_input: str,
+        room_id: uuid.UUID | None = None,
+    ) -> LlmResult[OutputT]: ...
 
 
 async def exponential_backoff(attempt: int) -> None:

@@ -1,3 +1,5 @@
+import uuid
+
 import pytest
 from pydantic import ValidationError
 from tests.questions.factories import content_data, make_content, tradeoff_content
@@ -98,3 +100,21 @@ def test_allowed_transitions(current: QuestionStatus, target: QuestionStatus) ->
 def test_forbidden_transitions(current: QuestionStatus, target: QuestionStatus) -> None:
     with pytest.raises(InvalidTransitionError):
         ensure_transition(current, target)
+
+
+def test_group_id_links_language_versions() -> None:
+    group_id = uuid.uuid4()
+
+    assert make_content(group_id=group_id).group_id == group_id
+    assert make_content().group_id is None
+
+
+def test_single_source_flag() -> None:
+    two_outlets = make_content()
+    one_outlet = make_content(
+        facts=[{"text": "Invented fact.", "source_ids": [1]}],
+        sources=[content_data()["sources"][0]],
+    )
+
+    assert two_outlets.single_source is False
+    assert one_outlet.single_source is True

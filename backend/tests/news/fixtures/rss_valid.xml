@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Exampleville Gazette</title>
+    <link>https://gazette.example.test/</link>
+    <description>Invented test feed</description>
+    <item>
+      <title>Council debates car-free market square</title>
+      <link>https://gazette.example.test/news/car-free-square?utm_source=rss</link>
+      <description><![CDATA[<p>The town council of <b>Exampleville</b> discussed closing the square to cars.</p>]]></description>
+      <pubDate>Wed, 04 Nov 2026 08:30:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Tram line costs rise again</title>
+      <link>https://gazette.example.test/news/tram-costs</link>
+      <description>Invented summary about tram costs.</description>
+      <pubDate>Tue, 03 Nov 2026 17:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Entry without a link is skipped</title>
+      <description>No link here.</description>
+    </item>
+  </channel>
+</rss>

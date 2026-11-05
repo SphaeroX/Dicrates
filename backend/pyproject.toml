@@ -7,6 +7,8 @@ license = "AGPL-3.0-only"
 requires-python = ">=3.14,<3.15"
 dependencies = [
     "fastapi>=0.162.0",
+    "feedparser>=6.0.14",
+    "httpx>=0.28.1",
     "procrastinate>=3.10.0",
     "psycopg[binary,pool]>=3.3.8",
     "pydantic-ai-slim[google,mistral]>=2.66.0",

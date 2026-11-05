@@ -34,7 +34,7 @@ class QuestionRepository(Protocol):
 
 _COLUMNS = sql.SQL(
     "id, language, format, text, option_a, option_b, facts, sources, topic_area, origin,"
-    " prompt_version, status, rejection_reason, created_at, updated_at"
+    " prompt_version, group_id, status, rejection_reason, created_at, updated_at"
 )
 
 
@@ -64,9 +64,10 @@ class PostgresQuestionRepository:
     async def create(self, content: QuestionContent) -> Question:
         row = await self._one(
             "INSERT INTO public.questions (language, format, text, option_a, option_b, facts,"
-            " sources, topic_area, origin, prompt_version) VALUES (%(language)s, %(format)s,"
+            " sources, topic_area, origin, prompt_version, group_id)"
+            " VALUES (%(language)s, %(format)s,"
             " %(text)s, %(option_a)s, %(option_b)s, %(facts)s, %(sources)s, %(topic_area)s,"
-            " %(origin)s, %(prompt_version)s) RETURNING {columns}",
+            " %(origin)s, %(prompt_version)s, %(group_id)s) RETURNING {columns}",
             _content_params(content),
         )
         return _question(row)
@@ -114,7 +115,8 @@ class PostgresQuestionRepository:
             "UPDATE public.questions SET language = %(language)s, format = %(format)s,"
             " text = %(text)s, option_a = %(option_a)s, option_b = %(option_b)s,"
             " facts = %(facts)s, sources = %(sources)s, topic_area = %(topic_area)s,"
-            " origin = %(origin)s, prompt_version = %(prompt_version)s, updated_at = now()"
+            " origin = %(origin)s, prompt_version = %(prompt_version)s, group_id = %(group_id)s,"
+            " updated_at = now()"
             " WHERE id = %(id)s RETURNING {columns}",
             {**_content_params(content), "id": question_id},
         )

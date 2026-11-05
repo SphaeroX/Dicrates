@@ -4,6 +4,7 @@ Requests go directly to the provider API with our own key: no gateway, no
 intermediary, no telemetry (Logfire is never configured).
 """
 
+import pydantic_ai
 from pydantic import SecretStr
 from pydantic_ai.models import Model
 from pydantic_ai.models.google import GoogleModel
@@ -12,6 +13,10 @@ from pydantic_ai.providers.google import GoogleProvider
 from pydantic_ai.providers.mistral import MistralProvider
 
 from dicrates.core.settings import Settings
+
+
+# No startup banner that advertises LLM telemetry in logs (we never enable it).
+pydantic_ai.BANNER_ENABLED = False
 
 
 class LlmConfigurationError(Exception):

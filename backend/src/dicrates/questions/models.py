@@ -81,6 +81,13 @@ class QuestionContent(BaseModel):
     origin: QuestionOrigin
     #: Version of the prompt that drafted the question; `None` when written by hand.
     prompt_version: str | None = None
+    #: Shared by the language versions (en, de) of the same question.
+    group_id: uuid.UUID | None = None
+
+    @property
+    def single_source(self) -> bool:
+        """True when all facts rest on one outlet (shown to the operator before approval)."""
+        return len({source.outlet for source in self.sources}) < 2
 
     @model_validator(mode="after")
     def _check_consistency(self) -> Self:
