@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../l10n/app_localizations.dart';
 import '../../onboarding/widgets/sign_out_action.dart';
+import '../../rooms/widgets/my_rooms_section.dart';
 import '../data/backend_health.dart';
 import '../providers/backend_health_provider.dart';
 
@@ -56,6 +57,8 @@ class HomeScreen extends ConsumerWidget {
                       onRetry: () => ref.invalidate(backendHealthProvider),
                     ),
                   ),
+                  const SizedBox(height: 32),
+                  const MyRoomsSection(),
                 ],
               ),
             ),

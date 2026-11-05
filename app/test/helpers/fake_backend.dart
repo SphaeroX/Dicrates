@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:http/testing.dart';
 
+part 'fake_rooms.dart';
+
 /// Minimal in-memory version of the backend's `/health` and `/me` API.
 class FakeBackend {
   FakeBackend({
@@ -81,8 +83,13 @@ class FakeBackend {
           'granted_at': '2026-11-05T12:00:00Z',
         }, status: 201);
     }
+    final rooms = roomsApi.handle(request);
+    if (rooms != null) return rooms;
     return _json({'detail': 'Not Found'}, status: 404);
   }
+
+  /// Rooms and approved questions (see [FakeRooms]).
+  late final FakeRooms roomsApi = FakeRooms(_json);
 
   static http.Response _json(Object body, {int status = 200}) => http.Response(
     jsonEncode(body),

@@ -5,17 +5,22 @@ import 'package:http/http.dart' as http;
 
 import '../../features/home/data/backend_health.dart';
 import '../../features/onboarding/data/me.dart';
+import '../../features/questions/data/question.dart';
+import '../../features/rooms/data/room.dart';
 
 /// A failed backend call. [statusCode] is `null` for network errors.
 class ApiException implements Exception {
-  const ApiException(this.statusCode);
+  const ApiException(this.statusCode, [this.detail]);
 
   final int? statusCode;
+
+  /// Stable error code from the backend (`detail`), e.g. `room_full`.
+  final String? detail;
 
   bool get isNetworkError => statusCode == null;
 
   @override
-  String toString() => 'ApiException($statusCode)';
+  String toString() => 'ApiException($statusCode, $detail)';
 }
 
 typedef AccessTokenGetter = Future<String?> Function();
@@ -80,7 +85,68 @@ class ApiClient {
     );
   }
 
+  Future<List<Question>> listQuestions({
+    required String language,
+    String? topicArea,
+  }) async {
+    final query = Uri(
+      queryParameters: {'language': language, 'topic_area': ?topicArea},
+    ).query;
+    final items = await _sendList('GET', 'questions?$query');
+    return [for (final item in items) Question.fromJson(item)];
+  }
+
+  Future<List<Room>> listRooms() async => [
+    for (final item in await _sendList('GET', 'rooms')) Room.fromJson(item),
+  ];
+
+  Future<Room> getRoom(String roomId) async =>
+      Room.fromJson(await _send('GET', 'rooms/$roomId'));
+
+  Future<Room> createRoom({
+    required String questionId,
+    required int roundDurationHours,
+  }) async => Room.fromJson(
+    await _send(
+      'POST',
+      'rooms',
+      body: {
+        'question_id': questionId,
+        'round_duration_hours': roundDurationHours,
+      },
+    ),
+  );
+
+  Future<Room> joinRoom(String code) async =>
+      Room.fromJson(await _send('POST', 'rooms/join', body: {'code': code}));
+
+  Future<Room> startRoom(String roomId) async =>
+      Room.fromJson(await _send('POST', 'rooms/$roomId/start'));
+
+  Future<void> leaveRoom(String roomId) async {
+    await _send('POST', 'rooms/$roomId/leave');
+  }
+
+  Future<List<Map<String, Object?>>> _sendList(
+    String method,
+    String path,
+  ) async {
+    final decoded = await _request(method, path);
+    return decoded is List
+        ? [for (final item in decoded) item as Map<String, Object?>]
+        : const [];
+  }
+
   Future<Map<String, Object?>> _send(
+    String method,
+    String path, {
+    Map<String, Object?>? body,
+  }) async {
+    final decoded = await _request(method, path, body: body);
+    return decoded is Map<String, Object?> ? decoded : const {};
+  }
+
+  Future<Object?> _request(
     String method,
     String path, {
     Map<String, Object?>? body,
@@ -104,10 +170,21 @@ class ApiClient {
       throw const ApiException(null);
     }
     if (response.statusCode < 200 || response.statusCode >= 300) {
-      throw ApiException(response.statusCode);
+      throw ApiException(response.statusCode, _detail(response));
     }
-    final decoded = jsonDecode(utf8.decode(response.bodyBytes));
-    return decoded is Map<String, Object?> ? decoded : const {};
+    if (response.bodyBytes.isEmpty) return null;
+    return jsonDecode(utf8.decode(response.bodyBytes));
+  }
+
+  static String? _detail(http.Response response) {
+    try {
+      final body = jsonDecode(utf8.decode(response.bodyBytes));
+      return body is Map && body['detail'] is String
+          ? body['detail'] as String
+          : null;
+    } on FormatException {
+      return null;
+    }
   }
 
   void close() => _httpClient.close();

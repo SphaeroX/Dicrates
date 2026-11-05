@@ -291,5 +291,219 @@
   "sourceOpenFailed": "The link could not be opened.",
   "@sourceOpenFailed": {
     "description": "Shown when a source link cannot be opened."
+  },
+  "myRoomsTitle": "My rooms",
+  "@myRoomsTitle": {
+    "description": "Heading of the room list on the start screen."
+  },
+  "roomsEmpty": "You are not in a room yet. Create one and invite friends, or join with a code.",
+  "@roomsEmpty": {
+    "description": "Empty state of the room list."
+  },
+  "roomsActiveHeading": "Running",
+  "@roomsActiveHeading": {
+    "description": "Room list section: forming and running rooms."
+  },
+  "roomsDoneHeading": "Finished",
+  "@roomsDoneHeading": {
+    "description": "Room list section: finished or cancelled rooms."
+  },
+  "roomsLoadFailed": "Your rooms could not be loaded.",
+  "@roomsLoadFailed": {
+    "description": "Error when the room list fails to load."
+  },
+  "createRoomButton": "Create room",
+  "@createRoomButton": {
+    "description": "Starts creating a new room."
+  },
+  "joinRoomButton": "Join with code",
+  "@joinRoomButton": {
+    "description": "Opens the join-by-code screen."
+  },
+  "roomStatusForming": "Waiting for players",
+  "@roomStatusForming": {
+    "description": "Room status FORMING."
+  },
+  "roomStatusRunning": "Debate running",
+  "@roomStatusRunning": {
+    "description": "Room status: one of the rounds is running."
+  },
+  "roomStatusFinished": "Finished",
+  "@roomStatusFinished": {
+    "description": "Room status FINISHED or ARCHIVED."
+  },
+  "roomStatusAborted": "Cancelled",
+  "@roomStatusAborted": {
+    "description": "Room status ABORTED."
+  },
+  "roomMemberCount": "{count, plural, =1{1 member} other{{count} members}}",
+  "@roomMemberCount": {
+    "description": "Number of room members.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "createRoomTitle": "New room",
+  "@createRoomTitle": {
+    "description": "Title of the create-room screen."
+  },
+  "chooseQuestionHeading": "Choose a question",
+  "@chooseQuestionHeading": {
+    "description": "Heading above the question list."
+  },
+  "allTopicAreas": "All topics",
+  "@allTopicAreas": {
+    "description": "Filter chip showing questions of all topic areas."
+  },
+  "noQuestionsAvailable": "No questions available for this topic yet.",
+  "@noQuestionsAvailable": {
+    "description": "Empty question list."
+  },
+  "questionsLoadFailed": "Questions could not be loaded.",
+  "@questionsLoadFailed": {
+    "description": "Error when the question list fails to load."
+  },
+  "roundDurationHeading": "Time per round",
+  "@roundDurationHeading": {
+    "description": "Heading of the round duration choice."
+  },
+  "roundDurationHours": "{hours, plural, =1{1 hour} other{{hours} hours}}",
+  "@roundDurationHours": {
+    "description": "A round duration option.",
+    "placeholders": {
+      "hours": {
+        "type": "int"
+      }
+    }
+  },
+  "roundDurationHint": "A round also ends early once everyone has answered.",
+  "@roundDurationHint": {
+    "description": "Explains early round closing."
+  },
+  "createRoomSubmit": "Create room and invite",
+  "@createRoomSubmit": {
+    "description": "Creates the room."
+  },
+  "joinRoomTitle": "Join a room",
+  "@joinRoomTitle": {
+    "description": "Title of the join screen."
+  },
+  "inviteCodeLabel": "Invite code",
+  "@inviteCodeLabel": {
+    "description": "Label of the invite code field."
+  },
+  "inviteCodeHint": "6 characters, e.g. K7M2QX",
+  "@inviteCodeHint": {
+    "description": "Hint for the invite code field."
+  },
+  "inviteCodeInvalid": "Please enter the 6-character code you received.",
+  "@inviteCodeInvalid": {
+    "description": "Validation error for the invite code."
+  },
+  "joinRoomSubmit": "Join",
+  "@joinRoomSubmit": {
+    "description": "Joins the room with the code."
+  },
+  "joinErrorNotFound": "No open room with this code.",
+  "@joinErrorNotFound": {
+    "description": "Join error: unknown code."
+  },
+  "joinErrorFull": "This room is already full (6 members).",
+  "@joinErrorFull": {
+    "description": "Join error: room full."
+  },
+  "joinErrorStarted": "This debate has already started.",
+  "@joinErrorStarted": {
+    "description": "Join error: room started."
+  },
+  "lobbyTitle": "Room",
+  "@lobbyTitle": {
+    "description": "Title of the room/lobby screen."
+  },
+  "lobbyInviteHeading": "Invite friends",
+  "@lobbyInviteHeading": {
+    "description": "Heading of the invite section."
+  },
+  "lobbyInviteExplanation": "Share the code or the link. Everyone stays anonymous: nobody sees who wrote what.",
+  "@lobbyInviteExplanation": {
+    "description": "Explains inviting and anonymity."
+  },
+  "lobbyMembers": "{count} of {max} members joined (at least {min} needed)",
+  "@lobbyMembers": {
+    "description": "Lobby member count.",
+    "placeholders": {
+      "count": {
+        "type": "int"
+      },
+      "max": {
+        "type": "int"
+      },
+      "min": {
+        "type": "int"
+      }
+    }
+  },
+  "shareInviteButton": "Share invite",
+  "@shareInviteButton": {
+    "description": "Opens the system share sheet."
+  },
+  "copyCodeButton": "Copy code",
+  "@copyCodeButton": {
+    "description": "Copies the invite code."
+  },
+  "codeCopied": "Code copied",
+  "@codeCopied": {
+    "description": "Confirmation after copying the code."
+  },
+  "shareInviteText": "Join my Dicrates debate with the code {code}: {link}",
+  "@shareInviteText": {
+    "description": "Text sent when sharing an invite.",
+    "placeholders": {
+      "code": {
+        "type": "String"
+      },
+      "link": {
+        "type": "String"
+      }
+    }
+  },
+  "startRoomButton": "Start debate",
+  "@startRoomButton": {
+    "description": "Creator starts the room."
+  },
+  "startRoomNeedsMembers": "You can start as soon as {min} members have joined.",
+  "@startRoomNeedsMembers": {
+    "description": "Why the start button is disabled.",
+    "placeholders": {
+      "min": {
+        "type": "int"
+      }
+    }
+  },
+  "waitingForCreator": "Waiting for the creator to start the debate.",
+  "@waitingForCreator": {
+    "description": "Shown to members in the lobby."
+  },
+  "leaveRoomButton": "Leave room",
+  "@leaveRoomButton": {
+    "description": "Member leaves a forming room."
+  },
+  "dissolveRoomButton": "Cancel room",
+  "@dissolveRoomButton": {
+    "description": "Creator dissolves a forming room."
+  },
+  "roomStartedInfo": "The debate has started. Round 1 is open.",
+  "@roomStartedInfo": {
+    "description": "Shown once the room started (until the round screens exist)."
+  },
+  "roomNotFound": "This room does not exist or you are not a member.",
+  "@roomNotFound": {
+    "description": "Room detail error."
+  },
+  "refreshButton": "Refresh",
+  "@refreshButton": {
+    "description": "Reloads the current screen."
   }
 }

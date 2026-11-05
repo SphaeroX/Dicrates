@@ -9,6 +9,9 @@ import '../../features/onboarding/widgets/age_screen.dart';
 import '../../features/onboarding/widgets/consent_screen.dart';
 import '../../features/onboarding/widgets/pseudonym_screen.dart';
 import '../../features/onboarding/widgets/under_age_screen.dart';
+import '../../features/rooms/widgets/create_room_screen.dart';
+import '../../features/rooms/widgets/join_room_screen.dart';
+import '../../features/rooms/widgets/room_screen.dart';
 import '../../features/splash/widgets/splash_screen.dart';
 import 'app_gate.dart';
 
@@ -21,6 +24,9 @@ abstract final class AppRoutes {
   static const underAge = '/onboarding/under-age';
   static const consent = '/onboarding/consent';
   static const pseudonym = '/onboarding/pseudonym';
+  static const createRoom = '/rooms/new';
+  static const joinRoom = '/rooms/join';
+  static String room(String id) => '/rooms/$id';
 }
 
 const _gateRoutes = {
@@ -76,6 +82,26 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: AppRoutes.pseudonym,
         builder: (_, _) => const PseudonymScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.createRoom,
+        builder: (_, _) => const CreateRoomScreen(),
+      ),
+      GoRoute(
+        path: AppRoutes.joinRoom,
+        builder: (_, state) =>
+            JoinRoomScreen(initialCode: state.uri.queryParameters['code']),
+      ),
+      GoRoute(
+        path: '/rooms/:id',
+        builder: (_, state) => RoomScreen(roomId: state.pathParameters['id']!),
+      ),
+      // Invite links io.github.sphaerox.dicrates://open/join/<CODE> arrive as
+      // the path /join/<CODE>.
+      GoRoute(
+        path: '/join/:code',
+        redirect: (_, state) =>
+            '${AppRoutes.joinRoom}?code=${state.pathParameters['code']}',
       ),
     ],
   );

@@ -4,19 +4,29 @@ import 'package:dicrates/features/questions/data/question.dart';
 Question demoQuestion({
   QuestionFormat format = QuestionFormat.scale,
   String topicArea = 'society',
+}) => Question.fromJson(demoQuestionJson(format: format, topicArea: topicArea));
+
+/// The same demo question as the API returns it.
+Map<String, Object?> demoQuestionJson({
+  QuestionFormat format = QuestionFormat.scale,
+  String topicArea = 'society',
+  String id = '11111111-1111-4111-8111-111111111111',
+  String language = 'en',
+  String? text,
 }) {
-  return Question.fromJson({
-    'id': '11111111-1111-4111-8111-111111111111',
-    'language': 'en',
+  return {
+    'id': id,
+    'language': language,
     'format': format.name,
-    'text': switch (format) {
-      QuestionFormat.scale =>
-        'Should the town of Exampleville introduce a car-free market square?',
-      QuestionFormat.proposal =>
-        'How should Exampleville pay for its new tram line?',
-      QuestionFormat.tradeoff =>
-        "What should have priority in Exampleville's budget?",
-    },
+    'text':
+        text ??
+        switch (format) {
+          QuestionFormat.scale => 'Should the town of Exampleville introduce a car-free market square?',
+          QuestionFormat.proposal =>
+            'How should Exampleville pay for its new tram line?',
+          QuestionFormat.tradeoff =>
+            "What should have priority in Exampleville's budget?",
+        },
     'option_a': format == QuestionFormat.tradeoff
         ? 'A new swimming pool'
         : null,
@@ -50,5 +60,5 @@ Question demoQuestion({
       },
     ],
     'topic_area': topicArea,
-  });
+  };
 }
