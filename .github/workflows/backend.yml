@@ -46,7 +46,7 @@ jobs:
           version: latest
       - name: Generate local ES256 signing key
         working-directory: .
-        run: supabase gen signing-key --algorithm ES256
+        run: echo '[]' > supabase/signing_keys.json && supabase gen signing-key --algorithm ES256
       - name: Start local Supabase (applies supabase/migrations)
         working-directory: .
         run: |
