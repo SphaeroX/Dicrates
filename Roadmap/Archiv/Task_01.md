@@ -52,11 +52,11 @@ Alle Tests dieses Tasks werden permanent in den Test-Suites der Teile abgelegt (
 
 Der Task gilt erst als fertig, wenn alle Punkte erfüllt und durch Tests oder einen konkreten Befehl belegt sind:
 
-- [ ] `uv run pytest` in `backend/` ist grün und enthält Health- und Settings-Tests.
-- [ ] `uv run ruff check .`, `uv run ruff format --check .` und `uv run pyright` laufen fehlerfrei.
-- [ ] Der Workflow `backend.yml` läuft auf einem Push oder PR grün.
-- [ ] Lokal liefert `curl http://127.0.0.1:8000/health` nach dem dokumentierten Start-Befehl Status 200.
-- [ ] `docs/architecture.md` nennt jede neue Laufzeit-Abhängigkeit mit Begründung.
+- [x] `uv run pytest` in `backend/` ist grün und enthält Health- und Settings-Tests.
+- [x] `uv run ruff check .`, `uv run ruff format --check .` und `uv run pyright` laufen fehlerfrei.
+- [x] Der Workflow `backend.yml` läuft auf einem Push oder PR grün.
+- [x] Lokal liefert `curl http://127.0.0.1:8000/health` nach dem dokumentierten Start-Befehl Status 200.
+- [x] `docs/architecture.md` nennt jede neue Laufzeit-Abhängigkeit mit Begründung.
 
 ## Offene Fragen / Annahmen
 
@@ -71,20 +71,19 @@ Taskspezifische Informationen während der Arbeit hier festhalten. Taskübergrei
 
 Reihenfolge und Details stehen in `AGENTS.md`, Abschnitt "Abschluss- und Archivierungs-Workflow".
 
-- [ ] Alle Akzeptanzkriterien erfüllt, Tests liegen permanent in den Test-Suites der Teile und laufen grün
-- [ ] Definition of Done aus `docs/testing.md` erfüllt und betroffene Dateien in `docs/` aktualisiert
-- [ ] Abschnitt "Erkenntnisse für Folge-Agenten" unten ausgefüllt
-- [ ] Folge-Tasks und `Roadmap/README.md` geprüft und bei Bedarf angepasst
-- [ ] Datei ohne `RUN_` nach `Roadmap/Archiv/` verschoben
+- [x] Alle Akzeptanzkriterien erfüllt, Tests liegen permanent in den Test-Suites der Teile und laufen grün
+- [x] Definition of Done aus `docs/testing.md` erfüllt und betroffene Dateien in `docs/` aktualisiert
+- [x] Abschnitt "Erkenntnisse für Folge-Agenten" unten ausgefüllt
+- [x] Folge-Tasks und `Roadmap/README.md` geprüft und bei Bedarf angepasst
+- [x] Datei ohne `RUN_` nach `Roadmap/Archiv/` verschoben
 
 ## Erkenntnisse für Folge-Agenten
 
-<!-- ERKENNTNISSE-OFFEN: Vor der Archivierung ausfüllen und diese Zeile löschen. -->
-
 Vor der Archivierung vom Agenten auszufüllen. Schreibe so, dass ein Agent, der diesen Task nie gesehen hat, davon bei späteren Tasks profitiert:
 
-- **Umgesetzt (und Abweichungen vom Plan):**
-- **Learnings & Stolpersteine:**
-- **Wichtige Entscheidungen und ihre Gründe:**
-- **Auswirkungen auf Folge-Tasks:**
-- **Hinweise zu Tests und Befehlen:**
+- **Umgesetzt (und Abweichungen vom Plan):** Paket `backend/src/dicrates/` mit `main.py` (App-Factory `create_app()`, Modul-`app`, `GET /health` → `{"status":"ok","version":"0.1.0"}`), `core/settings.py` (`Settings`, `LlmModel`, `AppEnv`, `get_settings()`), Workflow `.github/workflows/backend.yml`. Abweichung: Test-Abhängigkeit ist `httpx2` statt `httpx`, weil Starlette 1.x `httpx` für den `TestClient` als deprecated markiert und pyright sonst die TestClient-Typen nicht auflöst.
+- **Learnings & Stolpersteine:** Bei pydantic-settings werden komplexe Feldtypen aus Env-Variablen als JSON dekodiert; `LLM_MODEL` ist deshalb mit `Annotated[LlmModel, NoDecode]` plus `field_validator(mode="before")` umgesetzt. `.env.example` liefert leere Strings – leere Supabase-/DB-Werte werden zu `None`. Unter Windows schlug `uv remove` mehrfach mit „Zugriff verweigert" auf `*.dist-info/licenses` fehl; Ordner per PowerShell `Remove-Item -Recurse -Force` löschen, dann `uv sync`. Python-`write_text` unter Windows schreibt CRLF – Dateien mit `newline="
+"` schreiben oder nachträglich normalisieren (Repo erzwingt LF).
+- **Wichtige Entscheidungen und ihre Gründe:** Kein installiertes Paket (`package = false` bleibt): pytest nutzt `pythonpath = ["src"]`, pyright `extraPaths = ["src"]`, uvicorn `--app-dir src`. pytest läuft mit `--import-mode=importlib`, damit Testordner kein `__init__.py` brauchen. Secrets in den Settings sind `SecretStr` (tauchen nicht in `repr` auf). Version steht in `dicrates/__init__.py`.
+- **Auswirkungen auf Folge-Tasks:** Neue Settings-Felder einfach in `Settings` ergänzen; Pflichtfelder erst in dem Task scharf schalten, der sie braucht (z. B. `database_url` in Task 02 für DB-Code). App-Code holt Settings über `get_settings()` (lru_cache) – in Tests per FastAPI-Dependency-Override oder `Settings(_env_file=None)` ersetzen.
+- **Hinweise zu Tests und Befehlen:** Start lokal: `uv run uvicorn dicrates.main:app --reload --app-dir src` (in `backend/`), dann `curl http://127.0.0.1:8000/health` → 200 (geprüft). Settings-Tests löschen relevante Env-Vars per autouse-Fixture und bauen `Settings(_env_file=None)`.

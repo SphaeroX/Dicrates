@@ -16,11 +16,11 @@ Ziel dieser Roadmap ist **Produktionsreife des MVP (Phase 1)**: Nach einer gesch
 
 ## Aktueller Status
 
-Stand: 2026-11-05 – Roadmap angelegt, noch kein Task begonnen.
+Stand: 2026-11-05 – Task 01 erledigt.
 
 | Task | Titel | Status |
 |---|---|---|
-| 01 | Backend-Skelett + CI | offen |
+| 01 | Backend-Skelett + CI | erledigt |
 | 02 | Lokales Supabase, DB und Jobs | offen |
 | 03 | App-Skelett + CI | offen |
 | 04 | Anmeldung end to end | offen |
@@ -70,6 +70,9 @@ Globale Informationen, Architekturentscheidungen und Wissen, das für das gesamt
 - App-Sprachen: Englisch (Basis) und Deutsch, Deutsch vollständig vor der Beta. Website ebenfalls Englisch und Deutsch.
 - Produktions-Hosting für API und Worker wird in Task 17 entschieden, nach Rückfrage beim Nutzer.
 - Tests liegen in den bestehenden Suites der Teile (`backend/tests/`, `app/test/`, `app/integration_test/`, `website/tests/`), nicht in einem Root-Ordner `tests/`.
+
+**Backend-Grundlagen (Task 01):** Code unter `backend/src/dicrates/` (nicht installiert; pytest `pythonpath`, pyright `extraPaths`, uvicorn `--app-dir src`). Settings zentral in `dicrates/core/settings.py` (`get_settings()`), Secrets als `SecretStr`. CI: `.github/workflows/backend.yml`. Unter Windows schreibt Python CRLF – Repo erzwingt LF, Dateien mit `newline="
+"` schreiben.
 
 **Bestehende Projektregeln:** Root-`AGENTS.md` (TDD, Umgebungen, Privacy, i18n, Screenshots) und `docs/` (Architektur, Testing, Code-Style, Konventionen, Brief) gelten für jeden Task.
 

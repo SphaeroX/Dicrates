@@ -23,6 +23,7 @@ Contributors and AI coding agents start with [AGENTS.md](AGENTS.md).
 ```bash
 cp .env.example .env          # fill in your own keys
 cd backend && uv sync && uv run pytest
+cd backend && uv run uvicorn dicrates.main:app --reload --app-dir src   # API on :8000
 cd app && flutter pub get && flutter test
 cd website && npm ci && npm run dev
 ```

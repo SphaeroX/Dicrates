@@ -26,6 +26,8 @@ uv run pytest tests/test_rounds.py::test_name   # one test
 uv run pytest -m "not integration and not llm"  # fast unit tests only
 uv run pytest --cov=src                         # coverage
 
+uv run uvicorn dicrates.main:app --reload --app-dir src   # local dev server, http://127.0.0.1:8000/health
+
 # app (run inside app/)
 flutter test                                    # all unit + widget tests
 flutter test test/some_test.dart                # one file
@@ -79,7 +81,7 @@ Screenshots use invented demo content only and the in-app locale under test.
 
 ## Test structure
 
-- **Backend:** `backend/tests/` mirrors `backend/src/`; files `test_<module>.py`, functions `test_<behavior>`. DB tests carry the `integration` marker and use a local Supabase/Postgres. LLM tests use recorded, validated JSON fixtures.
+- **Backend:** `backend/tests/` mirrors `backend/src/dicrates/` (e.g. `tests/core/test_settings.py`); files `test_<module>.py`, functions `test_<behavior>`. pytest uses `--import-mode=importlib`, so test folders need no `__init__.py` and equal basenames in different folders are fine. Settings tests set env vars via `monkeypatch` and construct `Settings(_env_file=None)`, never reading the real `.env`. CI: `.github/workflows/backend.yml` runs ruff, pyright and `pytest -m "not integration and not llm"` on changes under `backend/**`. DB tests carry the `integration` marker and use a local Supabase/Postgres. LLM tests use recorded, validated JSON fixtures.
 - **App:** `app/test/` mirrors `app/lib/`; files `<name>_test.dart`. Widget tests override Riverpod providers instead of mocking globals. Integration tests in `app/integration_test/` only for core flows.
 - **Website:** unit tests `website/tests/unit/*.test.ts`, E2E `website/tests/e2e/*.spec.ts`. E2E checks include basic accessibility (headings, alt text, lang attribute).
 - **Privacy in tests:** fixtures use invented opinions only; never real user data.

@@ -25,6 +25,7 @@ uv run pytest
 uv run pytest tests/test_x.py::test_y
 uv run ruff check . && uv run ruff format --check . && uv run pyright
 uv run ruff format .
+uv run uvicorn dicrates.main:app --reload --app-dir src   # dev server
 
 # app/  (Flutter)
 flutter pub get

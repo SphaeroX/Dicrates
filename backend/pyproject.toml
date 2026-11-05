@@ -5,7 +5,11 @@ description = "Dicrates API and job worker (FastAPI, Procrastinate, Pydantic AI)
 readme = "../README.md"
 license = "AGPL-3.0-only"
 requires-python = ">=3.14,<3.15"
-dependencies = []
+dependencies = [
+    "fastapi>=0.162.0",
+    "pydantic-settings>=2.16.2",
+    "uvicorn>=0.54.0",
+]
 
 [dependency-groups]
 dev = [
@@ -14,6 +18,7 @@ dev = [
     "pytest-cov",
     "ruff",
     "pyright",
+    "httpx2>=2.16.0",
 ]
 
 [tool.uv]
@@ -21,8 +26,10 @@ package = false
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["src"]
+asyncio_default_fixture_loop_scope = "function"
 asyncio_mode = "auto"
-addopts = "-ra --strict-markers"
+addopts = "-ra --strict-markers --import-mode=importlib"
 markers = [
     "integration: needs a running Postgres (Supabase local stack)",
     "llm: calls the real LLM provider; never run in CI by default",
@@ -46,3 +53,4 @@ venvPath = "."
 venv = ".venv"
 include = ["src", "tests"]
 typeCheckingMode = "strict"
+extraPaths = ["src"]
