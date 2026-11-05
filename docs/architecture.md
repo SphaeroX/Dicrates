@@ -17,7 +17,7 @@
 - **App:** Flutter (Dart 3.13+), state management with **Riverpod** (`flutter_riverpod`). Speech-to-text and text-to-speech use **on-device platform APIs** only; audio never leaves the device and is never stored.
 - **Backend:** Python 3.14, **FastAPI**, managed with **uv**. Game logic, round state machine, LLM calls, scoring.
 - **Jobs:** **Procrastinate** (Postgres-based queue). Chosen over Redis: no extra service, and job enqueueing can share the transaction with round state changes (idempotent transitions).
-- **Data/Auth:** **Supabase** in an EU region: Postgres plus Auth (email, Sign in with Apple, Google). The backend verifies Supabase JWTs; the app talks to the backend for all game data.
+- **Data/Auth:** **Supabase** in an EU region: Postgres plus Auth (email, Sign in with Apple, Google). The backend verifies Supabase access tokens (asymmetric ES256 signing keys) against the project JWKS endpoint `<SUPABASE_URL>/auth/v1/.well-known/jwks.json`, so no shared JWT secret is configured and key rotation needs no config change; the app talks to the backend for all game data.
 - **LLM:** **Mistral** (EU) behind a provider-agnostic interface in the backend. Every LLM output that drives the game is structured JSON validated with Pydantic.
 - **Push:** Firebase Cloud Messaging (APNs via FCM).
 - **Website:** **Astro** static site with Astro i18n (`defaultLocale: 'en'`, only English strings for now), deployed by `.github/workflows/website.yml` to `https://sphaerox.github.io/Dicrates/`.
