@@ -16,7 +16,7 @@ Ziel dieser Roadmap ist **Produktionsreife des MVP (Phase 1)**: Nach einer gesch
 
 ## Aktueller Status
 
-Stand: 2026-11-05 – Tasks 01–04 erledigt.
+Stand: 2026-11-05 – Tasks 01–05 erledigt (Meilenstein M1 Fundament abgeschlossen).
 
 | Task | Titel | Status |
 |---|---|---|
@@ -24,7 +24,7 @@ Stand: 2026-11-05 – Tasks 01–04 erledigt.
 | 02 | Lokales Supabase, DB und Jobs | erledigt |
 | 03 | App-Skelett + CI | erledigt |
 | 04 | Anmeldung end to end | erledigt |
-| 05 | LLM-Schicht | offen |
+| 05 | LLM-Schicht | erledigt |
 | 06 | Fragenbibliothek + Admin-CLI | offen |
 | 07 | News-Pipeline für Streitfragen | offen |
 | 08 | Zeitlose und historische Streitfragen | offen |
@@ -79,6 +79,8 @@ Globale Informationen, Architekturentscheidungen und Wissen, das für das gesamt
 **App-Grundlagen (Task 03):** Struktur `lib/core/` + `lib/features/<feature>/{data,providers,widgets}`, Riverpod 3, go_router, `http`. Strings nur in `lib/l10n/app_en.arb` + `app_de.arb` (Vollständigkeitstest). **Golden-Strategie:** Plattform-Goldens mit echter Schrift nur unter Windows → `app/screenshots/`; CI-Goldens (plattformunabhängig) → `app/test/screenshots/goldens/ci/`, in CI geprüft. Goldens immer unter Windows mit `flutter test --update-goldens test/screenshots` erzeugen und beide Ordner committen. Test-Helfer `buildTestApp` in `app/test/helpers/pump_app.dart`.
 
 **Anmeldung und Einwilligung (Task 04):** Backend prüft Supabase-Tokens per JWKS (ES256) in `dicrates.core.auth` (`CurrentUser`). **Jeder Spiel-Endpunkt nutzt `ConsentedUser`** aus `dicrates.profiles.dependencies` (403 ohne aktuelle Einwilligung + 18+). Einwilligungstext ist versioniert (Backend `CURRENT_CONSENT_VERSION`, App `currentConsentVersion`, ARB `consentBodyV<n>`). App-Router-Gate: Login → Alter → Einwilligung → Pseudonym → Home (`core/router/app_gate.dart`). Lokales Supabase braucht `supabase/signing_keys.json` (ES256, git-ignored). Muster für Daten: Repository-Protocol + Postgres-Implementierung + Fake in den Tests.
+
+**LLM-Schicht (Task 05):** Alle LLM-Aufrufe über `dicrates.llm` (`build_model`, `default_registry`, `LlmRunner`); Provider-Imports nur in `llm/factory.py` (ruff TID251). Prompts als Dateien `llm/prompts/<name>.v<N>.md`, Version wird mit jedem Ergebnis gespeichert. Nutzungsprotokoll `llm_calls` ohne jeden Text. Tests: `FunctionModel`; echte Evals nur mit `-m llm` (standardmäßig abgewählt).
 
 **Bestehende Projektregeln:** Root-`AGENTS.md` (TDD, Umgebungen, Privacy, i18n, Screenshots) und `docs/` (Architektur, Testing, Code-Style, Konventionen, Brief) gelten für jeden Task.
 

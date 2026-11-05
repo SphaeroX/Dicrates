@@ -56,10 +56,10 @@ Alle Tests dieses Tasks werden permanent in den Test-Suites der Teile abgelegt (
 
 Der Task gilt erst als fertig, wenn alle Punkte erfüllt und durch Tests oder einen konkreten Befehl belegt sind:
 
-- [ ] Alle Tests oben grün; `uv run pytest -m "not integration and not llm"` ruft kein echtes Modell auf.
-- [ ] Außerhalb von `llm/` importiert kein Modul `pydantic_ai`-Provider-Klassen direkt (per Test oder ruff-Regel belegt).
-- [ ] `uv run pytest -m llm -k ping` funktioniert mit gesetztem Key (manuell, Ergebnis in Notizen).
-- [ ] Doku aktualisiert, Abhängigkeit begründet.
+- [x] Alle Tests oben grün; `uv run pytest -m "not integration and not llm"` ruft kein echtes Modell auf.
+- [x] Außerhalb von `llm/` importiert kein Modul `pydantic_ai`-Provider-Klassen direkt (per Test oder ruff-Regel belegt).
+- [x] `uv run pytest -m llm -k ping` funktioniert mit gesetztem Key (manuell, Ergebnis in Notizen).
+- [x] Doku aktualisiert, Abhängigkeit begründet.
 
 ## Offene Fragen / Annahmen
 
@@ -70,24 +70,24 @@ Der Task gilt erst als fertig, wenn alle Punkte erfüllt und durch Tests oder ei
 
 Taskspezifische Informationen während der Arbeit hier festhalten. Taskübergreifendes gehört in `Roadmap/README.md`.
 
+- LLM-Ping manuell (2026-11-05): `uv run pytest -m llm -k ping -s` mit `LLM_MODEL=google:gemini-3.8-flash` und erfundenem Text → `PingReply(reply='Hallo, die Testnachricht wurde erfolgreich empfangen und die Verbindung steht!', language='de')`, 1 passed (ca. 60 s). Mit Mistral noch nicht möglich (kein Key).
+
 ## Abschluss-Checkliste
 
 Reihenfolge und Details stehen in `AGENTS.md`, Abschnitt "Abschluss- und Archivierungs-Workflow".
 
-- [ ] Alle Akzeptanzkriterien erfüllt, Tests liegen permanent in den Test-Suites der Teile und laufen grün
-- [ ] Definition of Done aus `docs/testing.md` erfüllt und betroffene Dateien in `docs/` aktualisiert
-- [ ] Abschnitt "Erkenntnisse für Folge-Agenten" unten ausgefüllt
-- [ ] Folge-Tasks und `Roadmap/README.md` geprüft und bei Bedarf angepasst
-- [ ] Datei ohne `RUN_` nach `Roadmap/Archiv/` verschoben
+- [x] Alle Akzeptanzkriterien erfüllt, Tests liegen permanent in den Test-Suites der Teile und laufen grün
+- [x] Definition of Done aus `docs/testing.md` erfüllt und betroffene Dateien in `docs/` aktualisiert
+- [x] Abschnitt "Erkenntnisse für Folge-Agenten" unten ausgefüllt
+- [x] Folge-Tasks und `Roadmap/README.md` geprüft und bei Bedarf angepasst
+- [x] Datei ohne `RUN_` nach `Roadmap/Archiv/` verschoben
 
 ## Erkenntnisse für Folge-Agenten
 
-<!-- ERKENNTNISSE-OFFEN: Vor der Archivierung ausfüllen und diese Zeile löschen. -->
-
 Vor der Archivierung vom Agenten auszufüllen. Schreibe so, dass ein Agent, der diesen Task nie gesehen hat, davon bei späteren Tasks profitiert:
 
-- **Umgesetzt (und Abweichungen vom Plan):**
-- **Learnings & Stolpersteine:**
-- **Wichtige Entscheidungen und ihre Gründe:**
-- **Auswirkungen auf Folge-Tasks:**
-- **Hinweise zu Tests und Befehlen:**
+- **Umgesetzt (und Abweichungen vom Plan):** Paket `dicrates/llm/` mit `factory.py`, `prompts.py` (+ `prompts/ping.v1.md`), `runner.py`, `call_log.py`; Migration `llm_calls`; Settings-Felder `mistral_api_key`, `google_api_key`; Request-Sperre in `tests/conftest.py`; Eval-Ordner `tests/llm_evals/` mit Ping. Kein Admin-CLI-Befehl für den Ping (der `llm`-Test erfüllt den Zweck; `dicrates-admin` kommt in Task 06). `LlmRunner` ist noch nicht in FastAPI/Jobs verdrahtet – das macht der erste Task, der ihn braucht.
+- **Learnings & Stolpersteine:** Pydantic AI ist bei 2.66: `Agent(model, output_type=..., instructions=..., retries={"output": n})`, `agent.run(prompt, usage=RunUsage())` sammelt Tokens auch über Wiederholungen. Fehlerklassen: `ModelRateLimitError`, `ModelServerError`, `ModelConnectionError`, `ModelUnavailableError`, `ModelRequestTimeout` (transient) vs. z. B. `ModelHTTPError(400)`/`ModelAuthenticationError` (permanent); erschöpfte Output-Retries → `UnexpectedModelBehavior`. `FunctionModel` bekommt `info.output_tools[0].name` für strukturierte Antworten. Ohne `-m 'not llm'` in `addopts` lief der echte Ping bei jedem `uv run pytest` mit – jetzt standardmäßig abgewählt. Teilstring-Prüfungen auf Spaltennamen sind falsch (`input_tokens` enthält „input"); stattdessen exakte Spaltenliste.
+- **Wichtige Entscheidungen und ihre Gründe:** Provider explizit mit Key aus `Settings` statt Env-Autoerkennung (klarer Fehler `LlmConfigurationError`, testbar). Eigene Retry-Schleife für transiente Fehler (injizierbares `backoff`) statt HTTP-Transport-Retries (provider-unabhängig, testbar). Prompt-Platzhalter mit `string.Template` (`$language`), damit JSON-Beispiele in Prompts gehen. Ein Protokolleintrag pro Lauf (nicht pro Versuch) mit `attempts`.
+- **Auswirkungen auf Folge-Tasks:** Jede LLM-Aufgabe (Tasks 07, 08, 12–16) = neue Prompt-Datei `<name>.v1.md` + Pydantic-Ausgabemodell + `LlmRunner.run(...)`; gespeicherte Ergebnisse speichern `result.prompt_version` und `result.model`. Raumsprache als Prompt-Parameter. Tests mit `FunctionModel` und JSON-Fixtures. Für Jobs einen Runner über `build_model(get_settings())` + `PostgresLlmCallLog(pool)` bauen. `llm_calls.room_id` bekommt in Task 09 einen Fremdschlüssel. Task 23 (Evals) erweitert `tests/llm_evals/`.
+- **Hinweise zu Tests und Befehlen:** `uv run pytest` (87 Unit, Ping abgewählt), `uv run pytest -m integration` (17, Stack nötig), `uv run pytest -m llm -k ping -s` (echter Aufruf, Key nötig).

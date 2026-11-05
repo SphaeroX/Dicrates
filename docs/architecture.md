@@ -32,7 +32,13 @@
 - `dicrates/core/auth.py`: `TokenVerifier` checks Supabase access tokens (ES256 only, `aud=authenticated`, `iss=<SUPABASE_URL>/auth/v1`, `exp`/`sub` required) with a `PyJWKClient` on the project JWKS (cached 10 min, reloaded on unknown `kid`). `create_app` stores the verifier in `app.state` (503 without `SUPABASE_URL`); `get_current_user` / `CurrentUser` is the FastAPI dependency (401 + `WWW-Authenticate: Bearer`). Tokens and claims are never logged.
 - `dicrates/profiles/`: `GET /me` (creates the profile on first call), `PATCH /me` (pseudonym, language), `POST /me/consent`; `ProfileRepository` protocol with `PostgresProfileRepository`. `require_consent` / `ConsentedUser` is the dependency **every game endpoint must use**: 403 `consent_required` unless the newest consent has the current `CURRENT_CONSENT_VERSION` (`profiles/consent.py`) and `age_confirmed`. Pseudonym rules: 3-24 chars, letters/digits of any script, single inner spaces, `-` and `_` (same rules in the app, `pseudonym_rules.dart`).
 - `dicrates/main.py`: lifespan opens the DB pool when `DATABASE_URL` is set (`get_db_pool` dependency, 503 otherwise).
-- Feature packages (`rooms`, `rounds`, `questions`, `llm`, ...) are added next to `core/` as they are built.
+- `dicrates/llm/` (the only place that talks to LLM providers):
+  - `factory.build_model(settings)` → `MistralModel` / `GoogleModel` with an explicit provider and key (`MISTRAL_API_KEY`, `GOOGLE_API_KEY` in `Settings`); unknown provider or missing key → `LlmConfigurationError`. Only this file may import provider code: enforced by ruff `TID251` (banned-api in `pyproject.toml`, also bans `logfire`) and by `tests/llm/test_isolation.py`.
+  - `prompts`: files `llm/prompts/<name>.v<N>.md`, placeholders `$name` (`string.Template`, so JSON braces are safe), `default_registry().load(name, version=N).render(language=...)` → `RenderedPrompt(version="<name>.v<N>", text)`. A changed prompt is a new file with a higher version; never edit a released version.
+  - `runner.LlmRunner(model, model_id=str(settings.llm_model), call_log=...)`. `run(task=, prompt=, output_type=, user_input=, room_id=)` builds a Pydantic AI `Agent` (prompt as `instructions`, `output_type` validated, `output_retries` default 2), retries transient provider errors (rate limit, 5xx, connection, timeout, overloaded) with exponential backoff (default 3 retries), and returns `LlmResult(output, prompt_version, model, input_tokens, output_tokens)`. Errors: `LlmOutputError` (output kept failing validation), `LlmUnavailableError`; messages never contain text.
+  - `call_log`: every run (success or failure) writes one `LlmCallRecord` (task, prompt version, model, tokens, duration, success, error kind, attempts, room id) to `llm_calls`; **no text fields exist**. A failing log write is logged and never breaks the game step.
+  - `pydantic-ai-slim` pulls in `logfire-api`, a no-op shim; Logfire is never configured, so nothing is sent.
+- Feature packages (`rooms`, `rounds`, `questions`, ...) are added next to `core/` and `llm/` as they are built.
 
 ## Backend runtime dependencies
 
@@ -43,6 +49,7 @@
 | `pydantic-settings` | Typed, validated settings from env vars and `.env` (incl. the production Mistral lock). |
 | `psycopg[binary,pool]` | Async Postgres driver with connection pool; plain SQL keeps queries explicit (RLS, locking) and it is the same driver Procrastinate uses, so job enqueueing can share a transaction with state changes. Chosen over an ORM. |
 | `procrastinate` | Postgres-based job queue (see Tech stack). |
+| `pydantic-ai-slim[mistral,google]` | Provider-agnostic LLM layer with typed structured output and test models (see LLM above); `google` extra only for the dev-only Gemini fallback. |
 | `pyjwt[crypto]` | JWT decoding and ES256 verification plus `PyJWKClient` (JWKS fetch, cache, refresh on unknown `kid`); small and standard, no Supabase SDK needed in the backend. |
 
 Dev-only: `httpx2` (HTTP client required by Starlette's `TestClient`; Starlette deprecated plain `httpx` for it).
@@ -78,6 +85,7 @@ Dev-only: `mocktail`, `alchemist` (golden screenshots).
 - **Everything in `public` is reachable through the Supabase Data API**, so every new table gets RLS enabled and explicit `REVOKE`/`GRANT` for `anon` and `authenticated`; functions in `public` get `REVOKE ALL ... FROM PUBLIC, anon, authenticated` unless clients must call them. The Procrastinate tables and functions are locked down this way.
 - `profiles`: one row per `auth.users` id (`pseudonym`, `language` `en`/`de`, `created_at`); clients may only `SELECT` their own row, all writes go through the backend.
 - The backend connects as the database owner (`postgres`) and therefore bypasses RLS; access control for game data is enforced in backend code.
+- `llm_calls`: usage log without any text (see LLM layer); backend-only. `room_id` gets its foreign key once `rooms` exists.
 - `consents`: append-only (`user_id`, `consent_version`, `age_confirmed`, `granted_at`), newest row counts; backend-only (RLS on, no grants). Profiles and consents are deleted with the auth user (`ON DELETE CASCADE`).
 - **Local Auth** (`supabase/config.toml`): tokens are signed with an ES256 key from `supabase/signing_keys.json` (git-ignored; create once with `echo '[]' > supabase/signing_keys.json && npx supabase gen signing-key --algorithm ES256`), so local tokens are verified via JWKS exactly like in the cloud. Email sign-in sends a 6-digit code (template `supabase/templates/sign_in_code.html`, en + de); local mails land in Mailpit (http://127.0.0.1:54324). Google is prepared in `[auth.external.google]` but `enabled = false` until OAuth client data exists in `.env`. The cloud project needs the same settings in the dashboard (Task 17).
 
@@ -98,7 +106,6 @@ Dev-only: `mocktail`, `alchemist` (golden screenshots).
 
 ## First implementation steps (setup not done yet)
 
-- Remaining backend runtime dependencies (`pydantic-ai-slim[mistral,google]` as the provider-agnostic LLM framework; the `google` extra only for the dev-only Gemini fallback) are not added yet; add them with `uv add` when the first code needs them.
 - Website: `website/` is the Astro minimal starter. Build the landing page with i18n string files under `src/i18n/`.
 - Store screenshot pipeline (see `docs/testing.md` → App screenshots): `test_driver/integration_test.dart` and fastlane for store uploads are still missing (Task 26). Screens must take all data from Riverpod providers so demo states can be injected.
 - GitHub Pages uses "GitHub Actions" as the source (enabled).
