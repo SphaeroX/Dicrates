@@ -1,12 +1,14 @@
 [project]
 name = "dicrates-backend"
-version = "0.0.0"
+version = "0.1.0"
 description = "Dicrates API and job worker (FastAPI, Procrastinate, Pydantic AI)."
 readme = "../README.md"
 license = "AGPL-3.0-only"
 requires-python = ">=3.14,<3.15"
 dependencies = [
     "fastapi>=0.162.0",
+    "procrastinate>=3.10.0",
+    "psycopg[binary,pool]>=3.3.8",
     "pydantic-settings>=2.16.2",
     "uvicorn>=0.54.0",
 ]
@@ -21,12 +23,15 @@ dev = [
     "httpx2>=2.16.0",
 ]
 
-[tool.uv]
-package = false
+[build-system]
+requires = ["uv_build>=0.13,<0.14"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "dicrates"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["src"]
 asyncio_default_fixture_loop_scope = "function"
 asyncio_mode = "auto"
 addopts = "-ra --strict-markers --import-mode=importlib"
@@ -53,4 +58,3 @@ venvPath = "."
 venv = ".venv"
 include = ["src", "tests"]
 typeCheckingMode = "strict"
-extraPaths = ["src"]
