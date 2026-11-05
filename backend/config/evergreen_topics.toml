@@ -1,0 +1,471 @@
+# Curated timeless and historical debate topics (Task 08).
+# Topic list approved by the operator on 2026-11-05.
+# Sensitive topics are allowed when the question is neutral and asks about a
+# policy, never about whether a group of people deserves rights (operator, 2026-11-05).
+#
+# Add a topic: new [[topics]] block with a unique `id` (lowercase, underscores),
+# `topic_area` (politics, economy, society, environment, technology, sports,
+# culture, education, health), `kind` (evergreen | historical), an optional
+# `guiding_question` and 1-6 trustworthy `sources` (encyclopedias, bpb, parliament
+# documents, statistics offices). Then: dicrates-admin questions generate --evergreen --topic <id>
+
+[[topics]]
+id = "motorway_speed_limit"
+title = "General speed limit on German motorways"
+topic_area = "environment"
+kind = "evergreen"
+guiding_question = "Should Germany introduce a general speed limit on its motorways?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Tempolimit", title = "Tempolimit", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Speed_limits_in_Germany", title = "Speed limits in Germany", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "urban_speed_30"
+title = "30 km/h as the default speed limit in towns"
+topic_area = "environment"
+kind = "evergreen"
+guiding_question = "Should 30 km/h become the standard speed limit inside towns?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Tempo-30-Zone", title = "Tempo-30-Zone", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/30_km/h_zone", title = "30 km/h zone", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "conscription"
+title = "Reintroducing compulsory military service"
+topic_area = "politics"
+kind = "historical"
+guiding_question = "Should Germany reintroduce compulsory military service?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Wehrpflicht_in_Deutschland", title = "Wehrpflicht in Deutschland", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Conscription_in_Germany", title = "Conscription in Germany", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "service_year"
+title = "A compulsory service year for all young people"
+topic_area = "society"
+kind = "evergreen"
+guiding_question = "Should every young person do a compulsory year of social or military service?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Zivile_Dienstpflicht", title = "Zivile Dienstpflicht", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/National_service", title = "National service", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "nuclear_power"
+title = "Nuclear power for electricity generation"
+topic_area = "environment"
+kind = "historical"
+guiding_question = "Should Germany build or reactivate nuclear power plants?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Atomausstieg", title = "Atomausstieg", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Nuclear_power_phase-out", title = "Nuclear power phase-out", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "combustion_engine_ban"
+title = "EU phase-out of new combustion-engine cars from 2035"
+topic_area = "environment"
+kind = "evergreen"
+guiding_question = "Should the EU keep the end of new combustion-engine cars from 2035?"
+sources = [
+  { url = "https://en.wikipedia.org/wiki/Phase-out_of_fossil_fuel_vehicles", title = "Phase-out of fossil fuel vehicles", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "carbon_price_dividend"
+title = "Higher carbon price returned as a climate dividend"
+topic_area = "environment"
+kind = "evergreen"
+guiding_question = "Should the carbon price rise, with the revenue paid back to everyone as a climate dividend?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/CO2-Preis_mit_Klimapr%C3%A4mie", title = "CO2-Preis mit Klimaprämie", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Carbon_fee_and_dividend", title = "Carbon fee and dividend", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "meat_levy"
+title = "A levy on meat for animal welfare"
+topic_area = "environment"
+kind = "evergreen"
+guiding_question = "Should there be an extra levy on meat to finance better animal welfare?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Fleischsteuer", title = "Fleischsteuer", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Meat_tax", title = "Meat tax", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "gm_crops"
+title = "Genetically modified crops in agriculture"
+topic_area = "technology"
+kind = "evergreen"
+guiding_question = "Should new genetic engineering methods such as CRISPR be allowed in European agriculture?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Gr%C3%BCne_Gentechnik", title = "Grüne Gentechnik", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Genetically_modified_crops", title = "Genetically modified crops", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "basic_income"
+title = "Universal basic income"
+topic_area = "economy"
+kind = "evergreen"
+guiding_question = "Should every citizen receive an unconditional basic income?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Bedingungsloses_Grundeinkommen", title = "Bedingungsloses Grundeinkommen", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Universal_basic_income", title = "Universal basic income", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "wealth_tax"
+title = "Reintroducing a wealth tax"
+topic_area = "economy"
+kind = "historical"
+guiding_question = "Should Germany reintroduce a tax on large private wealth?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Verm%C3%B6gensteuer_%28Deutschland%29", title = "Vermögensteuer (Deutschland)", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Wealth_tax", title = "Wealth tax", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "debt_brake"
+title = "The constitutional debt brake"
+topic_area = "economy"
+kind = "evergreen"
+guiding_question = "Should the debt brake be loosened to allow more public investment?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Schuldenbremse_%28Deutschland%29", title = "Schuldenbremse (Deutschland)", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Debt_brake", title = "Debt brake", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "retirement_age"
+title = "Linking the retirement age to life expectancy"
+topic_area = "economy"
+kind = "evergreen"
+guiding_question = "Should the retirement age rise automatically with life expectancy?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Renteneintrittsalter", title = "Renteneintrittsalter", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Retirement_age", title = "Retirement age", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "rent_control"
+title = "Rent control in tight housing markets"
+topic_area = "economy"
+kind = "evergreen"
+guiding_question = "Should rent increases in tight housing markets be capped by law?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Mietpreisbremse", title = "Mietpreisbremse", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Rent_control", title = "Rent control", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "board_quota"
+title = "Gender quotas for company boards"
+topic_area = "economy"
+kind = "evergreen"
+guiding_question = "Should large companies have to fill a minimum share of board seats with women?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Frauenquote", title = "Frauenquote", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Gender_quota", title = "Gender quota", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "abolish_cash"
+title = "Abolishing cash"
+topic_area = "economy"
+kind = "evergreen"
+guiding_question = "Should cash be phased out in favour of digital payments?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Bargeld", title = "Bargeld", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Cashless_society", title = "Cashless society", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "sunday_trading"
+title = "Shop opening on Sundays"
+topic_area = "economy"
+kind = "evergreen"
+guiding_question = "Should shops be allowed to open on Sundays?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Laden%C3%B6ffnungszeit", title = "Ladenöffnungszeit", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Sunday_shopping", title = "Sunday shopping", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "voting_age_16"
+title = "Voting age 16 in national elections"
+topic_area = "politics"
+kind = "evergreen"
+guiding_question = "Should 16-year-olds be allowed to vote in national elections?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Wahlalter", title = "Wahlalter", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Voting_age", title = "Voting age", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "referendums"
+title = "Nationwide referendums"
+topic_area = "politics"
+kind = "evergreen"
+guiding_question = "Should citizens be able to decide laws directly in nationwide referendums?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Volksentscheid", title = "Volksentscheid", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Referendum", title = "Referendum", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "direct_presidential_election"
+title = "Direct election of the German Federal President"
+topic_area = "politics"
+kind = "evergreen"
+guiding_question = "Should the Federal President be elected directly by the people?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Bundespr%C3%A4sident_%28Deutschland%29", title = "Bundespräsident (Deutschland)", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/President_of_Germany", title = "President of Germany", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "dual_citizenship"
+title = "Dual citizenship"
+topic_area = "politics"
+kind = "evergreen"
+guiding_question = "Should holding two citizenships be generally allowed?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Mehrstaatigkeit", title = "Mehrstaatigkeit", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Multiple_citizenship", title = "Multiple citizenship", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "asylum_cap"
+title = "An upper limit for asylum seekers"
+topic_area = "politics"
+kind = "evergreen"
+guiding_question = "Should there be a fixed yearly upper limit on the number of asylum seekers admitted?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Fl%C3%BCchtlingskrise_in_Europa_2015/2016", title = "Flüchtlingskrise in Europa 2015/2016", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Asylum_in_Germany", title = "Asylum in Germany", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "organ_donation_opt_out"
+title = "Opt-out system for organ donation"
+topic_area = "health"
+kind = "evergreen"
+guiding_question = "Should everyone be an organ donor unless they actively object?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Widerspruchsregelung", title = "Widerspruchsregelung", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Organ_donation", title = "Organ donation", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "assisted_dying"
+title = "Medically assisted dying"
+topic_area = "health"
+kind = "evergreen"
+guiding_question = "Should doctors be allowed to help terminally ill people end their lives?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Sterbehilfe", title = "Sterbehilfe", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Assisted_suicide", title = "Assisted suicide", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "abortion_criminal_law"
+title = "Abortion outside criminal law"
+topic_area = "health"
+kind = "evergreen"
+guiding_question = "Should abortion in early pregnancy be regulated outside criminal law?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Schwangerschaftsabbruch", title = "Schwangerschaftsabbruch", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Abortion_in_Germany", title = "Abortion in Germany", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "death_penalty"
+title = "The death penalty"
+topic_area = "politics"
+kind = "historical"
+guiding_question = "Should the death penalty be ruled out worldwide, without exceptions?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Todesstrafe", title = "Todesstrafe", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Capital_punishment", title = "Capital punishment", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "cannabis_legalisation"
+title = "Legal cannabis for adults"
+topic_area = "health"
+kind = "historical"
+guiding_question = "Should the sale of cannabis to adults be legal?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Cannabisgesetz", title = "Cannabisgesetz", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Legality_of_cannabis", title = "Legality of cannabis", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "measles_vaccination"
+title = "Compulsory measles vaccination"
+topic_area = "health"
+kind = "historical"
+guiding_question = "Should measles vaccination remain compulsory for children in day care and schools?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Masernschutzgesetz", title = "Masernschutzgesetz", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Measles_vaccine", title = "Measles vaccine", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "gender_neutral_language"
+title = "Gender-neutral language in public authorities"
+topic_area = "society"
+kind = "evergreen"
+guiding_question = "Should public authorities use gender-neutral language in official texts?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Geschlechtergerechte_Sprache", title = "Geschlechtergerechte Sprache", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Gender_neutrality_in_languages_with_grammatical_gender", title = "Gender neutrality in languages with grammatical gender", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "church_tax"
+title = "The church tax"
+topic_area = "society"
+kind = "evergreen"
+guiding_question = "Should the state stop collecting church tax on behalf of religious communities?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Kirchensteuer_%28Deutschland%29", title = "Kirchensteuer (Deutschland)", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Church_tax", title = "Church tax", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "headscarf_teachers"
+title = "Religious symbols worn by teachers"
+topic_area = "society"
+kind = "evergreen"
+guiding_question = "Should teachers at public schools be allowed to wear religious symbols such as a headscarf?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Kopftuchstreit", title = "Kopftuchstreit", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Islamic_veiling_practices_by_country", title = "Islamic veiling practices by country", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "facial_recognition"
+title = "Facial recognition in public spaces"
+topic_area = "technology"
+kind = "evergreen"
+guiding_question = "Should police be allowed to use live facial recognition in public places?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Gesichtserkennung", title = "Gesichtserkennung", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Facial_recognition_system", title = "Facial recognition system", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "social_media_age_16"
+title = "A minimum age of 16 for social media"
+topic_area = "technology"
+kind = "evergreen"
+guiding_question = "Should social media accounts only be allowed from the age of 16?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Soziale_Medien", title = "Soziale Medien", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Online_Safety_Amendment_%28Social_Media_Minimum_Age%29_Act_2024", title = "Online Safety Amendment (Social Media Minimum Age) Act 2024", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "ai_homework"
+title = "AI tools for homework"
+topic_area = "education"
+kind = "evergreen"
+guiding_question = "Should pupils be allowed to use AI chatbots for their homework?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/ChatGPT", title = "ChatGPT", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Artificial_intelligence_in_education", title = "Artificial intelligence in education", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "phone_ban_schools"
+title = "Smartphone bans at schools"
+topic_area = "education"
+kind = "evergreen"
+guiding_question = "Should private smartphones be banned at schools during the school day?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Smartphone-Verbot_in_der_Schule", title = "Smartphone-Verbot in der Schule", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Mobile_phone_use_in_schools", title = "Mobile phone use in schools", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "longer_joint_schooling"
+title = "Longer joint schooling before tracking"
+topic_area = "education"
+kind = "evergreen"
+guiding_question = "Should all children learn together until grade 10 before being split into school types?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Gesamtschule", title = "Gesamtschule", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Tracking_%28education%29", title = "Tracking (education)", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "tuition_fees"
+title = "Tuition fees at public universities"
+topic_area = "education"
+kind = "historical"
+guiding_question = "Should public universities charge tuition fees?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Studiengeb%C3%BChren_in_Deutschland", title = "Studiengebühren in Deutschland", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Tuition_fees_in_the_United_Kingdom", title = "Tuition fees in the United Kingdom", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "broadcasting_fee"
+title = "The public broadcasting fee"
+topic_area = "culture"
+kind = "evergreen"
+guiding_question = "Should the mandatory fee for public broadcasting be abolished or replaced?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Rundfunkbeitrag", title = "Rundfunkbeitrag", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Television_licence", title = "Television licence", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "colonial_artefacts"
+title = "Returning colonial-era artefacts"
+topic_area = "culture"
+kind = "historical"
+guiding_question = "Should museums return all objects taken during colonial rule to their countries of origin?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Benin-Bronzen", title = "Benin-Bronzen", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Benin_Bronzes", title = "Benin Bronzes", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "world_cup_boycott"
+title = "Boycotting tournaments in countries with human rights abuses"
+topic_area = "sports"
+kind = "evergreen"
+guiding_question = "Should national teams boycott major tournaments in countries with serious human rights abuses?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Fu%C3%9Fball-Weltmeisterschaft_2022", title = "Fußball-Weltmeisterschaft 2022", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup", title = "2022 FIFA World Cup", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "video_assistant_referee"
+title = "The video assistant referee in football"
+topic_area = "sports"
+kind = "evergreen"
+guiding_question = "Should the video assistant referee be abolished in professional football?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Video-Assistent", title = "Video-Assistent", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Video_assistant_referee", title = "Video assistant referee", outlet = "Wikipedia (en)" },
+]
+
+[[topics]]
+id = "olympics_bid_germany"
+title = "A German bid to host the Olympic Games"
+topic_area = "sports"
+kind = "evergreen"
+guiding_question = "Should Germany bid to host the Olympic Games?"
+sources = [
+  { url = "https://de.wikipedia.org/wiki/Olympische_Spiele", title = "Olympische Spiele", outlet = "Wikipedia (de)" },
+  { url = "https://en.wikipedia.org/wiki/Bids_for_the_Olympic_Games", title = "Bids for the Olympic Games", outlet = "Wikipedia (en)" },
+]

@@ -34,13 +34,19 @@ class QuestionRepository(Protocol):
 
 _COLUMNS = sql.SQL(
     "id, language, format, text, option_a, option_b, facts, sources, topic_area, origin,"
-    " prompt_version, group_id, status, rejection_reason, created_at, updated_at"
+    " prompt_version, group_id, topic_key, review_notes, status, rejection_reason,"
+    " created_at, updated_at"
 )
 
 
 def _content_params(content: QuestionContent) -> dict[str, Any]:
     data = content.model_dump(mode="json")
-    return {**data, "facts": Jsonb(data["facts"]), "sources": Jsonb(data["sources"])}
+    return {
+        **data,
+        "facts": Jsonb(data["facts"]),
+        "sources": Jsonb(data["sources"]),
+        "review_notes": Jsonb(data["review_notes"]),
+    }
 
 
 def _question(row: dict[str, Any] | None) -> Question:
@@ -64,10 +70,11 @@ class PostgresQuestionRepository:
     async def create(self, content: QuestionContent) -> Question:
         row = await self._one(
             "INSERT INTO public.questions (language, format, text, option_a, option_b, facts,"
-            " sources, topic_area, origin, prompt_version, group_id)"
+            " sources, topic_area, origin, prompt_version, group_id, topic_key, review_notes)"
             " VALUES (%(language)s, %(format)s,"
             " %(text)s, %(option_a)s, %(option_b)s, %(facts)s, %(sources)s, %(topic_area)s,"
-            " %(origin)s, %(prompt_version)s, %(group_id)s) RETURNING {columns}",
+            " %(origin)s, %(prompt_version)s, %(group_id)s, %(topic_key)s, %(review_notes)s)"
+            " RETURNING {columns}",
             _content_params(content),
         )
         return _question(row)
@@ -116,6 +123,7 @@ class PostgresQuestionRepository:
             " text = %(text)s, option_a = %(option_a)s, option_b = %(option_b)s,"
             " facts = %(facts)s, sources = %(sources)s, topic_area = %(topic_area)s,"
             " origin = %(origin)s, prompt_version = %(prompt_version)s, group_id = %(group_id)s,"
+            " topic_key = %(topic_key)s, review_notes = %(review_notes)s,"
             " updated_at = now()"
             " WHERE id = %(id)s RETURNING {columns}",
             {**_content_params(content), "id": question_id},

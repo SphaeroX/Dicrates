@@ -118,3 +118,10 @@ def test_single_source_flag() -> None:
 
     assert two_outlets.single_source is False
     assert one_outlet.single_source is True
+
+
+def test_topic_key_and_review_notes_default_empty() -> None:
+    content = make_content()
+
+    assert content.topic_key is None
+    assert content.review_notes == []

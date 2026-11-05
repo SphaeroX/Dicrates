@@ -83,6 +83,10 @@ class QuestionContent(BaseModel):
     prompt_version: str | None = None
     #: Shared by the language versions (en, de) of the same question.
     group_id: uuid.UUID | None = None
+    #: Stable key of the generating topic (e.g. `evergreen:speed_limit`) for duplicate checks.
+    topic_key: str | None = None
+    #: Hints for the operator (e.g. unreachable sources); never shown to players.
+    review_notes: list[str] = Field(default_factory=list[str])
 
     @property
     def single_source(self) -> bool:

@@ -15,6 +15,7 @@ import feedparser  # pyright: ignore[reportMissingTypeStubs]
 import httpx
 from pydantic import BaseModel, ConfigDict
 
+from dicrates.core.http import USER_AGENT
 from dicrates.core.language import Language
 from dicrates.news.models import NewsItem
 
@@ -64,7 +65,7 @@ class HttpxFeedFetcher:
             async with httpx.AsyncClient(
                 timeout=self._timeout,
                 follow_redirects=True,
-                headers={"User-Agent": "Dicrates-NewsReader/0.1 (feed reader)"},
+                headers={"User-Agent": USER_AGENT},
             ) as client:
                 response = await client.get(url)
                 response.raise_for_status()

@@ -15,6 +15,7 @@ from dicrates.admin.cli import make_app
 from dicrates.news.cycle import NewsCycleReport
 from dicrates.news.pipeline import PipelineReport
 from dicrates.news.sources import CollectReport
+from dicrates.questions.drafting import DraftingReport
 from dicrates.questions.models import QuestionStatus
 from dicrates.questions.repository import QuestionRepository
 
@@ -195,5 +196,75 @@ def test_generate_from_news_runs_one_cycle(repository: FakeQuestionRepository) -
 
 def test_generate_needs_a_source_flag(cli: typer.Typer) -> None:
     result = runner.invoke(cli, ["questions", "generate"])
+
+    assert result.exit_code != 0
+
+
+def test_generate_evergreen_with_topic_and_limit(repository: FakeQuestionRepository) -> None:
+    calls: list[tuple[str | None, int]] = []
+
+    async def fake_evergreen(
+        questions: QuestionRepository, topic: str | None, limit: int
+    ) -> DraftingReport:
+        calls.append((topic, limit))
+        await questions.create(make_content(origin="evergreen"))
+        return DraftingReport(drafts=1, skipped=2)
+
+    @asynccontextmanager
+    async def factory() -> AsyncGenerator[QuestionRepository]:
+        yield repository
+
+    cli = make_app(questions_repository=factory, evergreen=fake_evergreen)
+
+    result = runner.invoke(
+        cli, ["questions", "generate", "--evergreen", "--topic", "speed_limit", "--limit", "2"]
+    )
+
+    assert result.exit_code == 0, result.output
+    assert calls == [("speed_limit", 2)]
+    assert "1 draft(s)" in result.output
+    assert "2 skipped" in result.output
+    assert len(repository.questions) == 1
+
+
+def test_generate_evergreen_to_file_and_import_it_again(
+    repository: FakeQuestionRepository, tmp_path: Path
+) -> None:
+    async def fake_evergreen(
+        questions: QuestionRepository, topic: str | None, limit: int
+    ) -> DraftingReport:
+        del topic, limit
+        await questions.create(make_content(origin="evergreen", topic_key="evergreen:a"))
+        await questions.create(
+            make_content(
+                origin="evergreen",
+                topic_key="evergreen:a",
+                language="de",
+                text="Soll Beispielstadt autofrei werden?",
+            )
+        )
+        return DraftingReport(drafts=1)
+
+    @asynccontextmanager
+    async def factory() -> AsyncGenerator[QuestionRepository]:
+        yield repository
+
+    cli = make_app(questions_repository=factory, evergreen=fake_evergreen)
+    output = tmp_path / "seed.json"
+
+    generated = runner.invoke(
+        cli, ["questions", "generate", "--evergreen", "--output", str(output)]
+    )
+    imported = runner.invoke(cli, ["questions", "import", str(output)])
+
+    assert generated.exit_code == 0, generated.output
+    assert imported.exit_code == 0, imported.output
+    assert {q.language for q in repository.questions.values()} == {"en", "de"}
+    assert all(q.status is QuestionStatus.DRAFT for q in repository.questions.values())
+    assert len(json.loads(output.read_text(encoding="utf-8"))) == 2
+
+
+def test_generate_needs_exactly_one_source(cli: typer.Typer) -> None:
+    result = runner.invoke(cli, ["questions", "generate", "--from-news", "--evergreen"])
 
     assert result.exit_code != 0
