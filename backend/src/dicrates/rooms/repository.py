@@ -7,6 +7,8 @@ from psycopg.rows import dict_row
 from psycopg_pool import AsyncConnectionPool
 
 from dicrates.rooms.models import ACTIVE_STATUSES, JoinOutcome, NewRoom, Room, StartOutcome
+from dicrates.rounds.engine import Clock, RoundEngine, StartRejectedError
+from dicrates.rounds.postgres import postgres_unit_of_work
 
 
 class InviteCodeTakenError(Exception):
@@ -50,8 +52,9 @@ _ACTIVE = [status.value for status in ACTIVE_STATUSES]
 class PostgresRoomRepository:
     """Membership changes lock the room row (`FOR UPDATE`) so limits hold under concurrency."""
 
-    def __init__(self, pool: AsyncConnectionPool) -> None:
+    def __init__(self, pool: AsyncConnectionPool, *, clock: Clock | None = None) -> None:
         self._pool = pool
+        self._clock = clock
 
     async def _rooms(self, where: str, params: dict[str, Any]) -> list[Room]:
         async with self._pool.connection() as connection:
@@ -149,26 +152,15 @@ class PostgresRoomRepository:
     async def start(
         self, room_id: uuid.UUID, *, min_members: int, max_members: int
     ) -> StartOutcome:
-        async with self._pool.connection() as connection, connection.transaction():
-            cursor = await connection.execute(
-                "SELECT status FROM public.rooms WHERE id = %s FOR UPDATE", (room_id,)
+        """Start via the round engine: opens round 1 and queues its deadline job."""
+        del min_members, max_members  # the engine applies MIN_MEMBERS/MAX_MEMBERS
+        try:
+            await RoundEngine(postgres_unit_of_work(self._pool), clock=self._clock).start(room_id)
+        except StartRejectedError as rejected:
+            return (
+                StartOutcome.TOO_FEW if rejected.reason == "too_few" else StartOutcome.NOT_FORMING
             )
-            row = await cursor.fetchone()
-            if row is None or row[0] != "FORMING":
-                return StartOutcome.NOT_FORMING
-            count = await connection.execute(
-                "SELECT count(*) FROM public.room_members WHERE room_id = %s AND left_at IS NULL",
-                (room_id,),
-            )
-            active = await count.fetchone()
-            if active is None or not min_members <= active[0] <= max_members:
-                return StartOutcome.TOO_FEW
-            # Task 10 hooks the round deadlines and jobs into this transaction.
-            await connection.execute(
-                "UPDATE public.rooms SET status = 'R1_OPEN', started_at = now() WHERE id = %s",
-                (room_id,),
-            )
-            return StartOutcome.STARTED
+        return StartOutcome.STARTED
 
     async def remove_member(self, room_id: uuid.UUID, user_id: uuid.UUID) -> bool:
         async with self._pool.connection() as connection, connection.transaction():

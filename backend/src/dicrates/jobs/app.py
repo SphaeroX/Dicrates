@@ -13,5 +13,5 @@ def _conninfo() -> str:
 
 app = App(
     connector=PsycopgConnector(conninfo=_conninfo()),
-    import_paths=["dicrates.jobs.tasks"],
+    import_paths=["dicrates.jobs.tasks", "dicrates.rounds.jobs"],
 )

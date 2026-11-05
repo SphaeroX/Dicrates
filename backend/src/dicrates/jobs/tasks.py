@@ -19,7 +19,7 @@ def ping(message: str) -> str:
 
 
 @app.periodic(cron="17 */6 * * *")
-@app.task(name="news_questions", queueing_lock="news_questions")
+@app.task(name="news_questions", queue="news", queueing_lock="news_questions")
 async def news_questions(timestamp: int) -> None:
     """Every 6 hours: fetch the news feeds and draft new questions for operator review."""
     del timestamp

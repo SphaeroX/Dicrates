@@ -49,6 +49,9 @@ class Settings(BaseSettings):
         provider="mistral", model="mistral-large-latest"
     )
 
+    #: Days after FINISHED until a room is archived (deletion periods: Task 22).
+    archive_after_days: int = 30
+
     # Provider-standard key names; only the key of the LLM_MODEL provider is needed.
     mistral_api_key: SecretStr | None = None
     google_api_key: SecretStr | None = None
