@@ -14,7 +14,6 @@ from pydantic_ai.providers.mistral import MistralProvider
 
 from dicrates.core.settings import Settings
 
-
 # No startup banner that advertises LLM telemetry in logs (we never enable it).
 pydantic_ai.BANNER_ENABLED = False
 
