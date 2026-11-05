@@ -58,6 +58,6 @@ jobs:
         env:
           DATABASE_URL: postgresql://postgres:postgres@127.0.0.1:54322/postgres
         run: |
-          uv run procrastinate --app=dicrates.jobs.app defer ping '{"message": "ci"}'
-          uv run procrastinate --app=dicrates.jobs.app worker --one-shot
+          uv run procrastinate --app=dicrates.jobs.app.app defer ping '{"message": "ci"}'
+          uv run procrastinate --app=dicrates.jobs.app.app worker --one-shot
           psql "$DATABASE_URL" -tAc "SELECT status FROM procrastinate_jobs WHERE args->>'message' = 'ci'" | grep -x succeeded
