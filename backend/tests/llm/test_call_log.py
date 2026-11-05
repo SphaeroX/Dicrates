@@ -10,7 +10,21 @@ from dicrates.llm.call_log import LlmCallRecord, PostgresLlmCallLog
 
 pytestmark = pytest.mark.integration
 
-TEXT_LIKE_COLUMNS = {"prompt", "input", "output", "text", "content", "response", "message"}
+# Exactly these columns: any new column must be reviewed for text content (GDPR Art. 9).
+EXPECTED_COLUMNS = {
+    "id",
+    "created_at",
+    "task",
+    "prompt_version",
+    "model",
+    "input_tokens",
+    "output_tokens",
+    "duration_ms",
+    "success",
+    "error_kind",
+    "attempts",
+    "room_id",
+}
 
 
 async def test_record_is_stored(database_url: str) -> None:
@@ -51,5 +65,4 @@ async def test_table_has_no_text_columns(
     )
     columns = {str(row[0]) for row in await cursor.fetchall()}
 
-    assert columns
-    assert not any(part in column for column in columns for part in TEXT_LIKE_COLUMNS)
+    assert columns == EXPECTED_COLUMNS
