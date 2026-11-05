@@ -1,0 +1,74 @@
+# --- Secrets / local env ---
+.env
+.env.*
+!.env.example
+*.pem
+*.p8
+*.p12
+*.jks
+*.keystore
+service-account*.json
+google-services.json
+GoogleService-Info.plist
+
+# --- Python (backend/) ---
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# --- Flutter / Dart (app/) ---
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+app/build/
+coverage/
+*.iml
+**/android/.gradle/
+**/android/local.properties
+**/android/key.properties
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/Generated.xcconfig
+**/ios/Flutter/flutter_export_environment.sh
+**/ios/Flutter/ephemeral/
+**/xcuserdata/
+
+# --- Node / Astro (website/) ---
+node_modules/
+.astro/
+website/dist/
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+npm-debug.log*
+
+# --- Supabase local ---
+supabase/.branches/
+supabase/.temp/
+
+# --- Editors / OS ---
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Local agent files ---
+CLAUDE.local.md
+.claude/settings.local.json
