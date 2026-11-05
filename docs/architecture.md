@@ -29,6 +29,9 @@
 - `dicrates/core/settings.py`: `Settings` (pydantic-settings) reads env vars and the root `.env`; `LLM_MODEL` is parsed into `LlmModel(provider, model)`; `APP_ENV=production` refuses any non-`mistral:` model. Supabase/DB values are optional (`None`, empty strings count as unset) until the tasks that need them; secrets are `SecretStr`. Use `get_settings()` (cached) in app code.
 - `dicrates/core/db.py`: `create_pool(conninfo)` returns an unopened psycopg `AsyncConnectionPool` (open with `async with`). Plain SQL, no ORM.
 - `dicrates/jobs/`: Procrastinate `app` (`jobs/app.py`, `PsycopgConnector` on `DATABASE_URL`) and job definitions (`jobs/tasks.py`, example `ping`). Worker: `uv run procrastinate --app=dicrates.jobs.app.app worker` (in `backend/`). Jobs must be idempotent and take **only ids** as arguments: Procrastinate logs job arguments at INFO level, so no submission text, emails or other personal data may ever be a job argument.
+- `dicrates/core/auth.py`: `TokenVerifier` checks Supabase access tokens (ES256 only, `aud=authenticated`, `iss=<SUPABASE_URL>/auth/v1`, `exp`/`sub` required) with a `PyJWKClient` on the project JWKS (cached 10 min, reloaded on unknown `kid`). `create_app` stores the verifier in `app.state` (503 without `SUPABASE_URL`); `get_current_user` / `CurrentUser` is the FastAPI dependency (401 + `WWW-Authenticate: Bearer`). Tokens and claims are never logged.
+- `dicrates/profiles/`: `GET /me` (creates the profile on first call), `PATCH /me` (pseudonym, language), `POST /me/consent`; `ProfileRepository` protocol with `PostgresProfileRepository`. `require_consent` / `ConsentedUser` is the dependency **every game endpoint must use**: 403 `consent_required` unless the newest consent has the current `CURRENT_CONSENT_VERSION` (`profiles/consent.py`) and `age_confirmed`. Pseudonym rules: 3-24 chars, letters/digits of any script, single inner spaces, `-` and `_` (same rules in the app, `pseudonym_rules.dart`).
+- `dicrates/main.py`: lifespan opens the DB pool when `DATABASE_URL` is set (`get_db_pool` dependency, 503 otherwise).
 - Feature packages (`rooms`, `rounds`, `questions`, `llm`, ...) are added next to `core/` as they are built.
 
 ## Backend runtime dependencies
@@ -40,6 +43,7 @@
 | `pydantic-settings` | Typed, validated settings from env vars and `.env` (incl. the production Mistral lock). |
 | `psycopg[binary,pool]` | Async Postgres driver with connection pool; plain SQL keeps queries explicit (RLS, locking) and it is the same driver Procrastinate uses, so job enqueueing can share a transaction with state changes. Chosen over an ORM. |
 | `procrastinate` | Postgres-based job queue (see Tech stack). |
+| `pyjwt[crypto]` | JWT decoding and ES256 verification plus `PyJWKClient` (JWKS fetch, cache, refresh on unknown `kid`); small and standard, no Supabase SDK needed in the backend. |
 
 Dev-only: `httpx2` (HTTP client required by Starlette's `TestClient`; Starlette deprecated plain `httpx` for it).
 
@@ -47,7 +51,10 @@ Dev-only: `httpx2` (HTTP client required by Starlette's `TestClient`; Starlette 
 
 - `app/lib/main.dart` starts `DicratesApp` (`lib/app.dart`, `MaterialApp.router`) inside a Riverpod `ProviderScope`. `DicratesApp` takes optional `themeMode` and `locale` (used by tests and screenshots; `null` locale follows the system).
 - `lib/core/`: `config/app_config.dart` (`AppConfig` from `--dart-define`, `appConfigProvider`), `api/` (`ApiClient` over `package:http`, `apiClientProvider`), `router/app_router.dart` (`routerProvider`, go_router), `theme/app_theme.dart` (Material 3 light/dark from one seed color, bundled Roboto).
-- `lib/features/<feature>/{data,providers,widgets}`; first feature `home` (start screen with backend health, `backendHealthProvider`).
+- `lib/features/<feature>/{data,providers,widgets}`: `home` (start screen with backend health, `backendHealthProvider`), `auth` (`AuthRepository` interface, `SupabaseAuthRepository`, login and code screens), `onboarding` (`Me`, `meProvider`, `ageConfirmationProvider`, age/under-age/consent/pseudonym screens), `splash` (loading and backend-unreachable state).
+- **Auth flow:** email one-time code (`signInWithOtp` + `verifyOTP`, no magic link because there is no domain for universal links) and Google via `signInWithOAuth` with the deep link `io.github.sphaerox.dicrates://login-callback` (Android intent filter, iOS `CFBundleURLTypes`, Supabase `additional_redirect_urls`). Sign in with Apple is implemented but hidden behind `--dart-define=ENABLE_APPLE_SIGN_IN=true` (no Apple Developer account yet). `main.dart` initialises Supabase only when `SUPABASE_URL` and `SUPABASE_ANON_KEY` are defined; otherwise `UnconfiguredAuthRepository` shows a "not available" error.
+- **Router gate** (`core/router/app_gate.dart`, `redirectFor` in `app_router.dart`): signed out → login; signed in → age confirmation → consent (versioned text `consentBodyV<n>`, sent with `age_confirmed: true`) → pseudonym → home. Under 18 and declined consent are dead ends with sign-out. The age answer is kept in memory only and stored by the backend together with the consent. The email address is never part of a route and never persisted by the app.
+- `ApiClient` sends the Supabase access token as `Authorization: Bearer` and throws `ApiException(statusCode)` (`null` = network error).
 - **i18n:** `flutter_localizations` + `intl`, ARB files `lib/l10n/app_en.arb` (template, with `@key` descriptions) and `app_de.arb`; `l10n.yaml` with `nullable-getter: false`. `AppLocalizations` is generated by `flutter pub get` into `lib/l10n/` and git-ignored. Supported locales are listed English-first (`supportedAppLocales` in `app.dart`) so unsupported system locales fall back to English.
 - **Fonts:** Roboto (regular/medium/bold, Apache 2.0, copied from the Flutter SDK's `material_fonts`) is bundled in `app/assets/fonts/` so devices and goldens render the same text.
 - **Config (`--dart-define`):** `API_BASE_URL` (default `http://127.0.0.1:8000`; Android emulator: `http://10.0.2.2:8000`), `SUPABASE_URL`, `SUPABASE_ANON_KEY` (public values only). Run: `flutter run --dart-define=API_BASE_URL=http://10.0.2.2:8000`. Debug Android builds allow cleartext HTTP (`src/debug/AndroidManifest.xml`); iOS allows local networking only (`NSAllowsLocalNetworking`).
@@ -60,6 +67,7 @@ Dev-only: `httpx2` (HTTP client required by Starlette's `TestClient`; Starlette 
 | `flutter_localizations`, `intl` | Generated, type-safe localizations from ARB files (en, de). |
 | `go_router` | Declarative routing with deep-link support (invite links in Task 09). |
 | `http` | Small, well-supported HTTP client with a built-in `MockClient` for tests; no interceptors needed yet (chosen over `dio`). |
+| `supabase_flutter` | Supabase Auth client (email OTP, OAuth deep links, session persistence and token refresh); the app uses Supabase only for auth, all game data goes through the backend. |
 
 Dev-only: `mocktail`, `alchemist` (golden screenshots).
 
@@ -70,6 +78,8 @@ Dev-only: `mocktail`, `alchemist` (golden screenshots).
 - **Everything in `public` is reachable through the Supabase Data API**, so every new table gets RLS enabled and explicit `REVOKE`/`GRANT` for `anon` and `authenticated`; functions in `public` get `REVOKE ALL ... FROM PUBLIC, anon, authenticated` unless clients must call them. The Procrastinate tables and functions are locked down this way.
 - `profiles`: one row per `auth.users` id (`pseudonym`, `language` `en`/`de`, `created_at`); clients may only `SELECT` their own row, all writes go through the backend.
 - The backend connects as the database owner (`postgres`) and therefore bypasses RLS; access control for game data is enforced in backend code.
+- `consents`: append-only (`user_id`, `consent_version`, `age_confirmed`, `granted_at`), newest row counts; backend-only (RLS on, no grants). Profiles and consents are deleted with the auth user (`ON DELETE CASCADE`).
+- **Local Auth** (`supabase/config.toml`): tokens are signed with an ES256 key from `supabase/signing_keys.json` (git-ignored; create once with `echo '[]' > supabase/signing_keys.json && npx supabase gen signing-key --algorithm ES256`), so local tokens are verified via JWKS exactly like in the cloud. Email sign-in sends a 6-digit code (template `supabase/templates/sign_in_code.html`, en + de); local mails land in Mailpit (http://127.0.0.1:54324). Google is prepared in `[auth.external.google]` but `enabled = false` until OAuth client data exists in `.env`. The cloud project needs the same settings in the dashboard (Task 17).
 
 ## Architecture rules
 

@@ -16,14 +16,14 @@ Ziel dieser Roadmap ist **Produktionsreife des MVP (Phase 1)**: Nach einer gesch
 
 ## Aktueller Status
 
-Stand: 2026-11-05 – Tasks 01–03 erledigt.
+Stand: 2026-11-05 – Tasks 01–04 erledigt.
 
 | Task | Titel | Status |
 |---|---|---|
 | 01 | Backend-Skelett + CI | erledigt |
 | 02 | Lokales Supabase, DB und Jobs | erledigt |
 | 03 | App-Skelett + CI | erledigt |
-| 04 | Anmeldung end to end | offen |
+| 04 | Anmeldung end to end | erledigt |
 | 05 | LLM-Schicht | offen |
 | 06 | Fragenbibliothek + Admin-CLI | offen |
 | 07 | News-Pipeline für Streitfragen | offen |
@@ -78,6 +78,8 @@ Globale Informationen, Architekturentscheidungen und Wissen, das für das gesamt
 
 **App-Grundlagen (Task 03):** Struktur `lib/core/` + `lib/features/<feature>/{data,providers,widgets}`, Riverpod 3, go_router, `http`. Strings nur in `lib/l10n/app_en.arb` + `app_de.arb` (Vollständigkeitstest). **Golden-Strategie:** Plattform-Goldens mit echter Schrift nur unter Windows → `app/screenshots/`; CI-Goldens (plattformunabhängig) → `app/test/screenshots/goldens/ci/`, in CI geprüft. Goldens immer unter Windows mit `flutter test --update-goldens test/screenshots` erzeugen und beide Ordner committen. Test-Helfer `buildTestApp` in `app/test/helpers/pump_app.dart`.
 
+**Anmeldung und Einwilligung (Task 04):** Backend prüft Supabase-Tokens per JWKS (ES256) in `dicrates.core.auth` (`CurrentUser`). **Jeder Spiel-Endpunkt nutzt `ConsentedUser`** aus `dicrates.profiles.dependencies` (403 ohne aktuelle Einwilligung + 18+). Einwilligungstext ist versioniert (Backend `CURRENT_CONSENT_VERSION`, App `currentConsentVersion`, ARB `consentBodyV<n>`). App-Router-Gate: Login → Alter → Einwilligung → Pseudonym → Home (`core/router/app_gate.dart`). Lokales Supabase braucht `supabase/signing_keys.json` (ES256, git-ignored). Muster für Daten: Repository-Protocol + Postgres-Implementierung + Fake in den Tests.
+
 **Bestehende Projektregeln:** Root-`AGENTS.md` (TDD, Umgebungen, Privacy, i18n, Screenshots) und `docs/` (Architektur, Testing, Code-Style, Konventionen, Brief) gelten für jeden Task.
 
 ## Auffälligkeiten & Details
@@ -94,5 +96,7 @@ Dinge, die global noch zu beachten sind: Besonderheiten, bekannte Einschränkung
 - **Docker fehlt lokal (Task 02):** Auf dem Windows-Rechner des Nutzers ist kein Docker/WSL2 installiert (winget-Installation scheiterte an UAC). Integrationstests laufen bis dahin nur in CI (`backend.yml`, Job `integration`). Nutzer installiert Docker Desktop selbst.
 - **Windows-Sandbox des Agenten (Task 03):** Aus der Sandbox angelegte Ordner erhalten das ReadOnly-Attribut; Flutter (gen-l10n, `build/`) und `uv` (Löschen in `.venv`) scheitern dann mit „Zugriff verweigert". Flutter- und uv-Befehle, die Dateien löschen/erzeugen, ohne Sandbox ausführen und ggf. das Attribut entfernen.
 - **Kein Android-Gerät/AVD (Task 03):** Gerätetests (`flutter run`, `integration_test`) sind auf dem Rechner derzeit nicht möglich; Nutzer müsste ein AVD anlegen oder ein Gerät anschließen.
+- **uvicorn unter Windows mit DB (Task 04):** psycopg async braucht die Selector-Event-Loop; uvicorn nutzt unter Windows standardmäßig Proactor. Für lokalen Dev-Server mit DB eine Lösung schaffen, sobald Docker lokal läuft (z. B. `--loop` mit eigener Factory) – in CI/Produktion (Linux) kein Problem.
+- **Google-OAuth-Client fehlt (Task 04):** Google-Login ist im Code fertig, lokal aber deaktiviert, bis der Nutzer einen OAuth-Client anlegt (siehe Archiv/Task_04.md, Notizen).
 - **Kein Root-Ordner `tests/`:** Das Prüfskript des Roadmap-Skills meldet dessen Fehlen als Fehler; das ist hier gewollt (siehe Entscheidung oben).
 - **Ausblick Phase 2/3 (nicht Teil dieser Roadmap):** Interessen und Matching-Warteschlange, öffentliche Räume, Rating und Trust-Score mit Troll-Pool und Reset-Regeln, Web-Admin, Verteilungsanzeige per A/B-Test, optionale Anonymität in Freundesräumen, europäische Räume, Live-Modus, Leichte Sprache, Statistiken, Saisons, Bildungs- und Premium-Angebote.
