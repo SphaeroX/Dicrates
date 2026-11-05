@@ -72,3 +72,6 @@ desktop.ini
 # --- Local agent files ---
 CLAUDE.local.md
 .claude/settings.local.json
+
+# --- Flutter generated l10n (created by flutter pub get / gen-l10n) ---
+app/lib/l10n/app_localizations*.dart

@@ -1,0 +1,10 @@
+{
+  "@@locale": "de",
+  "appTitle": "Dicrates",
+  "homeHeadline": "Willkommen bei Dicrates",
+  "homeTagline": "Debattieren als Spiel: einander verstehen, gemeinsame Lösungen finden.",
+  "backendStatusChecking": "Verbindung wird geprüft …",
+  "backendStatusConnected": "Mit dem Server verbunden",
+  "backendStatusUnreachable": "Server nicht erreichbar",
+  "retryButton": "Erneut versuchen"
+}

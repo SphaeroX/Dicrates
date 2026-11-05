@@ -25,8 +25,17 @@ cp .env.example .env          # fill in your own keys
 cd backend && uv sync && uv run pytest
 cd backend && uv run uvicorn dicrates.main:app --reload   # API on :8000
 cd app && flutter pub get && flutter test
+cd app && flutter run --dart-define=API_BASE_URL=http://10.0.2.2:8000   # Android emulator → local API
 cd website && npm ci && npm run dev
 ```
+
+## Screenshots
+
+Rendered automatically from the app's golden tests (`app/screenshots/`, invented demo data).
+
+| Start (light) | Start (dark) | Server unreachable |
+|---|---|---|
+| ![Start screen, light](app/screenshots/home_connected_light_phone.png) | ![Start screen, dark](app/screenshots/home_connected_dark_phone.png) | ![Start screen, server unreachable](app/screenshots/home_unreachable_light_phone.png) |
 
 ## License
 

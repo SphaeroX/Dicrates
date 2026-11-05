@@ -1,0 +1,31 @@
+{
+  "@@locale": "en",
+  "appTitle": "Dicrates",
+  "@appTitle": {
+    "description": "App name shown in the app bar and task switcher."
+  },
+  "homeHeadline": "Welcome to Dicrates",
+  "@homeHeadline": {
+    "description": "Headline on the start screen."
+  },
+  "homeTagline": "Debating as a game: understand each other, find common ground.",
+  "@homeTagline": {
+    "description": "Short tagline below the start screen headline."
+  },
+  "backendStatusChecking": "Checking connection…",
+  "@backendStatusChecking": {
+    "description": "Shown while the app checks whether the server is reachable."
+  },
+  "backendStatusConnected": "Connected to the server",
+  "@backendStatusConnected": {
+    "description": "Shown when the server health check succeeded."
+  },
+  "backendStatusUnreachable": "Server not reachable",
+  "@backendStatusUnreachable": {
+    "description": "Shown when the server health check failed."
+  },
+  "retryButton": "Try again",
+  "@retryButton": {
+    "description": "Button that repeats a failed action."
+  }
+}

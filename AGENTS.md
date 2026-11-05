@@ -33,6 +33,7 @@ flutter test
 flutter test test/x_test.dart --plain-name "name"
 flutter analyze
 dart format .
+flutter test --update-goldens test/screenshots   # regenerate screen goldens (Windows)
 
 # website/  (Astro, npm)
 npm ci
