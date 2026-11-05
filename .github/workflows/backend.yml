@@ -44,9 +44,14 @@ jobs:
       - uses: supabase/setup-cli@v1
         with:
           version: latest
+      - name: Generate local ES256 signing key
+        working-directory: .
+        run: supabase gen signing-key --algorithm ES256
       - name: Start local Supabase (applies supabase/migrations)
         working-directory: .
-        run: supabase start
+        run: |
+          supabase start
+          echo "TEST_SUPABASE_ANON_KEY=$(supabase status -o json | jq -r '.ANON_KEY')" >> "$GITHUB_ENV"
       - uses: astral-sh/setup-uv@v7
         with:
           enable-cache: true

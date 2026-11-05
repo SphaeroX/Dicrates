@@ -7,14 +7,13 @@ which reloads the key set when a token names an unknown `kid` (key rotation).
 
 import uuid
 from dataclasses import dataclass
-from functools import lru_cache
 from typing import Annotated
 
 import jwt
-from fastapi import Depends, HTTPException, status
+from fastapi import Depends, HTTPException, Request, status
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 
-from dicrates.core.settings import Settings, get_settings
+from dicrates.core.settings import Settings
 
 SUPABASE_AUDIENCE = "authenticated"
 ALLOWED_ALGORITHMS = ["ES256"]
@@ -67,9 +66,14 @@ def verifier_for(settings: Settings) -> TokenVerifier:
     return TokenVerifier(jwks_client=jwks_client, issuer=f"{base_url}/auth/v1")
 
 
-@lru_cache
-def get_token_verifier() -> TokenVerifier:
-    return verifier_for(get_settings())
+def get_token_verifier(request: Request) -> TokenVerifier:
+    """FastAPI dependency: the verifier `create_app` built from the settings."""
+    verifier: TokenVerifier | None = getattr(request.app.state, "token_verifier", None)
+    if verifier is None:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail="auth_not_configured"
+        )
+    return verifier
 
 
 _bearer = HTTPBearer(auto_error=False)

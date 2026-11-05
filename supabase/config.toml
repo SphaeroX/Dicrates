@@ -161,13 +161,15 @@ site_url = "http://127.0.0.1:3000"
 # The public URL that Auth serves on. Defaults to the API external URL with `/auth/v1` appended.
 # external_url = ""
 # A list of *exact* URLs that auth providers are permitted to redirect to post authentication.
-additional_redirect_urls = ["https://127.0.0.1:3000"]
+additional_redirect_urls = ["https://127.0.0.1:3000", "io.github.sphaerox.dicrates://login-callback"]
 # How long tokens are valid for, in seconds. Defaults to 3600 (1 hour), maximum 604,800 (1 week).
 jwt_expiry = 3600
 # JWT issuer URL. If not set, defaults to auth.external_url.
 # jwt_issuer = ""
 # Path to JWT signing key. DO NOT commit your signing keys file to git.
-# signing_keys_path = "./signing_keys.json"
+# ES256 signing key, so local tokens are verified via JWKS like in the cloud.
+# Generate once: `npx supabase gen signing-key --algorithm ES256` (git-ignored).
+signing_keys_path = "./signing_keys.json"
 # If disabled, the refresh token will never expire.
 enable_refresh_token_rotation = true
 # Allows refresh tokens to be reused after expiry, up to the specified interval in seconds.
@@ -234,6 +236,16 @@ max_frequency = "1s"
 otp_length = 6
 # Number of seconds before the email OTP expires (defaults to 1 hour).
 otp_expiry = 3600
+
+# Email sign-in uses a 6-digit one-time code (no magic link: without our own
+# domain there are no universal links). The template must contain {{ .Token }}.
+[auth.email.template.magic_link]
+subject = "Your Dicrates sign-in code"
+content_path = "./supabase/templates/sign_in_code.html"
+
+[auth.email.template.confirmation]
+subject = "Your Dicrates sign-in code"
+content_path = "./supabase/templates/sign_in_code.html"
 
 # Use a production-ready SMTP server
 # [auth.email.smtp]
@@ -340,6 +352,17 @@ email_optional = false
 
 # Allow Solana wallet holders to sign in to your project via the Sign in with Solana (SIWS) standard.
 # You can configure "web3" rate limit in the [auth.rate_limit] section and set up [auth.captcha] if self-hosting.
+# Google sign-in. Client id and secret come from the Google Cloud console
+# (OAuth client "Web application", redirect URI
+# http://127.0.0.1:54321/auth/v1/callback) and are read from the root .env.
+[auth.external.google]
+enabled = false
+client_id = "env(SUPABASE_AUTH_EXTERNAL_GOOGLE_CLIENT_ID)"
+secret = "env(SUPABASE_AUTH_EXTERNAL_GOOGLE_SECRET)"
+redirect_uri = ""
+url = ""
+skip_nonce_check = true
+
 [auth.web3.solana]
 enabled = false
 

@@ -27,5 +27,172 @@
   "retryButton": "Try again",
   "@retryButton": {
     "description": "Button that repeats a failed action."
+  },
+  "signOutButton": "Sign out",
+  "@signOutButton": {
+    "description": "Signs the user out of the app."
+  },
+  "loginTitle": "Sign in",
+  "@loginTitle": {
+    "description": "Title of the sign-in screen."
+  },
+  "loginIntro": "Sign in to start debating. We only use your email address to sign you in; other players never see it.",
+  "@loginIntro": {
+    "description": "Explanation on the sign-in screen."
+  },
+  "emailLabel": "Email address",
+  "@emailLabel": {
+    "description": "Label of the email input field."
+  },
+  "emailInvalid": "Please enter a valid email address.",
+  "@emailInvalid": {
+    "description": "Validation error for the email field."
+  },
+  "sendCodeButton": "Send code",
+  "@sendCodeButton": {
+    "description": "Button that emails a one-time sign-in code."
+  },
+  "orDivider": "or",
+  "@orDivider": {
+    "description": "Separator between email sign-in and other sign-in options."
+  },
+  "continueWithGoogle": "Continue with Google",
+  "@continueWithGoogle": {
+    "description": "Google sign-in button."
+  },
+  "continueWithApple": "Continue with Apple",
+  "@continueWithApple": {
+    "description": "Sign in with Apple button."
+  },
+  "codeTitle": "Enter code",
+  "@codeTitle": {
+    "description": "Title of the screen where the emailed code is entered."
+  },
+  "codeIntro": "We sent a 6-digit code to {email}. It is valid for one hour.",
+  "@codeIntro": {
+    "description": "Explanation on the code screen.",
+    "placeholders": {
+      "email": {
+        "type": "String",
+        "example": "owl@example.test"
+      }
+    }
+  },
+  "codeLabel": "6-digit code",
+  "@codeLabel": {
+    "description": "Label of the sign-in code field."
+  },
+  "codeInvalidFormat": "The code has 6 digits.",
+  "@codeInvalidFormat": {
+    "description": "Validation error for the code field."
+  },
+  "verifyCodeButton": "Sign in",
+  "@verifyCodeButton": {
+    "description": "Button that checks the emailed code."
+  },
+  "useDifferentEmail": "Use a different email address",
+  "@useDifferentEmail": {
+    "description": "Goes back to the email entry."
+  },
+  "authErrorInvalidCode": "This code is wrong or has expired.",
+  "@authErrorInvalidCode": {
+    "description": "Shown when the sign-in code is rejected."
+  },
+  "authErrorNetwork": "No connection. Please try again.",
+  "@authErrorNetwork": {
+    "description": "Shown when sign-in fails because of the network."
+  },
+  "authErrorNotConfigured": "Sign-in is not available in this build.",
+  "@authErrorNotConfigured": {
+    "description": "Shown when the app was built without Supabase configuration."
+  },
+  "authErrorUnknown": "Sign-in failed. Please try again.",
+  "@authErrorUnknown": {
+    "description": "Generic sign-in error."
+  },
+  "ageTitle": "How old are you?",
+  "@ageTitle": {
+    "description": "Title of the age confirmation screen."
+  },
+  "ageQuestion": "Dicrates is only for adults. Are you 18 or older?",
+  "@ageQuestion": {
+    "description": "Age confirmation question."
+  },
+  "ageYes": "Yes, I am 18 or older",
+  "@ageYes": {
+    "description": "Confirms the user is at least 18."
+  },
+  "ageNo": "No, I am under 18",
+  "@ageNo": {
+    "description": "User states they are younger than 18."
+  },
+  "underAgeTitle": "Sorry",
+  "@underAgeTitle": {
+    "description": "Title of the screen shown to users under 18."
+  },
+  "underAgeBody": "You need to be at least 18 to use Dicrates.",
+  "@underAgeBody": {
+    "description": "Explains that under-18s cannot use the app."
+  },
+  "consentTitle": "Your consent",
+  "@consentTitle": {
+    "description": "Title of the consent screen."
+  },
+  "consentBodyV1": "In debates you write down your position and your arguments. These texts can reveal your political opinions, which are a special category of personal data under the GDPR (Art. 9).\n\nWith your explicit consent, Dicrates processes these texts only to run your debates: an AI service in the EU creates anonymous summaries for your room, a compromise proposal and your points. Other players never see your own texts, your email address or your name.\n\nYou can withdraw your consent and delete your account and your texts at any time.",
+  "@consentBodyV1": {
+    "description": "Consent text, version 1. Changing its meaning requires a new key (consentBodyV2) and a new CURRENT_CONSENT_VERSION in the backend."
+  },
+  "consentPrivacyPolicy": "Details: privacy policy at {url}",
+  "@consentPrivacyPolicy": {
+    "description": "Reference to the privacy policy.",
+    "placeholders": {
+      "url": {
+        "type": "String"
+      }
+    }
+  },
+  "consentAgreeButton": "I agree",
+  "@consentAgreeButton": {
+    "description": "Gives the explicit consent."
+  },
+  "consentDeclineButton": "I do not agree",
+  "@consentDeclineButton": {
+    "description": "Declines the consent."
+  },
+  "consentDeclinedInfo": "Without your consent you cannot take part in debates. You can agree at any time, or sign out.",
+  "@consentDeclinedInfo": {
+    "description": "Shown after declining consent."
+  },
+  "pseudonymTitle": "Choose a pseudonym",
+  "@pseudonymTitle": {
+    "description": "Title of the pseudonym screen."
+  },
+  "pseudonymIntro": "You stay anonymous: other players never see your name or email address. Choose a pseudonym with 3 to 24 characters.",
+  "@pseudonymIntro": {
+    "description": "Explanation on the pseudonym screen."
+  },
+  "pseudonymLabel": "Pseudonym",
+  "@pseudonymLabel": {
+    "description": "Label of the pseudonym field."
+  },
+  "pseudonymTooShort": "At least 3 characters, please.",
+  "@pseudonymTooShort": {
+    "description": "Pseudonym validation error."
+  },
+  "pseudonymTooLong": "At most 24 characters, please.",
+  "@pseudonymTooLong": {
+    "description": "Pseudonym validation error."
+  },
+  "pseudonymInvalidCharacters": "Use letters, digits, single spaces, - and _ only.",
+  "@pseudonymInvalidCharacters": {
+    "description": "Pseudonym validation error."
+  },
+  "saveAndContinueButton": "Save and continue",
+  "@saveAndContinueButton": {
+    "description": "Saves the form and goes on."
+  },
+  "genericError": "Something went wrong. Please try again.",
+  "@genericError": {
+    "description": "Generic error message."
   }
 }

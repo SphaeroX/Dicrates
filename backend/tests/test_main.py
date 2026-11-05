@@ -28,3 +28,14 @@ def test_db_endpoints_answer_503_without_database() -> None:
         response = client.get("/me")
 
     assert response.status_code == 503
+
+
+def test_authenticated_endpoints_answer_503_without_supabase_url() -> None:
+    from dicrates.core.settings import Settings
+
+    app = create_app(Settings(_env_file=None))  # pyright: ignore[reportCallIssue]
+
+    with TestClient(app) as client:
+        response = client.get("/me", headers={"Authorization": "Bearer x"})
+
+    assert response.status_code == 503

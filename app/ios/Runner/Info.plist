@@ -66,6 +66,16 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<!-- OAuth sign-in deep link: io.github.sphaerox.dicrates://login-callback -->
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>io.github.sphaerox.dicrates</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleLocalizations</key>
 	<array>
 		<string>en</string>

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../l10n/app_localizations.dart';
+import '../../onboarding/widgets/sign_out_action.dart';
 import '../data/backend_health.dart';
 import '../providers/backend_health_provider.dart';
 
@@ -15,7 +16,10 @@ class HomeScreen extends ConsumerWidget {
     final health = ref.watch(backendHealthProvider);
 
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.appTitle)),
+      appBar: AppBar(
+        title: Text(l10n.appTitle),
+        actions: const [SignOutAction()],
+      ),
       body: SafeArea(
         child: Center(
           child: SingleChildScrollView(
