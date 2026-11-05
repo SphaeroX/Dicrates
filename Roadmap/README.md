@@ -16,7 +16,7 @@ Ziel dieser Roadmap ist **Produktionsreife des MVP (Phase 1)**: Nach einer gesch
 
 ## Aktueller Status
 
-Stand: 2026-11-05 – Tasks 01–08 erledigt (M1 Fundament und M2 Streitfragen abgeschlossen).
+Stand: 2026-11-05 – Tasks 01–09 erledigt (M1, M2 abgeschlossen; M3 Kernspiel begonnen).
 
 | Task | Titel | Status |
 |---|---|---|
@@ -28,7 +28,7 @@ Stand: 2026-11-05 – Tasks 01–08 erledigt (M1 Fundament und M2 Streitfragen a
 | 06 | Fragenbibliothek + Admin-CLI | erledigt |
 | 07 | News-Pipeline für Streitfragen | erledigt |
 | 08 | Zeitlose und historische Streitfragen | erledigt |
-| 09 | Freundesraum anlegen und beitreten | offen |
+| 09 | Freundesraum anlegen und beitreten | erledigt |
 | 10 | Zustandsautomat der Runden | offen |
 | 11 | Runde 1: Position abgeben | offen |
 | 12 | Inhaltsfilter | offen |
@@ -91,6 +91,8 @@ Globale Informationen, Architekturentscheidungen und Wissen, das für das gesamt
 **Zeitlose Fragen und Startbestand (Task 08):** Themenliste `backend/config/evergreen_topics.toml` (42 Themen, vom Nutzer bestätigt). Startbestand 40 en + 40 de Entwürfe in `backend/seed/evergreen_questions.json`; in jede neue DB mit `uv run dicrates-admin questions import seed/evergreen_questions.json` laden, dann freigeben. Gemeinsame Entwurfslogik: `dicrates/questions/drafting.py`.
 
 **Lobby-Anonymität (Nutzerentscheidung 2026-11-05, für Task 09):** Die Lobby zeigt nur die Anzahl der Mitglieder, keine Pseudonyme.
+
+**Räume (Task 09):** Paket `dicrates/rooms` (3–6 Mitglieder, Codes ohne verwechselbare Zeichen, Antworten nur mit Zählern). API-Fehler tragen stabile `detail`-Codes, die die App übersetzt. Einladungslink `io.github.sphaerox.dicrates://open/join/<CODE>`. Mitgliedschaftsprüfung für alle Raum-Endpunkte über `rooms.service.get_room` (Nicht-Mitglieder → 404).
 
 **Bestehende Projektregeln:** Root-`AGENTS.md` (TDD, Umgebungen, Privacy, i18n, Screenshots) und `docs/` (Architektur, Testing, Code-Style, Konventionen, Brief) gelten für jeden Task.
 

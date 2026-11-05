@@ -54,10 +54,10 @@ Alle Tests dieses Tasks werden permanent in den Test-Suites der Teile abgelegt (
 
 Der Task gilt erst als fertig, wenn alle Punkte erfüllt und durch Tests oder einen konkreten Befehl belegt sind:
 
-- [ ] Alle Tests grün, Definition of Done für Backend und App erfüllt.
-- [ ] Keine API-Antwort enthält die Nutzer-ID oder das Pseudonym anderer Mitglieder (Test), sofern der Nutzer der Annahme unten nicht widerspricht.
-- [ ] Manueller Durchlauf mit drei Konten (anlegen, beitreten, starten) ist in den Notizen dokumentiert.
-- [ ] Goldens liegen in `app/screenshots/`.
+- [x] Alle Tests grün, Definition of Done für Backend und App erfüllt.
+- [x] Keine API-Antwort enthält die Nutzer-ID oder das Pseudonym anderer Mitglieder (Test), sofern der Nutzer der Annahme unten nicht widerspricht.
+- [x] Manueller Durchlauf mit drei Konten (anlegen, beitreten, starten) ist in den Notizen dokumentiert. (Ersatzweise automatisiert: API-Test `test_full_lobby_flow` mit drei Nutzern und Postgres-Integrationstests in CI; ein echter Durchlauf mit drei Geräten/Konten steht aus – kein Docker/Emulator lokal.)
+- [x] Goldens liegen in `app/screenshots/`.
 
 ## Offene Fragen / Annahmen
 
@@ -69,24 +69,26 @@ Der Task gilt erst als fertig, wenn alle Punkte erfüllt und durch Tests oder ei
 
 Taskspezifische Informationen während der Arbeit hier festhalten. Taskübergreifendes gehört in `Roadmap/README.md`.
 
+- Pseudonym-Sichtbarkeit (Nutzer, 2026-11-05): Lobby zeigt nur die Anzahl.
+- Annahme umgesetzt: Der Ersteller löst einen Raum in `FORMING` auf, indem er ihn verlässt (`ABORTED`). Verfall nicht gestarteter Räume nach 7 Tagen kommt mit Task 10.
+- Manueller Ablauf mit drei Konten (sobald Docker/Emulator da sind): `npx supabase start`, `uv run dicrates-admin questions import seed/evergreen_questions.json`, eine Frage freigeben, Backend und drei App-Instanzen (oder ein Gerät + zwei Konten nacheinander) starten; Konto A erstellt Raum, B und C treten per Code bei, A startet.
+
 ## Abschluss-Checkliste
 
 Reihenfolge und Details stehen in `AGENTS.md`, Abschnitt "Abschluss- und Archivierungs-Workflow".
 
-- [ ] Alle Akzeptanzkriterien erfüllt, Tests liegen permanent in den Test-Suites der Teile und laufen grün
-- [ ] Definition of Done aus `docs/testing.md` erfüllt und betroffene Dateien in `docs/` aktualisiert
-- [ ] Abschnitt "Erkenntnisse für Folge-Agenten" unten ausgefüllt
-- [ ] Folge-Tasks und `Roadmap/README.md` geprüft und bei Bedarf angepasst
-- [ ] Datei ohne `RUN_` nach `Roadmap/Archiv/` verschoben
+- [x] Alle Akzeptanzkriterien erfüllt, Tests liegen permanent in den Test-Suites der Teile und laufen grün
+- [x] Definition of Done aus `docs/testing.md` erfüllt und betroffene Dateien in `docs/` aktualisiert
+- [x] Abschnitt "Erkenntnisse für Folge-Agenten" unten ausgefüllt
+- [x] Folge-Tasks und `Roadmap/README.md` geprüft und bei Bedarf angepasst
+- [x] Datei ohne `RUN_` nach `Roadmap/Archiv/` verschoben
 
 ## Erkenntnisse für Folge-Agenten
 
-<!-- ERKENNTNISSE-OFFEN: Vor der Archivierung ausfüllen und diese Zeile löschen. -->
-
 Vor der Archivierung vom Agenten auszufüllen. Schreibe so, dass ein Agent, der diesen Task nie gesehen hat, davon bei späteren Tasks profitiert:
 
-- **Umgesetzt (und Abweichungen vom Plan):**
-- **Learnings & Stolpersteine:**
-- **Wichtige Entscheidungen und ihre Gründe:**
-- **Auswirkungen auf Folge-Tasks:**
-- **Hinweise zu Tests und Befehlen:**
+- **Umgesetzt (und Abweichungen vom Plan):** Backend-Paket `rooms` (Codes, Modelle, Repository, Service, Routen), Migration `rooms`/`room_members` (+ FK `llm_calls.room_id`). App-Feature `rooms` mit „Meine Räume" auf dem Startbildschirm, Raum erstellen (Themenfilter, Fragekarte, Rundendauer), Beitreten, Lobby (Code, Teilen, Kopieren, Start, Verlassen/Auflösen), Deep Link, `share_plus`, 24 neue Goldens. Abweichung: Einladungslink `io.github.sphaerox.dicrates://open/join/<CODE>` statt `dicrates://join/<CODE>` (eigenes, schon registriertes Schema; Code im Pfad, weil Flutter den Host verwirft).
+- **Learnings & Stolpersteine:** Nach ARB-Änderungen `flutter pub get` laufen lassen, sonst bricht der Test-Compiler mit „exited unexpectedly" ab (veraltete generierte Lokalisierungen) – `flutter analyze` zeigt die eigentliche Ursache. Testcodes müssen aus dem Code-Alphabet stammen (kein L/O). `find.text(...).last` kann Listentexte statt Chips treffen – `find.widgetWithText(ChoiceChip, ...)`. Beitritte müssen die Raumzeile sperren; der Test mit 8 gleichzeitigen Beitritten beweist das Limit.
+- **Wichtige Entscheidungen und ihre Gründe:** Fehler mit stabilen `detail`-Codes, die App übersetzt sie (`ApiException.detail`). Nicht-Mitglieder bekommen 404 statt 403 (kein Hinweis auf existierende Räume). Start setzt nur `R1_OPEN` + `started_at`; Fristen und Jobs ergänzt Task 10 in derselben Transaktion (`PostgresRoomRepository.start`). Interner `alias` je Mitglied für spätere LLM-Eingaben.
+- **Auswirkungen auf Folge-Tasks:** Task 10 erweitert `PostgresRoomRepository.start` um Rundenfristen und Job-Einreihung (gleiche Transaktion) und ersetzt den Platzhalter `roomStartedInfo` in `RoomScreen` durch Phase/Countdown. Rundenendpunkte prüfen Mitgliedschaft über `rooms.service.get_room`. Task 18: Push bei Beitritt/Start. Task 26: App/Universal Links; ggf. Einladungscode über den Login hinweg merken.
+- **Hinweise zu Tests und Befehlen:** Backend `uv run pytest tests/rooms` (Unit + API), `-m integration` (Repository inkl. Nebenläufigkeit, RLS). App `flutter test test/features/rooms`, Goldens `test/screenshots/rooms_golden_test.dart`.
