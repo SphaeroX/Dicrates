@@ -1,7 +1,7 @@
 [project]
 name = "dicrates-backend"
 version = "0.0.0"
-description = "Dicrates API and job worker (FastAPI, Procrastinate, Mistral)."
+description = "Dicrates API and job worker (FastAPI, Procrastinate, Pydantic AI)."
 readme = "../README.md"
 license = "AGPL-3.0-only"
 requires-python = ">=3.14,<3.15"

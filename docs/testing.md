@@ -63,7 +63,7 @@ A task is done when, for every touched part:
 - A failing test means fixing the implementation, not the test.
 - At most 3 repair attempts per failing test; then stop and report.
 - If an existing test must change, state why and wait for approval.
-- Tests never call the real LLM, Supabase cloud or FCM. Use fakes behind the provider interfaces. Real-LLM checks (prompt/bias evaluation) carry the `llm` marker and run only on request.
+- Tests never call a real LLM (Mistral or Gemini), Supabase cloud or FCM. Use Pydantic AI `TestModel`/`FunctionModel` (with `models.ALLOW_MODEL_REQUESTS = False` in `conftest.py`) and fakes behind the other provider interfaces. Settings tests cover `LLM_MODEL` parsing and that non-`mistral:` models are refused when `APP_ENV=production`. Real-LLM checks (prompt/bias evaluation) carry the `llm` marker and run only on request.
 
 ## App screenshots (mockups, repo preview, store listings)
 

@@ -18,7 +18,7 @@
 - **Backend:** Python 3.14, **FastAPI**, managed with **uv**. Game logic, round state machine, LLM calls, scoring.
 - **Jobs:** **Procrastinate** (Postgres-based queue). Chosen over Redis: no extra service, and job enqueueing can share the transaction with round state changes (idempotent transitions).
 - **Data/Auth:** **Supabase** in an EU region: Postgres plus Auth (email, Sign in with Apple, Google). The backend verifies Supabase access tokens (asymmetric ES256 signing keys) against the project JWKS endpoint `<SUPABASE_URL>/auth/v1/.well-known/jwks.json`, so no shared JWT secret is configured and key rotation needs no config change; the app talks to the backend for all game data.
-- **LLM:** **Mistral** (EU) behind a provider-agnostic interface in the backend. Every LLM output that drives the game is structured JSON validated with Pydantic.
+- **LLM:** **Mistral** (EU) behind a provider-agnostic interface in the backend. Every LLM output that drives the game is structured JSON validated with Pydantic. The interface is **Pydantic AI** (`pydantic-ai-slim`): a model-agnostic agent framework, chosen so the provider is switched by configuration only, with typed structured output as Pydantic models and built-in test models. `LLM_MODEL` holds a Pydantic AI model string (`<provider>:<model>`, default `mistral:mistral-large-latest`) used for *all* LLM calls; keys come from the provider-standard env vars (`MISTRAL_API_KEY`, `GOOGLE_API_KEY`). **Google Gemini (`google:…`) is a dev-only fallback** while no working Mistral key exists: it is not EU-bound, so it may only see test data, and settings validation must refuse any non-`mistral:` model when `APP_ENV=production`.
 - **Push:** Firebase Cloud Messaging (APNs via FCM).
 - **Website:** **Astro** static site with Astro i18n (`defaultLocale: 'en'`, only English strings for now), deployed by `.github/workflows/website.yml` to `https://sphaerox.github.io/Dicrates/`.
 
@@ -26,7 +26,7 @@
 
 - **Rounds are a state machine:** `FORMING → R1_OPEN → R1_CLOSED → R2_OPEN → R2_CLOSED → R3_OPEN → R3_CLOSED → R4_EVALUATING → FINISHED → ARCHIVED`, plus `ABORTED`. Transitions run only in jobs, are idempotent and deterministic (safe to retry).
 - **Anonymity is enforced server-side:** clients never receive raw submissions of other members, only LLM summaries of their room. The account ↔ submission mapping exists only in the backend (Supabase RLS denies direct client reads of submission tables).
-- **LLM layer:** one module owns all provider calls. Prompts are versioned files; each stored summary/evaluation records its prompt version. Logs contain no plain-text personal data. Add retries and schema validation for every call.
+- **LLM layer:** one module owns all provider calls. Each LLM task is a Pydantic AI `Agent` with an `output_type` Pydantic model; the model is built once from `LLM_MODEL` in the `llm` module and injected, so tests swap in `TestModel`/`FunctionModel`. No provider SDK is imported directly and no provider-specific code exists outside that factory. LLM requests go **directly to the provider API** with our own key; no intermediaries (no OpenRouter, no Pydantic AI Gateway, no Logfire or other LLM telemetry), since every extra recipient of submission text breaks EU processing and needs its own DPA. Prompts are versioned files; each stored summary/evaluation records its prompt version. Logs contain no plain-text personal data. Add retries and schema validation for every call.
 - **Political opinions are GDPR Art. 9 data:** collect explicit consent, minimize stored text, support account and content deletion, keep processing in the EU.
 - **i18n from day one:** no hard-coded user-facing strings in app or website. App and website start with **English** as the base language; more languages come later. LLM prompts take the room language as a parameter.
 
@@ -40,7 +40,7 @@
 ## First implementation steps (setup not done yet)
 
 - Supabase: Supabase CLI is not installed. Run `npx supabase init` in the repo root to create `supabase/`, then `npx supabase start` for the local stack (needs Docker).
-- Backend runtime dependencies (FastAPI, uvicorn, procrastinate, pydantic-settings, mistralai) are not added yet; add them with `uv add` when the first code needs them.
+- Backend runtime dependencies (FastAPI, uvicorn, procrastinate, pydantic-settings, `pydantic-ai-slim[mistral,google]` as the provider-agnostic LLM framework; the `google` extra only for the dev-only Gemini fallback) are not added yet; add them with `uv add` when the first code needs them.
 - App: `app/` is the unmodified `flutter create` output (counter demo + its widget test). Replace it with the real app structure; set up `flutter_localizations`/ARB files for i18n.
 - Website: `website/` is the Astro minimal starter. Build the landing page with i18n string files under `src/i18n/`.
 - Screenshot pipeline (see `docs/testing.md` → App screenshots): add `alchemist` (dev) and fonts for goldens, `test_driver/integration_test.dart`, and fastlane for store uploads. Screens must take all data from Riverpod providers so demo states can be injected.

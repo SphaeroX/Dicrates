@@ -1,6 +1,6 @@
 # Dicrates
 
-Dicrates turns debating into a game: up to six anonymous people discuss a current question in four asynchronous rounds, and an LLM summarizes, proposes a compromise and scores understanding rather than winning. Monorepo: Flutter app (`app/`), Python FastAPI backend + Procrastinate worker (`backend/`), Astro landing page on GitHub Pages (`website/`), Supabase (EU) for Postgres and Auth, Mistral as LLM.
+Dicrates turns debating into a game: up to six anonymous people discuss a current question in four asynchronous rounds, and an LLM summarizes, proposes a compromise and scores understanding rather than winning. Monorepo: Flutter app (`app/`), Python FastAPI backend + Procrastinate worker (`backend/`), Astro landing page on GitHub Pages (`website/`), Supabase (EU) for Postgres and Auth, Mistral as LLM via the provider-agnostic Pydantic AI framework (`LLM_MODEL`; Gemini as dev-only fallback).
 
 ## Top rules
 
@@ -57,7 +57,7 @@ Read only the files relevant to your current task:
 
 - Read secrets only from environment variables; never hard-code or commit them. `.env` is git-ignored; every new variable also goes into `.env.example` with a comment.
 - The Supabase service role key is backend-only; the app gets only `SUPABASE_URL` and `SUPABASE_ANON_KEY` via `--dart-define`.
-- Tests never call the real Mistral API, Supabase cloud or FCM; use fakes. Real-LLM evaluations carry the `llm` pytest marker and run only on request.
+- Tests never call a real LLM API (Mistral, Gemini), Supabase cloud or FCM; use fakes. Real-LLM evaluations carry the `llm` pytest marker and run only on request.
 - DB schema changes only via migrations in `supabase/migrations/`.
 - Do not add new runtime dependencies without a one-line reason in `docs/architecture.md`.
 - Do not decide open product questions (`docs/project-brief.md` → Open decisions) yourself; ask.
