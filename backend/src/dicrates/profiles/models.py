@@ -1,22 +1,17 @@
 import re
 import uuid
 from datetime import datetime
-from enum import StrEnum
 from typing import Annotated
 
 from pydantic import AfterValidator, BaseModel, ConfigDict, Field, field_validator
 
+from dicrates.core.language import Language
 from dicrates.profiles.consent import CURRENT_CONSENT_VERSION
 
 PSEUDONYM_MIN_LENGTH = 3
 PSEUDONYM_MAX_LENGTH = 24
 # Letters (any script) and digits, inner spaces, hyphens and underscores.
 _PSEUDONYM_PATTERN = re.compile(r"[^\W_](?:[\w \-]*[^\W_])?")
-
-
-class Language(StrEnum):
-    EN = "en"
-    DE = "de"
 
 
 def _validate_pseudonym(value: str) -> str:

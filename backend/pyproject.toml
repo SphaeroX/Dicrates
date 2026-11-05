@@ -12,6 +12,7 @@ dependencies = [
     "pydantic-ai-slim[google,mistral]>=2.66.0",
     "pydantic-settings>=2.16.2",
     "pyjwt[crypto]>=2.15.1",
+    "typer>=0.27.3",
     "uvicorn>=0.54.0",
 ]
 
@@ -24,6 +25,9 @@ dev = [
     "pyright",
     "httpx2>=2.16.0",
 ]
+
+[project.scripts]
+dicrates-admin = "dicrates.admin.cli:main"
 
 [build-system]
 requires = ["uv_build>=0.13,<0.14"]

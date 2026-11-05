@@ -11,6 +11,7 @@ from dicrates.core.auth import verifier_for
 from dicrates.core.db import create_pool
 from dicrates.core.settings import Settings, get_settings
 from dicrates.profiles.routes import router as profiles_router
+from dicrates.questions.routes import router as questions_router
 
 
 class HealthResponse(BaseModel):
@@ -41,6 +42,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         return HealthResponse(status="ok", version=__version__)
 
     app.include_router(profiles_router)
+    app.include_router(questions_router)
     return app
 
 
