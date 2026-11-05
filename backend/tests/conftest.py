@@ -45,13 +45,13 @@ def pytest_runtest_setup(item: pytest.Item) -> None:
     pytest.skip(reason)
 
 
-def pytest_asyncio_loop_factories(
-    config: pytest.Config, item: pytest.Item
-) -> Mapping[str, Callable[[], asyncio.AbstractEventLoop]] | None:
-    # psycopg async cannot run on Windows' default ProactorEventLoop.
-    if sys.platform == "win32":
+if sys.platform == "win32":
+    # psycopg async cannot run on Windows' default ProactorEventLoop. The hook must
+    # return a non-empty mapping, so it is only defined on Windows.
+    def pytest_asyncio_loop_factories(
+        config: pytest.Config, item: pytest.Item
+    ) -> Mapping[str, Callable[[], asyncio.AbstractEventLoop]]:
         return {"selector": lambda: asyncio.SelectorEventLoop(selectors.SelectSelector())}
-    return None
 
 
 @pytest.fixture
