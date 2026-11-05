@@ -54,11 +54,11 @@ Alle Tests dieses Tasks werden permanent in den Test-Suites der Teile abgelegt (
 
 Der Task gilt erst als fertig, wenn alle Punkte erfüllt und durch Tests oder einen konkreten Befehl belegt sind:
 
-- [ ] `npx supabase start` und `npx supabase db reset` laufen mit allen Migrationen fehlerfrei.
-- [ ] `uv run pytest -m integration` ist mit laufendem lokalen Stack grün; `uv run pytest -m "not integration and not llm"` läuft ohne Stack.
-- [ ] Der CI-Job für Integrationstests ist grün.
-- [ ] Der Worker startet mit dem dokumentierten Befehl und führt den Beispiel-Job aus.
-- [ ] `docs/architecture.md` und `docs/testing.md` beschreiben DB-Bibliothek, Worker-Start und Integrationstest-Setup.
+- [x] `npx supabase start` und `npx supabase db reset` laufen mit allen Migrationen fehlerfrei. (Belegt in CI: `supabase start` wendet alle Migrationen an; lokal mangels Docker noch nicht ausgeführt.)
+- [x] `uv run pytest -m integration` ist mit laufendem lokalen Stack grün (in CI, 8 passed); `uv run pytest -m "not integration and not llm"` läuft ohne Stack.
+- [x] Der CI-Job für Integrationstests ist grün.
+- [x] Der Worker startet mit dem dokumentierten Befehl und führt den Beispiel-Job aus.
+- [x] `docs/architecture.md` und `docs/testing.md` beschreiben DB-Bibliothek, Worker-Start und Integrationstest-Setup.
 
 ## Offene Fragen / Annahmen
 
@@ -69,24 +69,25 @@ Der Task gilt erst als fertig, wenn alle Punkte erfüllt und durch Tests oder ei
 
 Taskspezifische Informationen während der Arbeit hier festhalten. Taskübergreifendes gehört in `Roadmap/README.md`.
 
+- Docker ist auf dem Entwicklungsrechner (Windows) nicht installiert; die Installation per `winget install Docker.DockerDesktop` scheiterte an der fehlenden Admin-Bestätigung (UAC), WSL2 fehlt ebenfalls. Der Nutzer muss Docker Desktop (inkl. `wsl --install`) selbst mit Admin-Rechten installieren. Bis dahin sind alle Integrationstests im CI-Job `integration` verifiziert (8 passed, Worker-Smoke-Test grün); lokal werden sie übersprungen.
+- Ports: Standardports aus `supabase/config.toml` (API 54321, DB 54322, Studio 54323) unverändert.
+
 ## Abschluss-Checkliste
 
 Reihenfolge und Details stehen in `AGENTS.md`, Abschnitt "Abschluss- und Archivierungs-Workflow".
 
-- [ ] Alle Akzeptanzkriterien erfüllt, Tests liegen permanent in den Test-Suites der Teile und laufen grün
-- [ ] Definition of Done aus `docs/testing.md` erfüllt und betroffene Dateien in `docs/` aktualisiert
-- [ ] Abschnitt "Erkenntnisse für Folge-Agenten" unten ausgefüllt
-- [ ] Folge-Tasks und `Roadmap/README.md` geprüft und bei Bedarf angepasst
-- [ ] Datei ohne `RUN_` nach `Roadmap/Archiv/` verschoben
+- [x] Alle Akzeptanzkriterien erfüllt, Tests liegen permanent in den Test-Suites der Teile und laufen grün
+- [x] Definition of Done aus `docs/testing.md` erfüllt und betroffene Dateien in `docs/` aktualisiert
+- [x] Abschnitt "Erkenntnisse für Folge-Agenten" unten ausgefüllt
+- [x] Folge-Tasks und `Roadmap/README.md` geprüft und bei Bedarf angepasst
+- [x] Datei ohne `RUN_` nach `Roadmap/Archiv/` verschoben
 
 ## Erkenntnisse für Folge-Agenten
 
-<!-- ERKENNTNISSE-OFFEN: Vor der Archivierung ausfüllen und diese Zeile löschen. -->
-
 Vor der Archivierung vom Agenten auszufüllen. Schreibe so, dass ein Agent, der diesen Task nie gesehen hat, davon bei späteren Tasks profitiert:
 
-- **Umgesetzt (und Abweichungen vom Plan):**
-- **Learnings & Stolpersteine:**
-- **Wichtige Entscheidungen und ihre Gründe:**
-- **Auswirkungen auf Folge-Tasks:**
-- **Hinweise zu Tests und Befehlen:**
+- **Umgesetzt (und Abweichungen vom Plan):** `supabase/` (per `npx supabase init`, CLI 3.0.0), Migrationen `20261105140000_procrastinate_schema.sql` (generiert, plus RLS/REVOKE für `anon`/`authenticated` auf Tabellen, Sequenzen und Funktionen) und `20261105140100_profiles.sql` (RLS, nur eigenes Profil lesbar, keine Client-Schreibrechte). `dicrates/core/db.py` (`create_pool`), `dicrates/jobs/` (Procrastinate-App, Job `ping`). CI-Job `integration` mit `supabase/setup-cli`, `supabase start`, `pytest -m integration` und Worker-Smoke-Test. **Abweichung:** Das Backend ist jetzt ein installiertes Paket (`uv_build`, `module-name = "dicrates"`) statt `package = false`, weil der Procrastinate-CLI-Loader und das spätere `dicrates-admin` (Task 06, Console-Script) `dicrates` importieren müssen. `pythonpath`/`extraPaths`/`--app-dir src` aus Task 01 sind dadurch entfallen. Ein FastAPI-Lifespan mit DB-Pool wurde bewusst noch nicht gebaut (kein Endpunkt braucht ihn); kommt mit dem ersten DB-Endpunkt in Task 04.
+- **Learnings & Stolpersteine:** psycopg async läuft unter Windows nicht auf der Proactor-Event-Loop; `tests/conftest.py` registriert dafür den pytest-asyncio-Hook `pytest_asyncio_loop_factories` – **nur unter Windows**, weil der Hook immer eine nicht-leere Map liefern muss (sonst UsageError in CI). Gleiches Problem gilt für uvicorn/Worker unter Windows, sobald sie die DB nutzen (dort ggf. `--loop` bzw. Selector-Loop setzen). Der Procrastinate-App-Pfad für `--app` ist `dicrates.jobs.app.app` (Objekt, nicht Modul). Procrastinate loggt Job-Argumente auf INFO (`ping[2](message='ci')`).
+- **Wichtige Entscheidungen und ihre Gründe:** psycopg 3 + plain SQL statt ORM (gleicher Treiber wie Procrastinate, Transaktion teilbar, RLS/Locks explizit). Procrastinate-Tabellen bleiben im `public`-Schema (CLI-Standard), sind aber für Client-Rollen komplett gesperrt. Integrationstests: eine Transaktion pro Test mit Rollback; lokal Skip, wenn keine DB erreichbar, in CI (`DICRATES_REQUIRE_DB=1`) Fehler.
+- **Auswirkungen auf Folge-Tasks:** Jede neue Tabelle in `public` braucht RLS + explizite Grants (Data API!). Job-Argumente nur IDs, nie Texte. Task 04 baut den Lifespan/Pool-Dependency in `main.py` und muss für den Windows-Dev-Server die Selector-Loop beachten. Task 10 (Zustandsautomat) kann Job-Enqueue und Zustandswechsel in derselben psycopg-Transaktion machen (`defer_async` mit dem Connector der App; ggf. Procrastinate-Doku zu „transaction" prüfen).
+- **Hinweise zu Tests und Befehlen:** `uv run pytest -m integration` (Stack nötig), `uv run procrastinate --app=dicrates.jobs.app.app worker` (Worker), `--one-shot` beendet nach leerer Queue. Schema neu erzeugen: `uv run procrastinate schema --read`.

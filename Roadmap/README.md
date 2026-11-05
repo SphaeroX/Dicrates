@@ -16,12 +16,12 @@ Ziel dieser Roadmap ist **Produktionsreife des MVP (Phase 1)**: Nach einer gesch
 
 ## Aktueller Status
 
-Stand: 2026-11-05 – Task 01 erledigt.
+Stand: 2026-11-05 – Tasks 01–02 erledigt.
 
 | Task | Titel | Status |
 |---|---|---|
 | 01 | Backend-Skelett + CI | erledigt |
-| 02 | Lokales Supabase, DB und Jobs | offen |
+| 02 | Lokales Supabase, DB und Jobs | erledigt |
 | 03 | App-Skelett + CI | offen |
 | 04 | Anmeldung end to end | offen |
 | 05 | LLM-Schicht | offen |
@@ -71,8 +71,10 @@ Globale Informationen, Architekturentscheidungen und Wissen, das für das gesamt
 - Produktions-Hosting für API und Worker wird in Task 17 entschieden, nach Rückfrage beim Nutzer.
 - Tests liegen in den bestehenden Suites der Teile (`backend/tests/`, `app/test/`, `app/integration_test/`, `website/tests/`), nicht in einem Root-Ordner `tests/`.
 
-**Backend-Grundlagen (Task 01):** Code unter `backend/src/dicrates/` (nicht installiert; pytest `pythonpath`, pyright `extraPaths`, uvicorn `--app-dir src`). Settings zentral in `dicrates/core/settings.py` (`get_settings()`), Secrets als `SecretStr`. CI: `.github/workflows/backend.yml`. Unter Windows schreibt Python CRLF – Repo erzwingt LF, Dateien mit `newline="
+**Backend-Grundlagen (Task 01, angepasst in Task 02):** Code unter `backend/src/dicrates/`, seit Task 02 als installiertes Paket (`uv_build`, `uv sync` installiert es editable). Settings zentral in `dicrates/core/settings.py` (`get_settings()`), Secrets als `SecretStr`. CI: `.github/workflows/backend.yml`. Unter Windows schreibt Python CRLF – Repo erzwingt LF, Dateien mit `newline="
 "` schreiben.
+
+**Datenbank und Jobs (Task 02):** Lokaler Stack `npx supabase start` (Docker nötig), Migrationen in `supabase/migrations/`. Alles im `public`-Schema ist über die Supabase Data API erreichbar: jede neue Tabelle braucht RLS und explizite `REVOKE`/`GRANT` für `anon`/`authenticated`, Funktionen ein `REVOKE ... FROM PUBLIC, anon, authenticated`. Backend verbindet als Owner (umgeht RLS) – Zugriffskontrolle für Spieldaten liegt im Backend-Code. Procrastinate loggt Job-Argumente: **Jobs bekommen nur IDs**, nie Texte oder E-Mails. Integrationstests: Marker `integration`, lokal Skip ohne DB, in CI Pflicht.
 
 **Bestehende Projektregeln:** Root-`AGENTS.md` (TDD, Umgebungen, Privacy, i18n, Screenshots) und `docs/` (Architektur, Testing, Code-Style, Konventionen, Brief) gelten für jeden Task.
 
@@ -87,5 +89,6 @@ Dinge, die global noch zu beachten sind: Besonderheiten, bekannte Einschränkung
   - Supabase-Cloud-Projekt und Firebase-Projekt existieren (Werte in `.env`).
   - Keine eigene Domain: Website läuft auf `sphaerox.github.io/Dicrates/`, Bundle-ID `io.github.sphaerox.dicrates` ist Platzhalter. Vor dem ersten Store-Upload (Task 26) endgültig entscheiden, da die ID danach nicht mehr änderbar ist.
   - Anwaltliche Prüfung der Rechtstexte, AVVs mit Anbietern und eine Datenschutz-Folgenabschätzung sind Nutzeraufgaben (Tasks 25, 28, 29).
+- **Docker fehlt lokal (Task 02):** Auf dem Windows-Rechner des Nutzers ist kein Docker/WSL2 installiert (winget-Installation scheiterte an UAC). Integrationstests laufen bis dahin nur in CI (`backend.yml`, Job `integration`). Nutzer installiert Docker Desktop selbst.
 - **Kein Root-Ordner `tests/`:** Das Prüfskript des Roadmap-Skills meldet dessen Fehlen als Fehler; das ist hier gewollt (siehe Entscheidung oben).
 - **Ausblick Phase 2/3 (nicht Teil dieser Roadmap):** Interessen und Matching-Warteschlange, öffentliche Räume, Rating und Trust-Score mit Troll-Pool und Reset-Regeln, Web-Admin, Verteilungsanzeige per A/B-Test, optionale Anonymität in Freundesräumen, europäische Räume, Live-Modus, Leichte Sprache, Statistiken, Saisons, Bildungs- und Premium-Angebote.

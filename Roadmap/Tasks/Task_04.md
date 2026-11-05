@@ -14,6 +14,7 @@ Ein Mensch kann sich in der App per E-Mail oder Google anmelden, bestätigt, das
 ## Kontext & Abhängigkeiten
 
 - **Voraussetzung:** Tasks 02 (DB, `profiles`) und 03 (App-Struktur, l10n, Goldens) archiviert.
+- **Aus Task 02:** Es gibt noch keinen FastAPI-Lifespan mit DB-Pool; `create_pool` aus `dicrates/core/db.py` hier in `main.py` per Lifespan öffnen und als Dependency bereitstellen (`/health` muss ohne DB weiter starten). Unter Windows braucht psycopg async eine Selector-Event-Loop (auch für uvicorn). Neue Tabelle `consents` mit RLS + expliziten Grants.
 - **Relevantes Vorwissen:** `docs/architecture.md` (JWKS-Endpunkt `<SUPABASE_URL>/auth/v1/.well-known/jwks.json`, ES256, kein JWT-Secret; App erhält nur URL und Anon-Key), `docs/project-brief.md` (Konto, Pseudonym, Einwilligung, Löschung), Produktentscheidung 18+.
 
 ## Umfang

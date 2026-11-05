@@ -26,7 +26,9 @@ uv run pytest tests/test_rounds.py::test_name   # one test
 uv run pytest -m "not integration and not llm"  # fast unit tests only
 uv run pytest --cov=src                         # coverage
 
-uv run uvicorn dicrates.main:app --reload --app-dir src   # local dev server, http://127.0.0.1:8000/health
+uv run uvicorn dicrates.main:app --reload                  # local dev server, http://127.0.0.1:8000/health
+uv run pytest -m integration                    # needs `npx supabase start` (repo root, Docker)
+uv run procrastinate --app=dicrates.jobs.app.app worker    # job worker (needs DATABASE_URL)
 
 # app (run inside app/)
 flutter test                                    # all unit + widget tests
@@ -81,6 +83,7 @@ Screenshots use invented demo content only and the in-app locale under test.
 
 ## Test structure
 
+- **Backend integration tests:** marker `integration`, run against the local Supabase stack (`npx supabase start`, needs Docker). Fixtures in `backend/tests/conftest.py`: `database_url` (default local stack, override with `TEST_DATABASE_URL`) and `db_connection` (one transaction per test, rolled back afterwards). Without a reachable database, integration tests are **skipped** locally; with `DICRATES_REQUIRE_DB=1` (set in CI) they fail instead. RLS tests switch role inside the transaction (`set_config('request.jwt.claims', ...)` + `SET LOCAL ROLE authenticated|anon`). Job unit tests use `procrastinate.testing.InMemoryConnector` via `app.replace_connector(...)` and `app.run_worker_async(wait=False)`. On Windows, `conftest.py` makes pytest-asyncio use a `SelectorEventLoop` (psycopg async does not work on the Proactor loop). CI job `integration` in `backend.yml` starts Supabase with `supabase/setup-cli`, runs `pytest -m integration` and smoke-tests the worker command.
 - **Backend:** `backend/tests/` mirrors `backend/src/dicrates/` (e.g. `tests/core/test_settings.py`); files `test_<module>.py`, functions `test_<behavior>`. pytest uses `--import-mode=importlib`, so test folders need no `__init__.py` and equal basenames in different folders are fine. Settings tests set env vars via `monkeypatch` and construct `Settings(_env_file=None)`, never reading the real `.env`. CI: `.github/workflows/backend.yml` runs ruff, pyright and `pytest -m "not integration and not llm"` on changes under `backend/**`. DB tests carry the `integration` marker and use a local Supabase/Postgres. LLM tests use recorded, validated JSON fixtures.
 - **App:** `app/test/` mirrors `app/lib/`; files `<name>_test.dart`. Widget tests override Riverpod providers instead of mocking globals. Integration tests in `app/integration_test/` only for core flows.
 - **Website:** unit tests `website/tests/unit/*.test.ts`, E2E `website/tests/e2e/*.spec.ts`. E2E checks include basic accessibility (headings, alt text, lang attribute).
