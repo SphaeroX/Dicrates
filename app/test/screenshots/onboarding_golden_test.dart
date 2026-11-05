@@ -40,8 +40,11 @@ void main() {
           'renders $name',
           fileName: name,
           constraints: BoxConstraints.tight(screenSize.size),
-          builder: () =>
-              buildScreenApp(screen, themeMode: themeMode, overrides: overrides),
+          builder: () => buildScreenApp(
+            screen,
+            themeMode: themeMode,
+            overrides: overrides,
+          ),
         );
       }
     }

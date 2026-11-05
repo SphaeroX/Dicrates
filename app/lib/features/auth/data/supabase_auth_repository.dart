@@ -51,16 +51,14 @@ class SupabaseAuthRepository implements AuthRepository {
       _guard(() => _auth.signInWithOtp(email: email, shouldCreateUser: true));
 
   @override
-  Future<void> verifyEmailCode({
-    required String email,
-    required String code,
-  }) => _guard(
-    () => _auth.verifyOTP(
-      email: email,
-      token: code,
-      type: supabase.OtpType.email,
-    ),
-  );
+  Future<void> verifyEmailCode({required String email, required String code}) =>
+      _guard(
+        () => _auth.verifyOTP(
+          email: email,
+          token: code,
+          type: supabase.OtpType.email,
+        ),
+      );
 
   @override
   Future<void> signInWithGoogle() => _guard(

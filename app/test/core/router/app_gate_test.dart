@@ -69,7 +69,10 @@ void main() {
       expect(redirectFor(AppGate.signedOut, AppRoutes.login), isNull);
       expect(redirectFor(AppGate.signedOut, AppRoutes.loginCode), isNull);
       expect(redirectFor(AppGate.signedOut, AppRoutes.home), AppRoutes.login);
-      expect(redirectFor(AppGate.signedOut, AppRoutes.consent), AppRoutes.login);
+      expect(
+        redirectFor(AppGate.signedOut, AppRoutes.consent),
+        AppRoutes.login,
+      );
     });
 
     test('onboarding steps cannot be skipped', () {
@@ -93,7 +96,10 @@ void main() {
 
     test('loading and unreachable show the splash screen', () {
       expect(redirectFor(AppGate.loading, AppRoutes.home), AppRoutes.splash);
-      expect(redirectFor(AppGate.unreachable, AppRoutes.home), AppRoutes.splash);
+      expect(
+        redirectFor(AppGate.unreachable, AppRoutes.home),
+        AppRoutes.splash,
+      );
       expect(redirectFor(AppGate.loading, AppRoutes.splash), isNull);
     });
   });

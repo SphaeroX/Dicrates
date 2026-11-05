@@ -21,9 +21,7 @@ class LoginScreen extends ConsumerStatefulWidget {
 
 class _LoginScreenState extends ConsumerState<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
-  late final _email = TextEditingController(
-    text: ref.read(loginEmailProvider),
-  );
+  late final _email = TextEditingController(text: ref.read(loginEmailProvider));
   bool _busy = false;
   AuthFailure? _failure;
 

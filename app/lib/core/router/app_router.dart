@@ -57,7 +57,8 @@ final routerProvider = Provider<GoRouter>((ref) {
   final router = GoRouter(
     initialLocation: AppRoutes.splash,
     refreshListenable: gate,
-    redirect: (context, state) => redirectFor(gate.value, state.matchedLocation),
+    redirect: (context, state) =>
+        redirectFor(gate.value, state.matchedLocation),
     routes: [
       GoRoute(path: AppRoutes.home, builder: (_, _) => const HomeScreen()),
       GoRoute(path: AppRoutes.splash, builder: (_, _) => const SplashScreen()),
