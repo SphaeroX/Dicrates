@@ -74,3 +74,11 @@ async def test_client_roles_cannot_read_job_queue(db_connection: Connection, rol
 
     with pytest.raises(psycopg.errors.InsufficientPrivilege):
         await db_connection.execute("SELECT * FROM procrastinate_jobs")
+
+
+@pytest.mark.parametrize("role", ["anon", "authenticated"])
+async def test_client_roles_cannot_read_consents(db_connection: Connection, role: str) -> None:
+    await act_as(db_connection, role, uuid.uuid4() if role == "authenticated" else None)
+
+    with pytest.raises(psycopg.errors.InsufficientPrivilege):
+        await db_connection.execute("SELECT * FROM public.consents")

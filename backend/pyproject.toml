@@ -10,6 +10,7 @@ dependencies = [
     "procrastinate>=3.10.0",
     "psycopg[binary,pool]>=3.3.8",
     "pydantic-settings>=2.16.2",
+    "pyjwt[crypto]>=2.15.1",
     "uvicorn>=0.54.0",
 ]
 
@@ -32,6 +33,7 @@ module-name = "dicrates"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["."]
 asyncio_default_fixture_loop_scope = "function"
 asyncio_mode = "auto"
 addopts = "-ra --strict-markers --import-mode=importlib"
