@@ -30,18 +30,20 @@ Changing one's position never earns points by itself; well-reasoned persistence 
 ## MVP scope (phase 1)
 
 - Friend rooms with invite code/link (no public matching)
-- One question per match (curated, or LLM-generated with manual approval)
+- One question per match, chosen by the room creator from a library of approved questions. The LLM prepares questions (neutral wording, sourced fact box, neutrality/safety check) from curated news feeds and from a curated list of evergreen/historical debates, preferring controversial topics; nothing is published without operator approval via a backend CLI (`dicrates-admin`)
+- Friend rooms have 3–6 members; the creator picks the round duration (default 24 h); a round closes early once everyone has submitted
 - Full asynchronous R1–R4 flow with push notifications
 - LLM group picture, movement summary, evaluation with compromise proposal
 - Anonymity, content filter, report function
 - Simple points (no ranking)
 - Text input and on-device speech input with editable transcript; read-aloud
 - Account (email, Apple, Google; pseudonym), explicit consent, account/content deletion
-- App and website in English first, i18n-ready; more languages later
+- App and website in English (base) and German; more languages later
+- Closed beta (Play Internal Testing / TestFlight) before the public store release
 - Public landing page on GitHub Pages
 - Automatically generated app screenshots: per-screen previews (mockups) in the repo and store screenshots (Play Store, App Store) per language
 
-Later phases (not MVP): interests and matching queue, automatic news topic pipeline, Glicko/Elo rating and trust score with troll pool, reset rules, admin interface, European rooms, live mode, education/premium offers.
+Later phases (not MVP): interests and matching queue, publishing questions without human approval, web admin UI, Glicko/Elo rating and trust score with troll pool, reset rules, admin interface, European rooms, live mode, education/premium offers.
 
 ## Non-goals
 
@@ -59,18 +61,27 @@ Later phases (not MVP): interests and matching queue, automatic news topic pipel
 - DSA obligations for illegal content: to be clarified with a lawyer.
 - License: AGPL-3.0, public repository. Funding preference: grants, education licenses, premium; ads last.
 
+## Decided (2026-11-05, roadmap planning)
+
+- Production readiness = MVP (phase 1) publicly in the stores after a closed beta. Plan: `Roadmap/`.
+- Rounds: four rounds; the creator chooses the duration per room (default 24 h); early close when all active members have submitted.
+- Minimum participation: rooms need 3–6 members; fewer than 3 valid round-1 submissions abort the match without penalty.
+- Minimum age: 18+ (self-declared at sign-up).
+- Friend rooms are always anonymous in the MVP; the group picture shows no distribution ("4 for, 2 against").
+- Questions: news feeds + evergreen/historical debates, LLM-prepared, operator-approved via CLI.
+- Languages: English and German for app and website.
+- Production hosting for API and worker: decided in roadmap task 17 (EU options compared, user confirms).
+
 ## Open decisions
 
-1. Primary target audience.
-2. Exact number and duration of rounds (e.g. 12–24 h each).
-3. Show the distribution ("4 for, 2 against") in the group picture? (A/B test)
-4. How friend rooms count towards the rating (phase 2).
-5. Minimum participation and handling of non-submission (proposal: 4 of 6, abort without penalty).
-6. Minimum age (16+ or 18+).
-7. European rooms: separate per language or with translation.
-8. News sources for the topic pipeline (which outlets, political range).
-9. Optional anonymity in friend rooms (proposed: configurable).
-10. Final bundle id / domain.
+1. Primary target audience beyond the MVP's friend groups.
+2. Show the distribution in the group picture later? (A/B test, phase 2)
+3. How friend rooms count towards the rating (phase 2).
+4. European rooms: separate per language or with translation.
+5. News sources for the topic pipeline (which outlets, political range) – roadmap task 07.
+6. Optional anonymity in friend rooms (phase 2).
+7. Final bundle id / domain – before the first store upload (roadmap task 26).
+8. Retention period for plain-text submissions (proposal: 30 days after the match) – roadmap task 22.
 
 ---
 Maintenance: update this file whenever goals or scope change.

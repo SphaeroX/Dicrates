@@ -14,6 +14,7 @@ Dicrates brings small anonymous groups together around a current, concretely wor
 | `backend/` | Python FastAPI API and job worker |
 | `website/` | Landing page (Astro, GitHub Pages) |
 | `docs/` | Architecture, testing, conventions, project brief |
+| `Roadmap/` | Roadmap to production (task files for AI agents, status, cross-task notes; German) |
 
 Contributors and AI coding agents start with [AGENTS.md](AGENTS.md).
 

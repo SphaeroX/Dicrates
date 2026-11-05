@@ -53,6 +53,10 @@ Read only the files relevant to your current task:
 - [docs/project-brief.md](docs/project-brief.md) – read when goal, scope, game flow or non-goals are unclear. MVP scope and open decisions.
 - [docs/concept-original.de.md](docs/concept-original.de.md) – full original product concept (German). Read only when the brief lacks detail.
 
+## Roadmap
+
+Work on roadmap tasks follows [Roadmap/AGENTS.md](Roadmap/AGENTS.md) (strict order, `RUN_` prefix, archive workflow). Open and running task files are in `Roadmap/Tasks/`, the cross-task memory and status in `Roadmap/README.md`.
+
 ## Boundaries
 
 - Read secrets only from environment variables; never hard-code or commit them. `.env` is git-ignored; every new variable also goes into `.env.example` with a comment.
