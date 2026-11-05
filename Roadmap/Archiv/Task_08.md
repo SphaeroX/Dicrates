@@ -53,10 +53,10 @@ Alle Tests dieses Tasks werden permanent in den Test-Suites der Teile abgelegt (
 
 Der Task gilt erst als fertig, wenn alle Punkte erfüllt und durch Tests oder einen konkreten Befehl belegt sind:
 
-- [ ] Alle Tests grün, Definition of Done erfüllt.
-- [ ] Mindestens 30 Entwürfe je Sprache liegen in der lokalen Bibliothek (Befehl und Ergebnis in Notizen).
-- [ ] Die Themenliste ist mit dem Nutzer abgestimmt (Vermerk in Notizen).
-- [ ] Doku beschreibt, wie neue Themen ergänzt werden.
+- [x] Alle Tests grün, Definition of Done erfüllt.
+- [x] Mindestens 30 Entwürfe je Sprache liegen vor: 40 en + 40 de in `backend/seed/evergreen_questions.json` (Abweichung: Datei statt lokaler DB, da lokal kein Docker; Import per `questions import seed/evergreen_questions.json`, sobald eine DB läuft).
+- [x] Die Themenliste ist mit dem Nutzer abgestimmt (Vermerk in Notizen).
+- [x] Doku beschreibt, wie neue Themen ergänzt werden.
 
 ## Offene Fragen / Annahmen
 
@@ -68,24 +68,26 @@ Der Task gilt erst als fertig, wenn alle Punkte erfüllt und durch Tests oder ei
 
 Taskspezifische Informationen während der Arbeit hier festhalten. Taskübergreifendes gehört in `Roadmap/README.md`.
 
+- **Heikle Themen (Nutzer, 2026-11-05):** Alle erlaubt, solange neutral formuliert und ohne menschenverachtende Prämisse. Umgesetzt in `question_check.v2` (gilt jetzt auch für die News-Pipeline) und der Freigabe-Checkliste in `docs/operations.md`.
+- **Themenliste (Nutzer, 2026-11-05):** Vorschlag mit 42 Themen bestätigt. Quellen: je ein Wikipedia-Artikel de und en, per API gesucht, Fehltreffer (z. B. Cannabis → „Georg Wurth", WM-Boykott → U-15-Turnier) von Hand korrigiert; alle 84 URLs am 2026-11-05 erreichbar.
+- **Startbestand:** `LLM_MODEL=google:gemini-3.1-flash-lite uv run dicrates-admin questions generate --evergreen --limit 50 --output seed/evergreen_questions.json` (gemini-3.8-flash war überlastet) → 40 Entwürfe (= 40 en + 40 de), 0 abgelehnt, 2 verworfen (`cannabis_legalisation`, `olympics_bid_germany`: Faktenbezug auf nicht vorhandene Quelle; beim nächsten Lauf werden nur diese beiden erneut versucht). Nachbearbeitung: Das Modell hatte 16 Ja/Nein-Fragen als `tradeoff` mit Optionen „dafür/dagegen" angelegt; diese Paare wurden deterministisch zu `scale` ohne Optionen umgestellt (Fakten unverändert). Alle 80 Einträge validieren gegen `QuestionContent`.
+
 ## Abschluss-Checkliste
 
 Reihenfolge und Details stehen in `AGENTS.md`, Abschnitt "Abschluss- und Archivierungs-Workflow".
 
-- [ ] Alle Akzeptanzkriterien erfüllt, Tests liegen permanent in den Test-Suites der Teile und laufen grün
-- [ ] Definition of Done aus `docs/testing.md` erfüllt und betroffene Dateien in `docs/` aktualisiert
-- [ ] Abschnitt "Erkenntnisse für Folge-Agenten" unten ausgefüllt
-- [ ] Folge-Tasks und `Roadmap/README.md` geprüft und bei Bedarf angepasst
-- [ ] Datei ohne `RUN_` nach `Roadmap/Archiv/` verschoben
+- [x] Alle Akzeptanzkriterien erfüllt, Tests liegen permanent in den Test-Suites der Teile und laufen grün
+- [x] Definition of Done aus `docs/testing.md` erfüllt und betroffene Dateien in `docs/` aktualisiert
+- [x] Abschnitt "Erkenntnisse für Folge-Agenten" unten ausgefüllt
+- [x] Folge-Tasks und `Roadmap/README.md` geprüft und bei Bedarf angepasst
+- [x] Datei ohne `RUN_` nach `Roadmap/Archiv/` verschoben
 
 ## Erkenntnisse für Folge-Agenten
 
-<!-- ERKENNTNISSE-OFFEN: Vor der Archivierung ausfüllen und diese Zeile löschen. -->
-
 Vor der Archivierung vom Agenten auszufüllen. Schreibe so, dass ein Agent, der diesen Task nie gesehen hat, davon bei späteren Tasks profitiert:
 
-- **Umgesetzt (und Abweichungen vom Plan):**
-- **Learnings & Stolpersteine:**
-- **Wichtige Entscheidungen und ihre Gründe:**
-- **Auswirkungen auf Folge-Tasks:**
-- **Hinweise zu Tests und Befehlen:**
+- **Umgesetzt (und Abweichungen vom Plan):** Paket `dicrates/evergreen/` (Themenliste, URL-Prüfung, Pipeline), gemeinsames Modul `questions/drafting.py` (News-Pipeline darauf umgestellt, Tests unverändert grün), Prompts `evergreen_question.v1` und `question_check.v2`, `QuestionContent.topic_key`/`review_notes` (+ Migration), `questions/memory.py` (In-Memory-Repository), CLI `generate --evergreen [--topic] [--limit] [--output]`, `import` akzeptiert Listen, `core/http.py` mit gemeinsamem User-Agent. Konfiguration als TOML (`config/evergreen_topics.toml`) statt YAML. **Abweichung:** Startbestand als Seed-Datei statt in der lokalen DB (kein Docker); das löst zugleich die Übernahme nach Staging/Produktion (Task 17/29: `questions import`).
+- **Learnings & Stolpersteine:** Wikimedia lehnt Bots ohne Kontaktangabe im User-Agent mit 403 ab (auch HEAD); Wikipedia-API drosselt (429) – Pausen einbauen. Flash-Lite wählt das Format `tradeoff` oft für Ja/Nein-Fragen; ein Abgleich Format ↔ Formulierung fehlt im Check-Prompt (Kandidat für `question_check.v3`/Task 23). Etwa 5 % der Entwürfe zitieren nicht vorhandene Quellennummern und werden korrekt verworfen.
+- **Wichtige Entscheidungen und ihre Gründe:** Duplikatschutz über `topic_key` statt über das LLM (deterministisch, erlaubt Wiederaufnahme nach Abbrüchen). Unerreichbare Quellen verwerfen den Entwurf nicht, sondern landen in `review_notes` (CLI-Markierung `[check notes]`). `--output` setzt auf einer bestehenden Datei auf (Wiederaufnahme).
+- **Auswirkungen auf Folge-Tasks:** Task 09 kann die Seed-Datei für manuelle Tests importieren und freigeben. Task 17/29: Seed per `questions import` in Staging/Produktion laden, dort freigeben. Task 23: Prompt-Qualität (Format-Wahl, Einzelquellen, Regionalbezug) mit echten Evals, ggf. neue Prompt-Versionen. Neue Generatoren nutzen `Drafter` aus `questions/drafting.py`.
+- **Hinweise zu Tests und Befehlen:** `uv run pytest tests/evergreen` (prüft auch die Themenliste), `uv run pytest tests/admin`. Alle Quellen-URLs prüfen: siehe Snippet mit `HttpxUrlChecker` in den Notizen bzw. `generate` schreibt Unerreichbares in `review_notes`.

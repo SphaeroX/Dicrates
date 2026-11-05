@@ -1,0 +1,4047 @@
+[
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should a general speed limit be introduced on German motorways?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Germany is one of the few countries worldwide without a general speed limit on motorways.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Proponents cite environmental benefits and increased road safety as primary arguments.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Opponents emphasize individual freedom and the personal responsibility of drivers.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Tempolimit",
+        "title": "Tempolimit",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Speed_limits_in_Germany",
+        "title": "Speed limits in Germany",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "environment",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "5611304e-d1ca-45ea-8bfc-f67a711b0241",
+    "topic_key": "evergreen:motorway_speed_limit",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte auf deutschen Autobahnen ein allgemeines Tempolimit eingeführt werden?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Deutschland ist eines der wenigen Länder weltweit ohne generelles Tempolimit auf Autobahnen.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "Befürworter führen ökologische Vorteile und eine erhöhte Verkehrssicherheit an.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Gegner betonen die individuelle Freiheit und die Eigenverantwortung der Fahrzeugführer.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Tempolimit",
+        "title": "Tempolimit",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Speed_limits_in_Germany",
+        "title": "Speed limits in Germany",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "environment",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "5611304e-d1ca-45ea-8bfc-f67a711b0241",
+    "topic_key": "evergreen:motorway_speed_limit",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should 30 km/h become the new default speed limit in urban areas?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "30 km/h zones are implemented to improve road safety and reduce noise and air pollution.",
+        "source_ids": [
+          2
+        ]
+      },
+      {
+        "text": "In many jurisdictions, 50 km/h is the default speed limit in urban areas, with 30 km/h limits applied to specific streets or zones.",
+        "source_ids": [
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Tempo-30-Zone",
+        "title": "Tempo-30-Zone",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/30_km/h_zone",
+        "title": "30 km/h zone",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "environment",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "5fe95b7d-7d21-43a8-b05f-469d67a33fca",
+    "topic_key": "evergreen:urban_speed_30",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte Tempo 30 die neue Standardgeschwindigkeit innerhalb geschlossener Ortschaften werden?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Tempo-30-Zonen werden zur Erhöhung der Verkehrssicherheit und Verringerung von Lärm und Abgasen eingerichtet.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "In Deutschland liegt die Standardgeschwindigkeit innerhalb geschlossener Ortschaften bei 50 km/h, wobei 30 km/h in speziellen Zonen angeordnet werden kann.",
+        "source_ids": [
+          1
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Tempo-30-Zone",
+        "title": "Tempo-30-Zone",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/30_km/h_zone",
+        "title": "30 km/h zone",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "environment",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "5fe95b7d-7d21-43a8-b05f-469d67a33fca",
+    "topic_key": "evergreen:urban_speed_30",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should mandatory military service be reintroduced in Germany?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "The compulsory military service in Germany was effectively suspended in 2011.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Debates regarding the reintroduction of conscription often focus on national defense capabilities.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Proponents suggest that mandatory service can strengthen social cohesion.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Opponents argue in favor of individual liberty and the efficiency of a professional army.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Wehrpflicht_in_Deutschland",
+        "title": "Wehrpflicht in Deutschland",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Conscription_in_Germany",
+        "title": "Conscription in Germany",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "politics",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "6f328acf-118c-460f-a6ba-13242b11d621",
+    "topic_key": "evergreen:conscription",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte die allgemeine Wehrpflicht in Deutschland wieder eingeführt werden?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Die allgemeine Wehrpflicht in Deutschland wurde 2011 faktisch ausgesetzt.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Die Debatte um eine Wiedereinführung der Wehrpflicht bezieht sich unter anderem auf die Verteidigungsbereitschaft.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Befürworter sehen in einer Dienstpflicht Vorteile für den gesellschaftlichen Zusammenhalt.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Gegner argumentieren mit der persönlichen Freiheit und der hohen Effektivität einer Berufsarmee.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Wehrpflicht_in_Deutschland",
+        "title": "Wehrpflicht in Deutschland",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Conscription_in_Germany",
+        "title": "Conscription in Germany",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "politics",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "6f328acf-118c-460f-a6ba-13242b11d621",
+    "topic_key": "evergreen:conscription",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should a compulsory service year be introduced for all young people?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "A compulsory service year can include both civilian and military service.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Proponents argue that it strengthens social cohesion and personal development.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Critics view universal conscription as an infringement on individual liberty and an economic burden.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Zivile_Dienstpflicht",
+        "title": "Zivile Dienstpflicht",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/National_service",
+        "title": "National service",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "society",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "f0b47e2d-54ec-4d7e-9793-fd1b95ab173f",
+    "topic_key": "evergreen:service_year",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte für alle jungen Menschen ein verpflichtendes Dienstjahr eingeführt werden?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Ein verpflichtendes Dienstjahr kann sowohl zivile als auch militärische Tätigkeiten umfassen.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Befürworter sehen darin eine Stärkung des gesellschaftlichen Zusammenhalts und der persönlichen Entwicklung.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Kritiker betrachten eine allgemeine Dienstpflicht als Eingriff in die individuelle Freiheit und als wirtschaftliche Belastung.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Zivile_Dienstpflicht",
+        "title": "Zivile Dienstpflicht",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/National_service",
+        "title": "National service",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "society",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "f0b47e2d-54ec-4d7e-9793-fd1b95ab173f",
+    "topic_key": "evergreen:service_year",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should Germany resume the use of nuclear power for electricity generation?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "The Federal Republic of Germany has officially ended the use of nuclear energy for electricity generation.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Proponents view nuclear power as a low-carbon energy source for securing baseload power.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Critics point to safety risks and unresolved issues regarding the permanent disposal of radioactive waste.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Atomausstieg",
+        "title": "Atomausstieg",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Nuclear_power_phase-out",
+        "title": "Nuclear power phase-out",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "environment",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "da3c26df-d287-4d0a-bb46-80712effc367",
+    "topic_key": "evergreen:nuclear_power",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte Deutschland die Nutzung der Kernkraft zur Stromerzeugung wieder aufnehmen?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Die Bundesrepublik Deutschland hat die Nutzung der Kernenergie zur Stromerzeugung offiziell beendet.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Befürworter sehen in der Kernkraft eine kohlenstoffarme Energiequelle zur Sicherung der Grundlast.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Kritiker führen Sicherheitsrisiken und ungelöste Probleme bei der Endlagerung radioaktiver Abfälle an.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Atomausstieg",
+        "title": "Atomausstieg",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Nuclear_power_phase-out",
+        "title": "Nuclear power phase-out",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "environment",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "da3c26df-d287-4d0a-bb46-80712effc367",
+    "topic_key": "evergreen:nuclear_power",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should the European Union maintain the ban on the sale of new internal combustion engine cars from 2035?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "The EU plans to ban the sale of new internal combustion engine cars starting in 2035.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "The measure aims to reduce greenhouse gas emissions in the transport sector.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "The regulation applies to new registrations, while existing vehicles can continue to be used.",
+        "source_ids": [
+          1
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://en.wikipedia.org/wiki/Phase-out_of_fossil_fuel_vehicles",
+        "title": "Phase-out of fossil fuel vehicles",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "environment",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "3c26167d-1eac-4c0b-8db3-324822c4515e",
+    "topic_key": "evergreen:combustion_engine_ban",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte die Europäische Union am Verbot des Verkaufs neuer PKW mit Verbrennungsmotor ab 2035 festhalten?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Die EU plant das Verbot des Verkaufs neuer PKW mit Verbrennungsmotor ab dem Jahr 2035.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "Das Ziel der Maßnahme ist die Reduzierung von Treibhausgasemissionen im Verkehrssektor.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "Die Regelung betrifft Neuzulassungen, während Bestandsfahrzeuge weiterhin betrieben werden dürfen.",
+        "source_ids": [
+          1
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://en.wikipedia.org/wiki/Phase-out_of_fossil_fuel_vehicles",
+        "title": "Phase-out of fossil fuel vehicles",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "environment",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "3c26167d-1eac-4c0b-8db3-324822c4515e",
+    "topic_key": "evergreen:combustion_engine_ban",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should the carbon price be increased, provided the revenue is returned equally to all citizens as a climate dividend?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "A carbon price increases the cost of fossil fuels to reduce greenhouse gas emissions.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Under a fee and dividend model, revenue from carbon pricing is returned to citizens as a per-capita payment.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Proponents argue this approach is socially equitable, while critics raise concerns about potential impacts on industrial competitiveness.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/CO2-Preis_mit_Klimapr%C3%A4mie",
+        "title": "CO2-Preis mit Klimaprämie",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Carbon_fee_and_dividend",
+        "title": "Carbon fee and dividend",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "environment",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "9f3ae54e-296b-4170-ba62-b9e63a720f2d",
+    "topic_key": "evergreen:carbon_price_dividend",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte der CO2-Preis erhöht werden, wenn die Einnahmen als Klimadividende gleichmäßig an alle Bürger zurückgezahlt werden?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Ein CO2-Preis macht fossile Brennstoffe teurer, um den Ausstoß von Treibhausgasen zu verringern.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Bei einem Klimadividenden-Modell werden die Einnahmen aus der CO2-Bepreisung pro Kopf an die Bürger ausgezahlt.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Befürworter sehen darin eine sozialverträgliche Lösung, während Kritiker mögliche Auswirkungen auf die Wettbewerbsfähigkeit der Industrie hinterfragen.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/CO2-Preis_mit_Klimapr%C3%A4mie",
+        "title": "CO2-Preis mit Klimaprämie",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Carbon_fee_and_dividend",
+        "title": "Carbon fee and dividend",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "environment",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "9f3ae54e-296b-4170-ba62-b9e63a720f2d",
+    "topic_key": "evergreen:carbon_price_dividend",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should an additional levy be imposed on meat products to finance animal welfare?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "A meat tax is discussed as a policy tool to regulate consumption and generate funding for animal welfare improvements.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Critics argue that such a tax would disproportionately affect lower-income households.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Proponents argue that the external costs of meat production, such as environmental impacts, are not currently reflected in market prices.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Fleischsteuer",
+        "title": "Fleischsteuer",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Meat_tax",
+        "title": "Meat tax",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "environment",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "e7942a8a-6663-4a8a-83aa-332d35d743d0",
+    "topic_key": "evergreen:meat_levy",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte eine zusätzliche Abgabe auf Fleischprodukte erhoben werden, um den Tierschutz zu finanzieren?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Eine Fleischabgabe wird als Instrument diskutiert, um den Fleischkonsum zu regulieren und Einnahmen für Tierschutzmaßnahmen zu generieren.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Kritiker befürchten, dass eine solche Steuer insbesondere einkommensschwache Haushalte finanziell belastet.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Befürworter argumentieren, dass die durch Fleischkonsum verursachten externen Kosten, wie Umweltschäden, aktuell nicht ausreichend bepreist sind.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Fleischsteuer",
+        "title": "Fleischsteuer",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Meat_tax",
+        "title": "Meat tax",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "environment",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "e7942a8a-6663-4a8a-83aa-332d35d743d0",
+    "topic_key": "evergreen:meat_levy",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should the use of new genetic engineering techniques be permitted in European agriculture?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Agricultural biotechnology involves the use of scientific techniques to modify plants, animals, or microorganisms.",
+        "source_ids": [
+          2
+        ]
+      },
+      {
+        "text": "Discussions regarding genetically modified crops involve potential environmental, economic, and human health considerations.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Supporters argue that genetic engineering can increase crop yields and improve plant resilience against pests and climate stress.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Critics raise concerns about potential unintended ecological effects and the socioeconomic impact on farming systems.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Gr%C3%BCne_Gentechnik",
+        "title": "Grüne Gentechnik",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Genetically_modified_crops",
+        "title": "Genetically modified crops",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "technology",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "a045d3b1-a330-43ef-995a-2598fd0a6d24",
+    "topic_key": "evergreen:gm_crops",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte der Einsatz neuer gentechnischer Verfahren in der europäischen Landwirtschaft zugelassen werden?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Die Grüne Gentechnik umfasst Methoden zur gezielten genetischen Veränderung von Kulturpflanzen.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "Debatten über den Einsatz gentechnisch veränderter Pflanzen konzentrieren sich auf potenzielle Auswirkungen auf Umwelt und Gesundheit.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Befürworter sehen Chancen in höheren Erträgen und besserer Widerstandsfähigkeit gegen Schädlinge oder Trockenheit.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Kritiker äußern Bedenken hinsichtlich möglicher unvorhersehbarer ökologischer Folgen und einer Abhängigkeit von Saatgutkonzernen.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Gr%C3%BCne_Gentechnik",
+        "title": "Grüne Gentechnik",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Genetically_modified_crops",
+        "title": "Genetically modified crops",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "technology",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "a045d3b1-a330-43ef-995a-2598fd0a6d24",
+    "topic_key": "evergreen:gm_crops",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should a universal basic income be introduced for all citizens?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Universal basic income is a periodic cash payment delivered to all on an individual basis without means test or work requirement.",
+        "source_ids": [
+          2
+        ]
+      },
+      {
+        "text": "Proponents argue it provides a floor for basic needs and supports individual autonomy.",
+        "source_ids": [
+          2
+        ]
+      },
+      {
+        "text": "Critics raise concerns about its fiscal sustainability and potential disincentives to work.",
+        "source_ids": [
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Bedingungsloses_Grundeinkommen",
+        "title": "Bedingungsloses Grundeinkommen",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Universal_basic_income",
+        "title": "Universal basic income",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "economy",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "01f0cce0-c64f-4eca-93e6-76297d8ce6d4",
+    "topic_key": "evergreen:basic_income",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte ein bedingungsloses Grundeinkommen für alle Bürger eingeführt werden?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Das bedingungslose Grundeinkommen ist eine staatliche Transferzahlung, die ohne Bedürftigkeitsprüfung und ohne Arbeitszwang erfolgt.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "Befürworter sehen darin ein Mittel zur Armutsbekämpfung und zur Stärkung individueller Freiheit.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "Kritiker äußern Bedenken hinsichtlich der Finanzierbarkeit und potenzieller negativer Auswirkungen auf den Arbeitsmarkt.",
+        "source_ids": [
+          1
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Bedingungsloses_Grundeinkommen",
+        "title": "Bedingungsloses Grundeinkommen",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Universal_basic_income",
+        "title": "Universal basic income",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "economy",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "01f0cce0-c64f-4eca-93e6-76297d8ce6d4",
+    "topic_key": "evergreen:basic_income",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should a general wealth tax be reintroduced in Germany?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Germany levied a wealth tax on the net assets of individuals and corporations until 1996.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "A wealth tax is an annual tax on the total net private assets of individuals.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Proponents argue it reduces wealth inequality, while critics point to potential capital flight and administrative challenges.",
+        "source_ids": [
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Verm%C3%B6gensteuer_%28Deutschland%29",
+        "title": "Vermögensteuer (Deutschland)",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Wealth_tax",
+        "title": "Wealth tax",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "economy",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "4fa34ab4-7ddb-4788-aed6-7104fb73930a",
+    "topic_key": "evergreen:wealth_tax",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte in Deutschland wieder eine allgemeine Vermögensteuer eingeführt werden?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Deutschland erhob bis 1996 eine Vermögensteuer auf das Nettovermögen natürlicher und juristischer Personen.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "Eine Vermögensteuer zielt auf die jährliche Besteuerung des gesamten privaten Nettovermögens ab.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Befürworter argumentieren mit der Reduzierung von Ungleichheit, während Kritiker Kapitalflucht und bürokratischen Aufwand anführen.",
+        "source_ids": [
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Verm%C3%B6gensteuer_%28Deutschland%29",
+        "title": "Vermögensteuer (Deutschland)",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Wealth_tax",
+        "title": "Wealth tax",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "economy",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "4fa34ab4-7ddb-4788-aed6-7104fb73930a",
+    "topic_key": "evergreen:wealth_tax",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should Germany's debt brake be loosened to allow for more public investment?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "The debt brake is a fiscal rule that limits the structural budget deficit of the federal and state governments in Germany.",
+        "source_ids": [
+          2
+        ]
+      },
+      {
+        "text": "Proponents argue that the debt brake ensures long-term fiscal stability and intergenerational equity.",
+        "source_ids": [
+          2
+        ]
+      },
+      {
+        "text": "Critics argue that the debt brake restricts essential public spending on infrastructure and climate transition.",
+        "source_ids": [
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Schuldenbremse_%28Deutschland%29",
+        "title": "Schuldenbremse (Deutschland)",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Debt_brake",
+        "title": "Debt brake",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "economy",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "1942fcee-1d71-47fc-b30d-a32ba0040db2",
+    "topic_key": "evergreen:debt_brake",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte die deutsche Schuldenbremse gelockert werden, um mehr staatliche Investitionen zu ermöglichen?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Die Schuldenbremse begrenzt die strukturelle Neuverschuldung des deutschen Bundes und der Länder.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "Befürworter sehen in der Schuldenbremse ein Instrument zur Sicherung der Generationengerechtigkeit.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "Kritiker argumentieren, dass die Regelung notwendige Investitionen in Infrastruktur und Klimaschutz behindert.",
+        "source_ids": [
+          1
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Schuldenbremse_%28Deutschland%29",
+        "title": "Schuldenbremse (Deutschland)",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Debt_brake",
+        "title": "Debt brake",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "economy",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "1942fcee-1d71-47fc-b30d-a32ba0040db2",
+    "topic_key": "evergreen:debt_brake",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should the statutory retirement age be automatically adjusted in line with increasing life expectancy?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Many countries are adjusting their statutory retirement ages to ensure the sustainability of pension systems.",
+        "source_ids": [
+          2
+        ]
+      },
+      {
+        "text": "Life expectancy has increased significantly in most industrialized nations over the last few decades.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Automatically linking the retirement age to life expectancy is proposed as a way to maintain the long-term financial stability of pension funds.",
+        "source_ids": [
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Renteneintrittsalter",
+        "title": "Renteneintrittsalter",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Retirement_age",
+        "title": "Retirement age",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "economy",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "0757760d-1bc7-4bcd-8de7-0376147766f1",
+    "topic_key": "evergreen:retirement_age",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte das gesetzliche Renteneintrittsalter automatisch an die steigende Lebenserwartung angepasst werden?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Das gesetzliche Renteneintrittsalter wird in vielen Ländern zur Sicherung der Rentensysteme angepasst.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "Die Lebenserwartung ist in den letzten Jahrzehnten in den meisten Industrienationen deutlich gestiegen.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Eine automatische Koppelung des Renteneintritts an die Lebenserwartung soll die finanzielle Stabilität der Rentenkassen langfristig gewährleisten.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Renteneintrittsalter",
+        "title": "Renteneintrittsalter",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Retirement_age",
+        "title": "Retirement age",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "economy",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "0757760d-1bc7-4bcd-8de7-0376147766f1",
+    "topic_key": "evergreen:retirement_age",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should the government set legal caps on rent increases in tight housing markets?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Rent controls aim to limit housing costs and protect tenants from rapid price increases.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Critics of rent control argue that it can lead to a reduced supply of rental housing.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Rent control policies are implemented in various forms in cities and countries around the world.",
+        "source_ids": [
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Mietpreisbremse",
+        "title": "Mietpreisbremse",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Rent_control",
+        "title": "Rent control",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "economy",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "ff9cddc2-3faa-4e39-8655-40bc0324f31b",
+    "topic_key": "evergreen:rent_control",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte der Staat gesetzliche Obergrenzen für Mieterhöhungen in angespannten Wohnungsmärkten festlegen?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Mietpreisregulierungen sollen die Kosten für Wohnraum begrenzen und Mieter vor starken Anstiegen schützen.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Kritiker von Mietpreisobergrenzen argumentieren, dass diese zu einem verringerten Angebot an Mietwohnungen führen können.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Mietpreisbremsen werden in verschiedenen Ländern und Städten weltweit unterschiedlich umgesetzt.",
+        "source_ids": [
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Mietpreisbremse",
+        "title": "Mietpreisbremse",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Rent_control",
+        "title": "Rent control",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "economy",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "ff9cddc2-3faa-4e39-8655-40bc0324f31b",
+    "topic_key": "evergreen:rent_control",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should large companies be legally required to fill a minimum share of their board seats with women?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Several countries have introduced mandatory gender quotas for the boards of large companies.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Proponents argue that quotas promote equal opportunity and bring more diverse perspectives into boardrooms.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Critics argue that gender quotas interfere with entrepreneurial freedom and merit-based selection.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Frauenquote",
+        "title": "Frauenquote",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Gender_quota",
+        "title": "Gender quota",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "economy",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "666e6a15-209a-4b23-bcd2-73fd786c7fb7",
+    "topic_key": "evergreen:board_quota",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollten große Unternehmen gesetzlich verpflichtet werden, einen Mindestanteil ihrer Vorstandssitze mit Frauen zu besetzen?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Einige Länder haben gesetzliche Vorgaben für den Frauenanteil in Aufsichtsräten großer Unternehmen eingeführt.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Befürworter argumentieren, dass Quoten die Chancengleichheit fördern und vielfältigere Perspektiven in Entscheidungsgremien bringen.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Kritiker sehen in Geschlechterquoten einen Eingriff in die unternehmerische Freiheit und die Auswahl nach Qualifikation.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Frauenquote",
+        "title": "Frauenquote",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Gender_quota",
+        "title": "Gender quota",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "economy",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "666e6a15-209a-4b23-bcd2-73fd786c7fb7",
+    "topic_key": "evergreen:board_quota",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should cash be fully abolished in favour of digital payment methods?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Cash allows for anonymous transactions without the involvement of banks or third-party providers.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Digital payment systems can increase transaction efficiency and reduce risks associated with handling physical cash.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "A complete shift to cashless payments may exclude individuals without access to digital infrastructure or financial services.",
+        "source_ids": [
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Bargeld",
+        "title": "Bargeld",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Cashless_society",
+        "title": "Cashless society",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "economy",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "c26ddd5b-c595-4607-a198-1dae5b740842",
+    "topic_key": "evergreen:abolish_cash",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte Bargeld zugunsten digitaler Zahlungsmittel vollständig abgeschafft werden?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Bargeld ermöglicht anonyme Zahlungen ohne die Beteiligung von Banken oder Drittanbietern.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Digitale Zahlungssysteme können die Effizienz bei Transaktionen erhöhen und Betrugsrisiken durch physisches Geld verringern.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Die vollständige Abschaffung von Bargeld könnte Menschen ohne Zugang zu digitaler Infrastruktur oder Finanzdienstleistungen ausschließen.",
+        "source_ids": [
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Bargeld",
+        "title": "Bargeld",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Cashless_society",
+        "title": "Cashless society",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "economy",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "c26ddd5b-c595-4607-a198-1dae5b740842",
+    "topic_key": "evergreen:abolish_cash",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should retail stores be allowed to open on Sundays?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Regulations on Sunday retail opening hours vary significantly across different jurisdictions.",
+        "source_ids": [
+          2
+        ]
+      },
+      {
+        "text": "The Sunday rest is traditionally rooted in cultural and religious observations.",
+        "source_ids": [
+          2
+        ]
+      },
+      {
+        "text": "Proponents argue that Sunday opening increases consumer convenience and stimulates economic activity.",
+        "source_ids": [
+          2
+        ]
+      },
+      {
+        "text": "Opponents emphasize the importance of Sunday as a shared day of rest for employees and families.",
+        "source_ids": [
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Laden%C3%B6ffnungszeit",
+        "title": "Ladenöffnungszeit",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Sunday_shopping",
+        "title": "Sunday shopping",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "economy",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "a833a8c2-17f7-4745-8dd4-c8093aed2df2",
+    "topic_key": "evergreen:sunday_trading",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte die Sonntagsöffnung für den Einzelhandel generell freigegeben werden?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Die Regelung der Ladenöffnungszeiten fällt in Deutschland in die Zuständigkeit der Bundesländer.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "Das Grundgesetz schützt den Sonntag als Tag der Arbeitsruhe und der seelischen Erhebung.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "Befürworter argumentieren mit der Wahlfreiheit der Verbraucher und der Stärkung des Wettbewerbs.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "Gegner betonen die Bedeutung des Sonntags als gemeinsamen freien Tag für Arbeitnehmer und Familien.",
+        "source_ids": [
+          1
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Laden%C3%B6ffnungszeit",
+        "title": "Ladenöffnungszeit",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Sunday_shopping",
+        "title": "Sunday shopping",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "economy",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "a833a8c2-17f7-4745-8dd4-c8093aed2df2",
+    "topic_key": "evergreen:sunday_trading",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should the voting age for national elections be lowered to 16?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "The legal voting age for national parliamentary elections is 18 in the majority of countries worldwide.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Several countries have already lowered the voting age to 16 for either national or local elections.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "The debate focuses on balancing the inclusion of younger citizens in politics with considerations regarding legal maturity.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Wahlalter",
+        "title": "Wahlalter",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Voting_age",
+        "title": "Voting age",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "politics",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "12fa2b05-db8f-4f93-83ee-08704ede81eb",
+    "topic_key": "evergreen:voting_age_16",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte das Wahlalter für nationale Wahlen auf 16 Jahre gesenkt werden?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "In den meisten Ländern weltweit liegt das Wahlalter für nationale Parlamentswahlen bei 18 Jahren.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Einige Länder haben das Wahlalter für nationale oder lokale Wahlen bereits auf 16 Jahre gesenkt.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Die Debatte dreht sich um das Spannungsfeld zwischen politischer Partizipation Jugendlicher und ihrer rechtlichen Reife.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Wahlalter",
+        "title": "Wahlalter",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Voting_age",
+        "title": "Voting age",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "politics",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "12fa2b05-db8f-4f93-83ee-08704ede81eb",
+    "topic_key": "evergreen:voting_age_16",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should citizens be able to decide laws directly through nationwide referendums?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Direct democracy through referendums allows citizens to vote directly on policy issues.",
+        "source_ids": [
+          2
+        ]
+      },
+      {
+        "text": "Proponents argue that referendums increase political engagement and democratic legitimacy.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Critics suggest that referendums can be susceptible to populism and may undermine representative parliamentary processes.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Volksentscheid",
+        "title": "Volksentscheid",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Referendum",
+        "title": "Referendum",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "politics",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "acd99dc2-8189-4c95-b5fd-bbdd1e648f82",
+    "topic_key": "evergreen:referendums",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollten Bürger Gesetze direkt durch bundesweite Volksentscheide bestimmen können?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "In Deutschland gibt es auf Bundesebene keine direkten Volksentscheide.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "Befürworter sehen in Volksentscheiden eine Stärkung der demokratischen Teilhabe.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Kritiker warnen vor populistischen Tendenzen und einer Schwächung des parlamentarischen Systems.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Volksentscheid",
+        "title": "Volksentscheid",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Referendum",
+        "title": "Referendum",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "politics",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "acd99dc2-8189-4c95-b5fd-bbdd1e648f82",
+    "topic_key": "evergreen:referendums",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should the Federal President be elected directly by the people?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "The Federal President is currently elected by the Federal Convention.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "The Federal Convention consists of the members of the Bundestag and an equal number of representatives from the federal states.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "The office of the Federal President primarily involves representative duties.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Bundespr%C3%A4sident_%28Deutschland%29",
+        "title": "Bundespräsident (Deutschland)",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/President_of_Germany",
+        "title": "President of Germany",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "politics",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "40d15250-7fef-4ee8-b5dd-65fc0520f584",
+    "topic_key": "evergreen:direct_presidential_election",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte der Bundespräsident direkt durch das Volk gewählt werden?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Der Bundespräsident wird derzeit von der Bundesversammlung gewählt.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Die Bundesversammlung setzt sich aus den Mitgliedern des Bundestages und einer gleichen Anzahl von Vertretern der Länder zusammen.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Das Amt des Bundespräsidenten hat vorwiegend repräsentative Aufgaben.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Bundespr%C3%A4sident_%28Deutschland%29",
+        "title": "Bundespräsident (Deutschland)",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/President_of_Germany",
+        "title": "President of Germany",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "politics",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "40d15250-7fef-4ee8-b5dd-65fc0520f584",
+    "topic_key": "evergreen:direct_presidential_election",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should the holding of two citizenships be generally permitted without restrictions?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Many countries allow their citizens to acquire additional citizenship under certain conditions.",
+        "source_ids": [
+          2
+        ]
+      },
+      {
+        "text": "International law leaves the rules for nationality largely to national legislation.",
+        "source_ids": [
+          2
+        ]
+      },
+      {
+        "text": "Dual citizenship can lead to legal challenges regarding military service or consular protection.",
+        "source_ids": [
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Mehrstaatigkeit",
+        "title": "Mehrstaatigkeit",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Multiple_citizenship",
+        "title": "Multiple citizenship",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "politics",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "1e655a46-ceaf-48ca-951a-6208ca348526",
+    "topic_key": "evergreen:dual_citizenship",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte der Besitz von zwei Staatsbürgerschaften generell uneingeschränkt erlaubt sein?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Viele Länder erlauben ihren Bürgern den Erwerb einer weiteren Staatsbürgerschaft unter bestimmten Voraussetzungen.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "Das internationale Recht überlässt die Regeln zur Staatsangehörigkeit weitgehend der nationalen Gesetzgebung.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "Doppelte Staatsbürgerschaft kann zu rechtlichen Herausforderungen bei Wehrpflicht oder konsularischem Schutz führen.",
+        "source_ids": [
+          1
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Mehrstaatigkeit",
+        "title": "Mehrstaatigkeit",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Multiple_citizenship",
+        "title": "Multiple citizenship",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "politics",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "1e655a46-ceaf-48ca-951a-6208ca348526",
+    "topic_key": "evergreen:dual_citizenship",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should there be a fixed annual upper limit on the number of asylum seekers admitted?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "The admission of asylum seekers is regulated by national laws as well as European and international agreements.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "The number of asylum applications fluctuates annually and depends on various global crises and the causes of displacement.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "The debate over an upper limit for asylum seekers is a recurring topic in political discourse.",
+        "source_ids": [
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Fl%C3%BCchtlingskrise_in_Europa_2015/2016",
+        "title": "Flüchtlingskrise in Europa 2015/2016",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Asylum_in_Germany",
+        "title": "Asylum in Germany",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "politics",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "1905c761-2716-4473-a3f6-112961fe0753",
+    "topic_key": "evergreen:asylum_cap",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte es eine verbindliche jährliche Obergrenze für die Aufnahme von Asylbewerbern geben?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Die Aufnahme von Asylbewerbern wird durch nationale Gesetze sowie europäische und internationale Abkommen geregelt.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Die Zahl der Asylanträge schwankt jährlich stark und hängt von verschiedenen globalen Krisen und Fluchtursachen ab.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Die Debatte über eine Obergrenze für Asylbewerber wird regelmäßig im politischen Diskurs geführt.",
+        "source_ids": [
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Fl%C3%BCchtlingskrise_in_Europa_2015/2016",
+        "title": "Flüchtlingskrise in Europa 2015/2016",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Asylum_in_Germany",
+        "title": "Asylum in Germany",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "politics",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "1905c761-2716-4473-a3f6-112961fe0753",
+    "topic_key": "evergreen:asylum_cap",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should an opt-out system for organ donation be implemented?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Under an opt-out system, individuals are automatically registered as organ donors unless they actively opt out.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "The alternative is an opt-in system, where explicit consent is required to become an organ donor.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Widerspruchsregelung",
+        "title": "Widerspruchsregelung",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Organ_donation",
+        "title": "Organ donation",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "health",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "1aae550c-4b65-483b-8322-a57bbd0e3e45",
+    "topic_key": "evergreen:organ_donation_opt_out",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte in Deutschland ein Widerspruchssystem für die Organspende eingeführt werden?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Bei der Widerspruchsregelung werden Personen automatisch als Organspender registriert, sofern sie dem nicht zu Lebzeiten aktiv widersprechen.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Die Alternative ist die Entscheidungslösung, bei der eine explizite Zustimmung zur Organspende erforderlich ist.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Widerspruchsregelung",
+        "title": "Widerspruchsregelung",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Organ_donation",
+        "title": "Organ donation",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "health",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "1aae550c-4b65-483b-8322-a57bbd0e3e45",
+    "topic_key": "evergreen:organ_donation_opt_out",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should physicians be legally permitted to assist terminally ill people in ending their lives?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "The legal status of physician-assisted dying varies significantly around the world, ranging from total prohibition to regulated access.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Proponents emphasize the right to self-determination at the end of life and the relief of suffering.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Opponents raise concerns regarding the protection of vulnerable individuals and the medical profession's ethical role.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Sterbehilfe",
+        "title": "Sterbehilfe",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Assisted_suicide",
+        "title": "Assisted suicide",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "health",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "22f979de-bb3b-4090-9c7c-05920c936d17",
+    "topic_key": "evergreen:assisted_dying",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte Ärzten die assistierte Sterbehilfe bei unheilbar kranken Menschen rechtlich ermöglicht werden?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Die rechtliche Zulässigkeit ärztlicher Sterbehilfe variiert weltweit stark zwischen vollständigem Verbot und gesetzlicher Regulierung.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Befürworter betonen das Selbstbestimmungsrecht am Lebensende und die Vermeidung von Leiden.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Gegner äußern Bedenken hinsichtlich des Schutzes vulnerabler Gruppen und der Rolle der Ärzteschaft.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Sterbehilfe",
+        "title": "Sterbehilfe",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Assisted_suicide",
+        "title": "Assisted suicide",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "health",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "22f979de-bb3b-4090-9c7c-05920c936d17",
+    "topic_key": "evergreen:assisted_dying",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should abortion in early pregnancy be removed from the criminal code?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "In Germany, abortion is fundamentally unlawful, but remains unpunishable under specific legal conditions.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "The legal framework for abortion in Germany is currently anchored in the criminal code.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "There is an ongoing public debate about whether abortion should be regulated outside the scope of criminal law.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Schwangerschaftsabbruch",
+        "title": "Schwangerschaftsabbruch",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Abortion_in_Germany",
+        "title": "Abortion in Germany",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "health",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "3302a444-64b8-4902-b41a-1ab9b27ae09a",
+    "topic_key": "evergreen:abortion_criminal_law",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte der Schwangerschaftsabbruch in der Frühphase der Schwangerschaft aus dem Strafgesetzbuch gestrichen werden?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "In Deutschland ist der Schwangerschaftsabbruch grundsätzlich rechtswidrig, aber unter bestimmten Voraussetzungen straffrei.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Die gesetzliche Regelung erfolgt in Deutschland derzeit über das Strafgesetzbuch.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Es gibt gesellschaftliche Diskussionen darüber, ob Schwangerschaftsabbrüche außerhalb des Strafrechts geregelt werden sollten.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Schwangerschaftsabbruch",
+        "title": "Schwangerschaftsabbruch",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Abortion_in_Germany",
+        "title": "Abortion in Germany",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "health",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "3302a444-64b8-4902-b41a-1ab9b27ae09a",
+    "topic_key": "evergreen:abortion_criminal_law",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should the death penalty be abolished worldwide without exception?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "The death penalty has been legally abolished or is not applied in practice in many countries worldwide.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Proponents often argue based on retribution for serious crimes and the deterrence of potential offenders.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Opponents cite ethical concerns, the risk of judicial errors, and the irreversibility of the punishment.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Todesstrafe",
+        "title": "Todesstrafe",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Capital_punishment",
+        "title": "Capital punishment",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "politics",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "ccf118f7-b387-4b2c-adb7-6b001247c659",
+    "topic_key": "evergreen:death_penalty",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte die Todesstrafe weltweit ausnahmslos abgeschafft werden?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Die Todesstrafe ist in vielen Ländern weltweit gesetzlich abgeschafft oder wird in der Praxis nicht mehr vollstreckt.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Befürworter argumentieren häufig mit der Vergeltung für schwere Verbrechen und der Abschreckung potenzieller Täter.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Gegner führen ethische Bedenken sowie das Risiko von Justizirrtümern und die fehlende Reversibilität der Strafe an.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Todesstrafe",
+        "title": "Todesstrafe",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Capital_punishment",
+        "title": "Capital punishment",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "politics",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "ccf118f7-b387-4b2c-adb7-6b001247c659",
+    "topic_key": "evergreen:death_penalty",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should the compulsory measles vaccination for children in childcare and schools be maintained?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "The Measles Protection Act in Germany mandates measles vaccination for children attending childcare facilities or schools.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "The measles vaccine is highly effective in preventing infections and reducing complications.",
+        "source_ids": [
+          2
+        ]
+      },
+      {
+        "text": "High vaccination coverage is essential to achieve herd immunity against measles.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Masernschutzgesetz",
+        "title": "Masernschutzgesetz",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Measles_vaccine",
+        "title": "Measles vaccine",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "health",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "6724ab8d-1084-4567-8415-5b9f7d624bb3",
+    "topic_key": "evergreen:measles_vaccination",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte die Masern-Impfpflicht für Kinder in Kindertagesstätten und Schulen beibehalten werden?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Das Masernschutzgesetz verpflichtet Eltern in Deutschland dazu, ihre Kinder gegen Masern zu impfen, wenn sie Betreuungseinrichtungen oder Schulen besuchen.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "Die Masernimpfung ist hochwirksam bei der Vorbeugung von Maserninfektionen und der Reduzierung von Komplikationen.",
+        "source_ids": [
+          2
+        ]
+      },
+      {
+        "text": "Eine hohe Durchimpfungsrate ist notwendig, um einen Gemeinschaftsschutz gegen Masern zu erreichen.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Masernschutzgesetz",
+        "title": "Masernschutzgesetz",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Measles_vaccine",
+        "title": "Measles vaccine",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "health",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "6724ab8d-1084-4567-8415-5b9f7d624bb3",
+    "topic_key": "evergreen:measles_vaccination",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should public authorities use gender-neutral language in their official texts?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Gender-neutral language aims to be inclusive of all genders and avoid assumptions about the gender of individuals.",
+        "source_ids": [
+          2
+        ]
+      },
+      {
+        "text": "The use of gender-neutral forms in official communications remains a subject of ongoing linguistic and political debate.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Various methods exist to achieve gender neutrality, including using gender-neutral nouns, collective terms, or special characters.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Geschlechtergerechte_Sprache",
+        "title": "Geschlechtergerechte Sprache",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Gender_neutrality_in_languages_with_grammatical_gender",
+        "title": "Gender neutrality in languages with grammatical gender",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "society",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "9ce560ad-e3f6-421b-a816-36618a87a8e3",
+    "topic_key": "evergreen:gender_neutral_language",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollten öffentliche Behörden in ihren offiziellen Texten geschlechtergerechte Sprache verwenden?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Gendergerechte Sprache soll Menschen aller Geschlechter gleichermaßen ansprechen und sichtbar machen.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "Die Verwendung geschlechtsneutraler Formen in offiziellen Dokumenten ist Gegenstand anhaltender sprachwissenschaftlicher und politischer Debatten.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Es gibt verschiedene Methoden, um Geschlechtsneutralität zu erreichen, wie etwa durch Paarformen, Sonderzeichen oder neutrale Formulierungen.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Geschlechtergerechte_Sprache",
+        "title": "Geschlechtergerechte Sprache",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Gender_neutrality_in_languages_with_grammatical_gender",
+        "title": "Gender neutrality in languages with grammatical gender",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "society",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "9ce560ad-e3f6-421b-a816-36618a87a8e3",
+    "topic_key": "evergreen:gender_neutral_language",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should the state stop collecting church tax on behalf of religious communities?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "In Germany, the state collects church tax on behalf of religious communities.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "The state receives a fee for administrative costs for collecting the church tax.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "Church tax is tied to membership in a religious community.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Kirchensteuer_%28Deutschland%29",
+        "title": "Kirchensteuer (Deutschland)",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Church_tax",
+        "title": "Church tax",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "society",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "6d0bb6a5-84d5-461c-b7e5-1ede6781ab54",
+    "topic_key": "evergreen:church_tax",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte der Staat die Kirchensteuer nicht mehr im Auftrag von Religionsgemeinschaften einziehen?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "In Deutschland zieht der Staat die Kirchensteuer im Auftrag der Religionsgemeinschaften ein.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Für den Einzug der Kirchensteuer erhält der Staat eine Verwaltungskostenvergütung.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "Die Kirchensteuer ist an die Mitgliedschaft in einer Religionsgemeinschaft gebunden.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Kirchensteuer_%28Deutschland%29",
+        "title": "Kirchensteuer (Deutschland)",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Church_tax",
+        "title": "Church tax",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "society",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "6d0bb6a5-84d5-461c-b7e5-1ede6781ab54",
+    "topic_key": "evergreen:church_tax",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should teachers at public schools be allowed to wear religious symbols such as headscarves?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "There is an ongoing international debate regarding the display of religious symbols by teachers in public schools.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Legal regulations concerning religious attire for public school teachers vary significantly between jurisdictions.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Court rulings often weigh the right to freedom of religion against the state's requirement for neutrality.",
+        "source_ids": [
+          1
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Kopftuchstreit",
+        "title": "Kopftuchstreit",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Islamic_veiling_practices_by_country",
+        "title": "Islamic veiling practices by country",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "society",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "b1d7d2e7-0064-415b-9d40-4a7d18b1c3a6",
+    "topic_key": "evergreen:headscarf_teachers",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollten Lehrkräfte an öffentlichen Schulen religiöse Symbole wie Kopftücher tragen dürfen?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "In Deutschland gibt es seit Jahren Debatten über das Tragen religiöser Symbole durch Lehrkräfte an öffentlichen Schulen.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "Die Rechtslage zum Tragen von religiöser Kleidung unterscheidet sich je nach Bundesland oder Staat erheblich.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Gerichtsurteile betonten wiederholt das Spannungsfeld zwischen Religionsfreiheit und dem staatlichen Neutralitätsgebot.",
+        "source_ids": [
+          1
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Kopftuchstreit",
+        "title": "Kopftuchstreit",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Islamic_veiling_practices_by_country",
+        "title": "Islamic veiling practices by country",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "society",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "b1d7d2e7-0064-415b-9d40-4a7d18b1c3a6",
+    "topic_key": "evergreen:headscarf_teachers",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should the use of live facial recognition by police in public spaces be permitted?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Facial recognition technology can identify individuals in real-time by matching them against databases.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Biometric surveillance technologies trigger debates about privacy and the use of public space.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Proponents argue it enhances public safety and law enforcement capabilities.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Gesichtserkennung",
+        "title": "Gesichtserkennung",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Facial_recognition_system",
+        "title": "Facial recognition system",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "technology",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "d63fe99c-e06b-4f9d-ba97-9362c1fde6f9",
+    "topic_key": "evergreen:facial_recognition",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte der Einsatz von Echtzeit-Gesichtserkennung durch die Polizei an öffentlichen Orten erlaubt werden?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Gesichtserkennung kann zur Identifizierung von Personen in Echtzeit durch Abgleich mit Datenbanken genutzt werden.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Technologien zur biometrischen Überwachung lösen Debatten über den Schutz der Privatsphäre und den öffentlichen Raum aus.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Befürworter sehen darin ein Mittel zur Verbesserung der öffentlichen Sicherheit und Strafverfolgung.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Gesichtserkennung",
+        "title": "Gesichtserkennung",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Facial_recognition_system",
+        "title": "Facial recognition system",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "technology",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "d63fe99c-e06b-4f9d-ba97-9362c1fde6f9",
+    "topic_key": "evergreen:facial_recognition",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should a minimum age of 16 years be introduced for accessing social media platforms?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Social media platforms facilitate the exchange of content and social interaction between users.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "Some jurisdictions are debating or implementing legislation to set a minimum age for accessing social media.",
+        "source_ids": [
+          2
+        ]
+      },
+      {
+        "text": "Age restrictions are intended to protect children and teenagers from potential online risks.",
+        "source_ids": [
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Soziale_Medien",
+        "title": "Soziale Medien",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Online_Safety_Amendment_%28Social_Media_Minimum_Age%29_Act_2024",
+        "title": "Online Safety Amendment (Social Media Minimum Age) Act 2024",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "technology",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "de023c0b-23a0-4856-b56a-536d62370a7f",
+    "topic_key": "evergreen:social_media_age_16",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte für die Nutzung von sozialen Medien ein gesetzliches Mindestalter von 16 Jahren eingeführt werden?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Soziale Medien sind Plattformen, die den Austausch von Inhalten und die soziale Interaktion ermöglichen.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "In einigen Ländern wird eine gesetzliche Altersbeschränkung für die Nutzung von sozialen Medien debattiert oder eingeführt.",
+        "source_ids": [
+          2
+        ]
+      },
+      {
+        "text": "Altersgrenzen sollen Kinder und Jugendliche vor potenziellen Online-Gefahren schützen.",
+        "source_ids": [
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Soziale_Medien",
+        "title": "Soziale Medien",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Online_Safety_Amendment_%28Social_Media_Minimum_Age%29_Act_2024",
+        "title": "Online Safety Amendment (Social Media Minimum Age) Act 2024",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "technology",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "de023c0b-23a0-4856-b56a-536d62370a7f",
+    "topic_key": "evergreen:social_media_age_16",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should the use of AI chatbots be permitted as a tool for completing homework?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "AI tools like ChatGPT can assist in generating text and solving academic assignments.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "The use of AI in education raises concerns regarding academic integrity and the development of independent skills.",
+        "source_ids": [
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/ChatGPT",
+        "title": "ChatGPT",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Artificial_intelligence_in_education",
+        "title": "Artificial intelligence in education",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "education",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "dc2db59b-544e-4cc2-97d6-76aa2cafc8bb",
+    "topic_key": "evergreen:ai_homework",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollten KI-Chatbots als Hilfsmittel für Hausaufgaben an Schulen erlaubt werden?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "KI-Tools wie ChatGPT können bei der Erstellung von Texten und der Lösung von Aufgaben unterstützen.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Die Nutzung von KI im Bildungsbereich wirft Fragen zur akademischen Integrität und zur Entwicklung eigener Fähigkeiten auf.",
+        "source_ids": [
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/ChatGPT",
+        "title": "ChatGPT",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Artificial_intelligence_in_education",
+        "title": "Artificial intelligence in education",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "education",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "dc2db59b-544e-4cc2-97d6-76aa2cafc8bb",
+    "topic_key": "evergreen:ai_homework",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should private smartphones be prohibited in schools during the school day?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Some countries and schools have implemented bans or restrictions on smartphone usage during school hours.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Proponents of bans often cite improved student concentration and reduced social exclusion as primary reasons.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Opponents of smartphone bans emphasize the educational potential of digital devices and the importance of media literacy.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Smartphone-Verbot_in_der_Schule",
+        "title": "Smartphone-Verbot in der Schule",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Mobile_phone_use_in_schools",
+        "title": "Mobile phone use in schools",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "education",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "e6b227b9-eca0-4667-937e-dacb4dcfa1bf",
+    "topic_key": "evergreen:phone_ban_schools",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollten private Smartphones während der Schulzeit an Schulen untersagt werden?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "In einigen Ländern und Schulen gibt es bereits Verbote oder Einschränkungen für die Nutzung von Smartphones während der Unterrichtszeit.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Befürworter von Verboten führen häufig eine verbesserte Konzentration und weniger soziale Ausgrenzung als Gründe an.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Kritiker von Smartphone-Verboten verweisen auf den pädagogischen Nutzen digitaler Geräte und die Bedeutung von Medienkompetenz.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Smartphone-Verbot_in_der_Schule",
+        "title": "Smartphone-Verbot in der Schule",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Mobile_phone_use_in_schools",
+        "title": "Mobile phone use in schools",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "education",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "e6b227b9-eca0-4667-937e-dacb4dcfa1bf",
+    "topic_key": "evergreen:phone_ban_schools",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should students be divided into different school types only after completing grade ten?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "The education systems in many countries track students into different school types based on academic ability at an early age.",
+        "source_ids": [
+          2
+        ]
+      },
+      {
+        "text": "Extending common schooling aims to reduce social selectivity and promote equality of opportunity.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Early academic tracking is often designed to tailor instruction more specifically to different learning paces.",
+        "source_ids": [
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Gesamtschule",
+        "title": "Gesamtschule",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Tracking_%28education%29",
+        "title": "Tracking (education)",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "education",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "2097d4f7-7152-4e1a-b415-fb04068f8267",
+    "topic_key": "evergreen:longer_joint_schooling",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte die Aufteilung von Schülern in unterschiedliche Schulformen erst nach der zehnten Klasse erfolgen?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Das deutsche Schulsystem differenziert Schüler oft frühzeitig nach Leistung in verschiedene Schulformen.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "Längeres gemeinsames Lernen zielt darauf ab, soziale Selektion zu verringern und Chancengleichheit zu fördern.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Frühe Leistungsdifferenzierung kann dazu dienen, Unterrichtsinhalte spezifischer an das Lerntempo anzupassen.",
+        "source_ids": [
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Gesamtschule",
+        "title": "Gesamtschule",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Tracking_%28education%29",
+        "title": "Tracking (education)",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "education",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "2097d4f7-7152-4e1a-b415-fb04068f8267",
+    "topic_key": "evergreen:longer_joint_schooling",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should public universities in Germany reintroduce tuition fees?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "In Germany, tuition fees at public universities have been abolished in most federal states.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "The debate over tuition fees often centers on access to higher education and the funding of universities.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "In other countries, such as the United Kingdom, tuition fees at public universities are firmly established.",
+        "source_ids": [
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Studiengeb%C3%BChren_in_Deutschland",
+        "title": "Studiengebühren in Deutschland",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Tuition_fees_in_the_United_Kingdom",
+        "title": "Tuition fees in the United Kingdom",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "education",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "4218a7b8-376f-4a6a-b210-3ed4f6d643a8",
+    "topic_key": "evergreen:tuition_fees",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollten öffentliche Universitäten in Deutschland wieder Studiengebühren erheben?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "In Deutschland wurden Studiengebühren an öffentlichen Universitäten in den meisten Bundesländern wieder abgeschafft.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "Die Debatte um Studiengebühren dreht sich häufig um den Zugang zur Bildung und die Finanzierung der Hochschulen.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "In anderen Ländern, wie dem Vereinigten Königreich, sind Studiengebühren an öffentlichen Hochschulen fest etabliert.",
+        "source_ids": [
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Studiengeb%C3%BChren_in_Deutschland",
+        "title": "Studiengebühren in Deutschland",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Tuition_fees_in_the_United_Kingdom",
+        "title": "Tuition fees in the United Kingdom",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "education",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "4218a7b8-376f-4a6a-b210-3ed4f6d643a8",
+    "topic_key": "evergreen:tuition_fees",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should public service broadcasting continue to be funded through a mandatory fee, or is a shift to an alternative model required?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Public broadcasting fees are used to support public service media organizations in various countries.",
+        "source_ids": [
+          2
+        ]
+      },
+      {
+        "text": "The fee is typically mandatory for households, regardless of whether they consume the provided content.",
+        "source_ids": [
+          2
+        ]
+      },
+      {
+        "text": "Debates often center on the balance between state-mandated funding and the editorial independence of the broadcasters.",
+        "source_ids": [
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Rundfunkbeitrag",
+        "title": "Rundfunkbeitrag",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Television_licence",
+        "title": "Television licence",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "culture",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "f9f0c1cb-29fe-4bb9-bd0b-131d6d6ccf9b",
+    "topic_key": "evergreen:broadcasting_fee",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte der öffentlich-rechtliche Rundfunk weiterhin durch einen verpflichtenden Beitrag finanziert werden oder ist eine Umstellung auf ein alternatives Modell geboten?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Der Rundfunkbeitrag dient der Finanzierung des öffentlich-rechtlichen Rundfunks in Deutschland.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "Die Zahlungspflicht besteht unabhängig von der tatsächlichen Nutzung der Rundfunkangebote.",
+        "source_ids": [
+          1
+        ]
+      },
+      {
+        "text": "Kritiker bemängeln die Höhe der Belastung und die inhaltliche Ausrichtung des Programms.",
+        "source_ids": [
+          1
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Rundfunkbeitrag",
+        "title": "Rundfunkbeitrag",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Television_licence",
+        "title": "Television licence",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "culture",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "f9f0c1cb-29fe-4bb9-bd0b-131d6d6ccf9b",
+    "topic_key": "evergreen:broadcasting_fee",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should museums return all artifacts taken during colonial rule to their countries of origin?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Many artifacts from colonial contexts are currently held in Western museums.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Countries of origin have requested the return of objects taken during colonial rule.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Some museums have already begun repatriating items from colonial contexts to their countries of origin.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Benin-Bronzen",
+        "title": "Benin-Bronzen",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Benin_Bronzes",
+        "title": "Benin Bronzes",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "culture",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "656a642b-66bb-4936-8c3d-1c1e5c282603",
+    "topic_key": "evergreen:colonial_artefacts",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollten Museen alle während der Kolonialzeit entnommenen Artefakte in ihre Herkunftsländer zurückgeben?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Viele Artefakte aus kolonialen Kontexten befinden sich heute in Museen westlicher Staaten.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Die Herkunftsstaaten fordern die Rückgabe der während der Kolonialzeit entnommenen Objekte.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Einige Museen haben bereits damit begonnen, Objekte aus kolonialen Kontexten an ihre Herkunftsländer zu restituieren.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Benin-Bronzen",
+        "title": "Benin-Bronzen",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Benin_Bronzes",
+        "title": "Benin Bronzes",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "culture",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "656a642b-66bb-4936-8c3d-1c1e5c282603",
+    "topic_key": "evergreen:colonial_artefacts",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should national teams boycott major sporting events held in countries with systematic human rights abuses?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Major international sporting events are frequently hosted by nations that face international criticism regarding their human rights record.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Calls to boycott sporting tournaments consistently trigger intense public and political debate about the effectiveness of such actions.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Fu%C3%9Fball-Weltmeisterschaft_2022",
+        "title": "Fußball-Weltmeisterschaft 2022",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup",
+        "title": "2022 FIFA World Cup",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "sports",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "5946136c-4be7-4fde-929c-c60074944479",
+    "topic_key": "evergreen:world_cup_boycott",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollten nationale Verbände auf die Teilnahme an sportlichen Großereignissen in Ländern verzichten, in denen die Menschenrechte systematisch missachtet werden?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Internationale Sportgroßveranstaltungen werden regelmäßig an Länder vergeben, deren Menschenrechtslage international kritisiert wird.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Boykottaufrufe gegen Sportturniere führen regelmäßig zu intensiven gesellschaftlichen und politischen Debatten über die Wirksamkeit solcher Maßnahmen.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Fu%C3%9Fball-Weltmeisterschaft_2022",
+        "title": "Fußball-Weltmeisterschaft 2022",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/2022_FIFA_World_Cup",
+        "title": "2022 FIFA World Cup",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "sports",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "5946136c-4be7-4fde-929c-c60074944479",
+    "topic_key": "evergreen:world_cup_boycott",
+    "review_notes": []
+  },
+  {
+    "language": "en",
+    "format": "scale",
+    "text": "Should the use of the video assistant referee be maintained in professional football?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "The video assistant referee (VAR) was introduced to correct clear and obvious errors in match-changing situations.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "The use of VAR often leads to pauses in gameplay while officials review incidents.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "There is ongoing debate regarding whether the technology improves fairness or disrupts the natural flow and excitement of football.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Video-Assistent",
+        "title": "Video-Assistent",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Video_assistant_referee",
+        "title": "Video assistant referee",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "sports",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "150ff76e-dc91-4ff6-8a0b-0fb8431c9d7f",
+    "topic_key": "evergreen:video_assistant_referee",
+    "review_notes": []
+  },
+  {
+    "language": "de",
+    "format": "scale",
+    "text": "Sollte der Einsatz des Video-Assistenten im professionellen Fußball beibehalten werden?",
+    "option_a": null,
+    "option_b": null,
+    "facts": [
+      {
+        "text": "Der Video-Assistent (VAR) wurde eingeführt, um klare Fehlentscheidungen des Schiedsrichters bei spielentscheidenden Situationen zu korrigieren.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Die Nutzung des VAR führt regelmäßig zu Unterbrechungen des Spielflusses während der Überprüfung von Spielszenen.",
+        "source_ids": [
+          1,
+          2
+        ]
+      },
+      {
+        "text": "Es gibt anhaltende Debatten darüber, ob die Technologie die Integrität des Spiels verbessert oder die Dynamik durch häufige Eingriffe stört.",
+        "source_ids": [
+          1,
+          2
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "id": 1,
+        "url": "https://de.wikipedia.org/wiki/Video-Assistent",
+        "title": "Video-Assistent",
+        "outlet": "Wikipedia (de)",
+        "published_on": null
+      },
+      {
+        "id": 2,
+        "url": "https://en.wikipedia.org/wiki/Video_assistant_referee",
+        "title": "Video assistant referee",
+        "outlet": "Wikipedia (en)",
+        "published_on": null
+      }
+    ],
+    "topic_area": "sports",
+    "origin": "evergreen",
+    "prompt_version": "evergreen_question.v1",
+    "group_id": "150ff76e-dc91-4ff6-8a0b-0fb8431c9d7f",
+    "topic_key": "evergreen:video_assistant_referee",
+    "review_notes": []
+  }
+]

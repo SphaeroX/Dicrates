@@ -61,7 +61,8 @@ Der Task gilt erst als fertig, wenn alle Punkte erfüllt und durch Tests oder ei
 
 ## Offene Fragen / Annahmen
 
-- **Rückfrage an den Nutzer:** Sieht man in der Lobby die Pseudonyme der Mitglieder (Freunde kennen sich ohnehin) oder nur die Anzahl? Annahme bis zur Antwort: nur die Anzahl, weil das die Anonymität am besten schützt.
+- **Entschieden (Nutzer, 2026-11-05):** Die Lobby zeigt nur die Anzahl der Mitglieder, keine Pseudonyme.
+- **Aus Task 08:** Für manuelle Tests `backend/seed/evergreen_questions.json` per `questions import` laden und einige Fragen freigeben. Fragen derselben `group_id` sind Sprachfassungen; beim Anlegen nur die Fassung in der Raumsprache anbieten.
 - Annahme: Der Ersteller kann einen Raum in `FORMING` auflösen; Räume, die 7 Tage nicht gestartet werden, verfallen (Job in Task 10).
 
 ## Notizen zu diesem Task
