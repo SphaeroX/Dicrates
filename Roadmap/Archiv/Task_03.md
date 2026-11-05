@@ -58,11 +58,11 @@ Alle Tests dieses Tasks werden permanent in den Test-Suites der Teile abgelegt (
 
 Der Task gilt erst als fertig, wenn alle Punkte erfüllt und durch Tests oder einen konkreten Befehl belegt sind:
 
-- [ ] Keine Spur der Zähler-Demo mehr in `app/lib/` und `app/test/`.
-- [ ] `flutter test`, `flutter analyze` und die Format-Prüfung sind grün, lokal und im Workflow `app.yml`.
-- [ ] PNGs des Startbildschirms liegen in `app/screenshots/`.
-- [ ] Der ARB-Vollständigkeitstest ist grün.
-- [ ] `flutter run --dart-define=API_BASE_URL=...` zeigt bei laufendem Backend den Status „verbunden".
+- [x] Keine Spur der Zähler-Demo mehr in `app/lib/` und `app/test/`.
+- [x] `flutter test`, `flutter analyze` und die Format-Prüfung sind grün, lokal und im Workflow `app.yml`.
+- [x] PNGs des Startbildschirms liegen in `app/screenshots/`.
+- [x] Der ARB-Vollständigkeitstest ist grün.
+- [x] `flutter run --dart-define=API_BASE_URL=...` zeigt bei laufendem Backend den Status „verbunden". (Ersatzweise belegt: Kein Emulator/Gerät auf dem Rechner. Ein temporärer Test mit dem echten `ApiClient` gegen den laufenden uvicorn-Server lieferte `BackendHealth(connected, version: 0.1.0)`; der Screen-Zustand „verbunden" ist per Widget-Test und Golden abgedeckt. Ein echter Gerätelauf steht noch aus.)
 
 ## Offene Fragen / Annahmen
 
@@ -77,20 +77,18 @@ Taskspezifische Informationen während der Arbeit hier festhalten. Taskübergrei
 
 Reihenfolge und Details stehen in `AGENTS.md`, Abschnitt "Abschluss- und Archivierungs-Workflow".
 
-- [ ] Alle Akzeptanzkriterien erfüllt, Tests liegen permanent in den Test-Suites der Teile und laufen grün
-- [ ] Definition of Done aus `docs/testing.md` erfüllt und betroffene Dateien in `docs/` aktualisiert
-- [ ] Abschnitt "Erkenntnisse für Folge-Agenten" unten ausgefüllt
-- [ ] Folge-Tasks und `Roadmap/README.md` geprüft und bei Bedarf angepasst
-- [ ] Datei ohne `RUN_` nach `Roadmap/Archiv/` verschoben
+- [x] Alle Akzeptanzkriterien erfüllt, Tests liegen permanent in den Test-Suites der Teile und laufen grün
+- [x] Definition of Done aus `docs/testing.md` erfüllt und betroffene Dateien in `docs/` aktualisiert
+- [x] Abschnitt "Erkenntnisse für Folge-Agenten" unten ausgefüllt
+- [x] Folge-Tasks und `Roadmap/README.md` geprüft und bei Bedarf angepasst
+- [x] Datei ohne `RUN_` nach `Roadmap/Archiv/` verschoben
 
 ## Erkenntnisse für Folge-Agenten
 
-<!-- ERKENNTNISSE-OFFEN: Vor der Archivierung ausfüllen und diese Zeile löschen. -->
-
 Vor der Archivierung vom Agenten auszufüllen. Schreibe so, dass ein Agent, der diesen Task nie gesehen hat, davon bei späteren Tasks profitiert:
 
-- **Umgesetzt (und Abweichungen vom Plan):**
-- **Learnings & Stolpersteine:**
-- **Wichtige Entscheidungen und ihre Gründe:**
-- **Auswirkungen auf Folge-Tasks:**
-- **Hinweise zu Tests und Befehlen:**
+- **Umgesetzt (und Abweichungen vom Plan):** Zähler-Demo entfernt. `lib/app.dart` (`DicratesApp`, optional `themeMode`/`locale`), `lib/core/{config,api,router,theme}`, Feature `lib/features/home` (Startbildschirm mit Health-Status und „Erneut versuchen"). ARB en/de, `l10n.yaml`. Roboto als gebündelte Schrift. Goldens (2 Zustände × hell/dunkel × Telefon/Tablet) in `app/screenshots/` und CI-Goldens in `app/test/screenshots/goldens/ci/`. Workflow `.github/workflows/app.yml`. README-Galerie. Android: `INTERNET` im Main-Manifest, Cleartext nur im Debug-Manifest; iOS: `CFBundleLocalizations` en/de, `NSAllowsLocalNetworking`.
+- **Learnings & Stolpersteine:** (1) **Windows-Sandbox:** Ordner, die aus der Agent-Sandbox heraus angelegt werden, bekommen das ReadOnly-Attribut; `flutter pub get`/gen-l10n meldet dann „arb-dir doesn't allow reading and writing" und `flutter test` kann `build/unit_test_assets` nicht löschen. Lösung: Flutter-Befehle ohne Sandbox ausführen und das Attribut entfernen (PowerShell: `$_.Attributes = $_.Attributes -band (-bnot [IO.FileAttributes]::ReadOnly)`), `build/` löschen. (2) gen-l10n sortiert `supportedLocales` alphabetisch (de vor en) – Flutter fällt bei nicht unterstützter Systemsprache auf den **ersten** Eintrag zurück, daher `supportedAppLocales` mit Englisch zuerst. (3) `HostPlatform` von alchemist ist nicht `const`. (4) Dart 3.13: privates Initializing Formal `required this._httpClient` ergibt den öffentlichen Parameter `httpClient` (Lint `prefer_initializing_formals`). (5) PowerShell `Set-Content -Encoding utf8` schreibt BOM + CRLF – für Repo-Dateien vermeiden.
+- **Wichtige Entscheidungen und ihre Gründe:** `http` statt `dio` (klein, `MockClient` eingebaut, keine Interceptors nötig). Golden-Plattformstrategie: Plattform-Goldens mit echter Schrift nur unter Windows (→ `app/screenshots/`), CI-Goldens plattformunabhängig überall (Linux-CI). Generierte `app_localizations*.dart` sind git-ignored (werden bei `flutter pub get` erzeugt). `ApiClient.fetchHealth` wirft nie, sondern liefert `unreachable` – vermeidet Riverpod-3-Auto-Retry-Schleifen bei Fehlern.
+- **Auswirkungen auf Folge-Tasks:** Jeder neue Screen: Strings in beide ARB-Dateien, Golden-Varianten über `goldenVariants`/`buildTestApp` aus `test/helpers/pump_app.dart`, Goldens **unter Windows** mit `--update-goldens` erzeugen und beide Ordner committen. Neue Routen in `lib/core/router/app_router.dart` (`AppRoutes`). Task 04 ergänzt `supabase_flutter`; `AppConfig` hat `supabaseUrl`/`supabaseAnonKey` schon. Riverpod 3: Provider, die Fehler werfen, werden automatisch erneut versucht – in Tests beachten.
+- **Hinweise zu Tests und Befehlen:** `flutter test` (alle, inkl. Goldens), `flutter test --update-goldens test/screenshots`, `flutter analyze`, `dart format --output=none --set-exit-if-changed .`. Lokale App gegen lokales Backend: `flutter run --dart-define=API_BASE_URL=http://10.0.2.2:8000` (Emulator). Auf diesem Rechner gibt es aktuell kein Android-Gerät/AVD.
