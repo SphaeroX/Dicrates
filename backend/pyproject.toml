@@ -9,6 +9,7 @@ dependencies = [
     "fastapi>=0.162.0",
     "procrastinate>=3.10.0",
     "psycopg[binary,pool]>=3.3.8",
+    "pydantic-ai-slim[google,mistral]>=2.66.0",
     "pydantic-settings>=2.16.2",
     "pyjwt[crypto]>=2.15.1",
     "uvicorn>=0.54.0",
@@ -36,7 +37,8 @@ testpaths = ["tests"]
 pythonpath = ["."]
 asyncio_default_fixture_loop_scope = "function"
 asyncio_mode = "auto"
-addopts = "-ra --strict-markers --import-mode=importlib"
+# Real-LLM evals (marker llm) only on request: a later -m on the command line wins.
+addopts = "-ra --strict-markers --import-mode=importlib -m 'not llm'"
 markers = [
     "integration: needs a running Postgres (Supabase local stack)",
     "llm: calls the real LLM provider; never run in CI by default",
@@ -48,11 +50,22 @@ target-version = "py314"
 src = ["src", "tests"]
 
 [tool.ruff.lint]
-select = ["E", "F", "W", "I", "N", "UP", "B", "SIM", "ASYNC", "S", "RUF"]
+select = ["E", "F", "W", "I", "N", "UP", "B", "SIM", "ASYNC", "S", "RUF", "TID"]
 ignore = []
 
+# LLM layer rule (docs/architecture.md): provider code only in dicrates/llm/factory.py,
+# no LLM telemetry anywhere.
+[tool.ruff.lint.flake8-tidy-imports.banned-api]
+"pydantic_ai.models.mistral".msg = "Provider code belongs in dicrates/llm/factory.py only."
+"pydantic_ai.models.google".msg = "Provider code belongs in dicrates/llm/factory.py only."
+"pydantic_ai.providers".msg = "Provider code belongs in dicrates/llm/factory.py only."
+"mistralai".msg = "Use Pydantic AI via dicrates.llm, never the provider SDK."
+"google.genai".msg = "Use Pydantic AI via dicrates.llm, never the provider SDK."
+"logfire".msg = "No LLM telemetry: submission text must not leave the EU processing path."
+
 [tool.ruff.lint.per-file-ignores]
-"tests/**" = ["S101"]
+"tests/**" = ["S101", "TID251"]
+"src/dicrates/llm/factory.py" = ["TID251"]
 
 [tool.pyright]
 pythonVersion = "3.14"

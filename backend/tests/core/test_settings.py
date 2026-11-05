@@ -10,6 +10,8 @@ ENV_VARS = [
     "SUPABASE_ANON_KEY",
     "SUPABASE_SERVICE_ROLE_KEY",
     "DATABASE_URL",
+    "MISTRAL_API_KEY",
+    "GOOGLE_API_KEY",
 ]
 
 
@@ -99,3 +101,13 @@ def test_secrets_are_not_shown_in_repr(monkeypatch: pytest.MonkeyPatch) -> None:
     settings = make_settings()
 
     assert "super-secret-value" not in repr(settings)
+
+
+def test_empty_llm_api_keys_count_as_unset(monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setenv("MISTRAL_API_KEY", "")
+    monkeypatch.setenv("GOOGLE_API_KEY", "  ")
+
+    settings = make_settings()
+
+    assert settings.mistral_api_key is None
+    assert settings.google_api_key is None

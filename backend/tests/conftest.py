@@ -13,6 +13,10 @@ from functools import cache
 
 import psycopg
 import pytest
+from pydantic_ai import models
+
+# Tests never call a real LLM; `llm`-marked evals switch this on explicitly.
+models.ALLOW_MODEL_REQUESTS = False
 
 LOCAL_DATABASE_URL = "postgresql://postgres:postgres@127.0.0.1:54322/postgres"
 

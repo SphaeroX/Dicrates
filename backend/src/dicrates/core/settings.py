@@ -49,6 +49,10 @@ class Settings(BaseSettings):
         provider="mistral", model="mistral-large-latest"
     )
 
+    # Provider-standard key names; only the key of the LLM_MODEL provider is needed.
+    mistral_api_key: SecretStr | None = None
+    google_api_key: SecretStr | None = None
+
     # Optional until the tasks that need them (database, auth).
     supabase_url: str | None = None
     supabase_anon_key: SecretStr | None = None
@@ -67,6 +71,8 @@ class Settings(BaseSettings):
         "supabase_anon_key",
         "supabase_service_role_key",
         "database_url",
+        "mistral_api_key",
+        "google_api_key",
         mode="before",
     )
     @classmethod
