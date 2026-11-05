@@ -39,6 +39,7 @@ Changing one's position never earns points by itself; well-reasoned persistence 
 - Account (email, Apple, Google; pseudonym), explicit consent, account/content deletion
 - App and website in English first, i18n-ready; more languages later
 - Public landing page on GitHub Pages
+- Automatically generated app screenshots: per-screen previews (mockups) in the repo and store screenshots (Play Store, App Store) per language
 
 Later phases (not MVP): interests and matching queue, automatic news topic pipeline, Glicko/Elo rating and trust score with troll pool, reset rules, admin interface, European rooms, live mode, education/premium offers.
 

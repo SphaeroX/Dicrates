@@ -43,7 +43,8 @@
 - Backend runtime dependencies (FastAPI, uvicorn, procrastinate, pydantic-settings, mistralai) are not added yet; add them with `uv add` when the first code needs them.
 - App: `app/` is the unmodified `flutter create` output (counter demo + its widget test). Replace it with the real app structure; set up `flutter_localizations`/ARB files for i18n.
 - Website: `website/` is the Astro minimal starter. Build the landing page with i18n string files under `src/i18n/`.
-- GitHub Pages must use "GitHub Actions" as the source.
+- Screenshot pipeline (see `docs/testing.md` → App screenshots): add `alchemist` (dev) and fonts for goldens, `test_driver/integration_test.dart`, and fastlane for store uploads. Screens must take all data from Riverpod providers so demo states can be injected.
+- GitHub Pages uses "GitHub Actions" as the source (enabled).
 
 ## Open decisions
 

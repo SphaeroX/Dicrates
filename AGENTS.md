@@ -14,6 +14,7 @@ Dicrates turns debating into a game: up to six anonymous people discuss a curren
    - Flutter: add packages only with `flutter pub add`. Website: npm only.
 4. **Privacy and anonymity are product features.** Clients never receive another member's raw submission, only LLM summaries. Never log submission text, transcripts or emails. Audio is never stored or uploaded.
 5. **i18n:** no hard-coded user-facing strings in app or website. English is the base language.
+6. **Screenshots are part of done:** a new app screen or visible UI change needs an updated screen golden (`app/screenshots/`). See `docs/testing.md` → App screenshots.
 
 ## Commands
 

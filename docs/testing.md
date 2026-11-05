@@ -65,6 +65,18 @@ A task is done when, for every touched part:
 - If an existing test must change, state why and wait for approval.
 - Tests never call the real LLM, Supabase cloud or FCM. Use fakes behind the provider interfaces. Real-LLM checks (prompt/bias evaluation) carry the `llm` marker and run only on request.
 
+## App screenshots (mockups, repo preview, store listings)
+
+Every app screen must be reproducible as a screenshot without manual clicking. Two layers:
+
+1. **Screen goldens (repo preview / mockups):** golden tests (package `alchemist`, real fonts loaded) render each screen with fake Riverpod providers in fixed states (empty, filled, error), light and dark, phone and tablet sizes. Run without an emulator, so they work in CI.
+   - Tests in `app/test/screenshots/`, output PNGs in `app/screenshots/` (committed, shown in the README gallery).
+   - Update: `flutter test --update-goldens test/screenshots` · verify: `flutter test test/screenshots`.
+   - A new screen or a visible UI change is only done when its golden exists/is updated.
+2. **Store screenshots:** an `integration_test` flow (`app/integration_test/store_screenshots_test.dart`) with seeded demo data takes screenshots via `IntegrationTestWidgetsFlutterBinding.takeScreenshot` on the store device sizes; run with `flutter drive --driver=test_driver/integration_test.dart --target=integration_test/store_screenshots_test.dart`. Output goes to the fastlane metadata folders (`app/android/fastlane/metadata/android/<locale>/images/`, `app/ios/fastlane/screenshots/<locale>/`) per locale, so new languages get screenshots automatically. Upload with fastlane `supply` / `deliver` (later CI job).
+
+Screenshots use invented demo content only and the in-app locale under test.
+
 ## Test structure
 
 - **Backend:** `backend/tests/` mirrors `backend/src/`; files `test_<module>.py`, functions `test_<behavior>`. DB tests carry the `integration` marker and use a local Supabase/Postgres. LLM tests use recorded, validated JSON fixtures.
