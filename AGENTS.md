@@ -51,6 +51,7 @@ Read only the files relevant to your current task:
 - [docs/architecture.md](docs/architecture.md) – read before structural changes, new components or dependencies, DB/LLM/auth work. Stack, monorepo layout, state machine, privacy rules, environment.
 - [docs/testing.md](docs/testing.md) – read before writing tests or changing test config. Suites, exact commands, which tests to run, definition of done.
 - [docs/code-style.md](docs/code-style.md) – read before writing or formatting code. Formatters, linters, mandatory style rules.
+- [docs/operations.md](docs/operations.md) – read before operator work (question approval) or adding `dicrates-admin` commands.
 - [docs/conventions.md](docs/conventions.md) – read when naming things, organizing files or committing. Domain terms, feature layout, Conventional Commits.
 - [docs/project-brief.md](docs/project-brief.md) – read when goal, scope, game flow or non-goals are unclear. MVP scope and open decisions.
 - [docs/concept-original.de.md](docs/concept-original.de.md) – full original product concept (German). Read only when the brief lacks detail.

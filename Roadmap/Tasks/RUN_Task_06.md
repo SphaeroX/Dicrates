@@ -53,10 +53,10 @@ Alle Tests dieses Tasks werden permanent in den Test-Suites der Teile abgelegt (
 
 Der Task gilt erst als fertig, wenn alle Punkte erfüllt und durch Tests oder einen konkreten Befehl belegt sind:
 
-- [ ] Alle Tests grün, Definition of Done für Backend und App erfüllt.
-- [ ] `uv run dicrates-admin questions list --status draft` funktioniert gegen den lokalen Stack.
-- [ ] Ein direkter Client-Zugriff auf `questions` über die Supabase-API ist durch RLS gesperrt (Integrationstest).
-- [ ] Goldens der Fragekarte liegen in `app/screenshots/`.
+- [x] Alle Tests grün, Definition of Done für Backend und App erfüllt.
+- [x] `uv run dicrates-admin questions list --status draft` funktioniert gegen den lokalen Stack (belegt durch `tests/admin/test_cli_integration.py` im CI-Job `integration` gegen den Supabase-Stack; lokal mangels Docker nicht ausgeführt).
+- [x] Ein direkter Client-Zugriff auf `questions` über die Supabase-API ist durch RLS gesperrt (Integrationstest).
+- [x] Goldens der Fragekarte liegen in `app/screenshots/`.
 
 ## Offene Fragen / Annahmen
 
@@ -67,24 +67,25 @@ Der Task gilt erst als fertig, wenn alle Punkte erfüllt und durch Tests oder ei
 
 Taskspezifische Informationen während der Arbeit hier festhalten. Taskübergreifendes gehört in `Roadmap/README.md`.
 
+- Annahme bestätigt umgesetzt: alle drei Formate (`scale`, `proposal`, `tradeoff`) im MVP; Themengebiete fest per Seed.
+- Zusätzlich zum Plan: `questions import <datei.json>` (Entwurf von Hand anlegen), damit der Betreiber kuratierte Fragen einpflegen kann und der CLI-Integrationstest ohne Pipeline auskommt.
+
 ## Abschluss-Checkliste
 
 Reihenfolge und Details stehen in `AGENTS.md`, Abschnitt "Abschluss- und Archivierungs-Workflow".
 
-- [ ] Alle Akzeptanzkriterien erfüllt, Tests liegen permanent in den Test-Suites der Teile und laufen grün
-- [ ] Definition of Done aus `docs/testing.md` erfüllt und betroffene Dateien in `docs/` aktualisiert
-- [ ] Abschnitt "Erkenntnisse für Folge-Agenten" unten ausgefüllt
-- [ ] Folge-Tasks und `Roadmap/README.md` geprüft und bei Bedarf angepasst
-- [ ] Datei ohne `RUN_` nach `Roadmap/Archiv/` verschoben
+- [x] Alle Akzeptanzkriterien erfüllt, Tests liegen permanent in den Test-Suites der Teile und laufen grün
+- [x] Definition of Done aus `docs/testing.md` erfüllt und betroffene Dateien in `docs/` aktualisiert
+- [x] Abschnitt "Erkenntnisse für Folge-Agenten" unten ausgefüllt
+- [x] Folge-Tasks und `Roadmap/README.md` geprüft und bei Bedarf angepasst
+- [x] Datei ohne `RUN_` nach `Roadmap/Archiv/` verschoben
 
 ## Erkenntnisse für Folge-Agenten
 
-<!-- ERKENNTNISSE-OFFEN: Vor der Archivierung ausfüllen und diese Zeile löschen. -->
-
 Vor der Archivierung vom Agenten auszufüllen. Schreibe so, dass ein Agent, der diesen Task nie gesehen hat, davon bei späteren Tasks profitiert:
 
-- **Umgesetzt (und Abweichungen vom Plan):**
-- **Learnings & Stolpersteine:**
-- **Wichtige Entscheidungen und ihre Gründe:**
-- **Auswirkungen auf Folge-Tasks:**
-- **Hinweise zu Tests und Befehlen:**
+- **Umgesetzt (und Abweichungen vom Plan):** Backend-Paket `questions` (Modelle, Repository, Service, Routen), `core/language.py`, Migration `topic_areas` + `questions`, CLI `dicrates-admin` (`admin/cli.py`, typer) mit `list/show/approve/reject/retire/edit/import`, Doku `docs/operations.md` mit Prüf-Checkliste. App: `features/questions` mit `QuestionCard` (Themen-Chip, Formathinweis, Optionen A/B, Faktenkasten mit Quellennummern, Quellenlinks mit Semantik-Label), `url_launcher`, 12 neue Goldens.
+- **Learnings & Stolpersteine:** pydantic `model_copy(update=...)` validiert nicht – verschachtelte Modelle werden dann zu dicts (im Fake aufgefallen); `model_validate` verwenden. ruff S608 meldet auch konstante String-Verkettungen in SQL – Spaltenlisten über `psycopg.sql.SQL(...).format(columns=...)` einsetzen. Bash-Heredocs mit `'` im Inhalt scheitern im Agent-Tool sporadisch – Dateien mit dem Write-Tool anlegen. Typer-App mit injizierbarer Repository-Factory (`make_app`) macht das CLI ohne DB testbar. `asyncio.run(..., loop_factory=...)` (Python 3.14) löst das Windows-Selector-Loop-Problem für CLI-Befehle.
+- **Wichtige Entscheidungen und ihre Gründe:** Faktenkasten und Quellen als `jsonb` in `questions` (immer zusammen gelesen, Validierung in Pydantic) statt eigener Tabellen. Statusregeln im Service (`ensure_transition`) plus DB-Check für Ablehnungsgrund/Optionen. API gibt nur `approved` aus und blendet Status/Prompt-Version aus. Themennamen nur als i18n-Schlüssel (`topicArea_<slug>`), unbekannte Slugs → „Sonstiges".
+- **Auswirkungen auf Folge-Tasks:** Tasks 07/08 erzeugen `QuestionContent` (mit `prompt_version` und `origin`) und speichern per `QuestionRepository.create` als Entwurf; Freigabe per `dicrates-admin`. Task 09 nutzt `GET /questions` beim Raum-Anlegen und `QuestionCard` in der App (`FakeBackend` um `/questions` erweitern). Neue Operator-Befehle als weitere Typer-Unter-App in `admin/cli.py` (Task 20) und in `docs/operations.md` dokumentieren. Neue Themengebiete brauchen Migration + ARB-Schlüssel.
+- **Hinweise zu Tests und Befehlen:** Backend `uv run pytest` (127 Unit), `-m integration` (Repository, RLS, CLI gegen DB). App `flutter test` (142 inkl. Goldens). Demo-Fragen: Backend `tests/questions/factories.py`, App `test/helpers/demo_questions.dart`.

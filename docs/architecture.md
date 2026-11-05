@@ -38,7 +38,10 @@
   - `runner.LlmRunner(model, model_id=str(settings.llm_model), call_log=...)`. `run(task=, prompt=, output_type=, user_input=, room_id=)` builds a Pydantic AI `Agent` (prompt as `instructions`, `output_type` validated, `output_retries` default 2), retries transient provider errors (rate limit, 5xx, connection, timeout, overloaded) with exponential backoff (default 3 retries), and returns `LlmResult(output, prompt_version, model, input_tokens, output_tokens)`. Errors: `LlmOutputError` (output kept failing validation), `LlmUnavailableError`; messages never contain text.
   - `call_log`: every run (success or failure) writes one `LlmCallRecord` (task, prompt version, model, tokens, duration, success, error kind, attempts, room id) to `llm_calls`; **no text fields exist**. A failing log write is logged and never breaks the game step.
   - `pydantic-ai-slim` pulls in `logfire-api`, a no-op shim; Logfire is never configured, so nothing is sent.
-- Feature packages (`rooms`, `rounds`, `questions`, ...) are added next to `core/` and `llm/` as they are built.
+- `dicrates/core/language.py`: `Language` enum (`en`, `de`) shared by profiles, questions and later rooms.
+- `dicrates/questions/`: `QuestionContent` (language, format `scale|proposal|tradeoff`, text, options A/B only for `tradeoff`, fact box `facts[{text, source_ids}]` that must reference `sources[{id, url, title, outlet, published_on}]`, `topic_area`, origin `news|evergreen`, `prompt_version`) and `Question` (+ id, status, rejection reason, timestamps). `service.py` holds the operator actions (`approve`, `reject` with reason, `retire`, `edit` drafts only) and enforces `ensure_transition` (`draft → approved|rejected`, `approved → retired`). API: `GET /questions?language=&topic_area=` and `GET /questions/{id}` return only approved questions (`QuestionOut`, no status/prompt fields) and require `ConsentedUser`.
+- `dicrates/admin/cli.py`: operator CLI `dicrates-admin` (typer, console script in `pyproject.toml`), see `docs/operations.md`. `make_app(questions_repository=...)` takes a repository factory so tests inject a fake; `run()` uses a selector event loop on Windows.
+- Feature packages (`rooms`, `rounds`, ...) are added next to `core/` and `llm/` as they are built.
 
 ## Backend runtime dependencies
 
@@ -50,6 +53,7 @@
 | `psycopg[binary,pool]` | Async Postgres driver with connection pool; plain SQL keeps queries explicit (RLS, locking) and it is the same driver Procrastinate uses, so job enqueueing can share a transaction with state changes. Chosen over an ORM. |
 | `procrastinate` | Postgres-based job queue (see Tech stack). |
 | `pydantic-ai-slim[mistral,google]` | Provider-agnostic LLM layer with typed structured output and test models (see LLM above); `google` extra only for the dev-only Gemini fallback. |
+| `typer` | Typed CLI for `dicrates-admin` with a test runner; builds on click, type hints define options. |
 | `pyjwt[crypto]` | JWT decoding and ES256 verification plus `PyJWKClient` (JWKS fetch, cache, refresh on unknown `kid`); small and standard, no Supabase SDK needed in the backend. |
 
 Dev-only: `httpx2` (HTTP client required by Starlette's `TestClient`; Starlette deprecated plain `httpx` for it).
@@ -58,7 +62,7 @@ Dev-only: `httpx2` (HTTP client required by Starlette's `TestClient`; Starlette 
 
 - `app/lib/main.dart` starts `DicratesApp` (`lib/app.dart`, `MaterialApp.router`) inside a Riverpod `ProviderScope`. `DicratesApp` takes optional `themeMode` and `locale` (used by tests and screenshots; `null` locale follows the system).
 - `lib/core/`: `config/app_config.dart` (`AppConfig` from `--dart-define`, `appConfigProvider`), `api/` (`ApiClient` over `package:http`, `apiClientProvider`), `router/app_router.dart` (`routerProvider`, go_router), `theme/app_theme.dart` (Material 3 light/dark from one seed color, bundled Roboto).
-- `lib/features/<feature>/{data,providers,widgets}`: `home` (start screen with backend health, `backendHealthProvider`), `auth` (`AuthRepository` interface, `SupabaseAuthRepository`, login and code screens), `onboarding` (`Me`, `meProvider`, `ageConfirmationProvider`, age/under-age/consent/pseudonym screens), `splash` (loading and backend-unreachable state).
+- `lib/features/<feature>/{data,providers,widgets}`: `home` (start screen with backend health, `backendHealthProvider`), `auth` (`AuthRepository` interface, `SupabaseAuthRepository`, login and code screens), `questions` (`Question` model, `QuestionCard` with fact box and source links, `linkOpenerProvider`, `topicAreaName`), `onboarding` (`Me`, `meProvider`, `ageConfirmationProvider`, age/under-age/consent/pseudonym screens), `splash` (loading and backend-unreachable state).
 - **Auth flow:** email one-time code (`signInWithOtp` + `verifyOTP`, no magic link because there is no domain for universal links) and Google via `signInWithOAuth` with the deep link `io.github.sphaerox.dicrates://login-callback` (Android intent filter, iOS `CFBundleURLTypes`, Supabase `additional_redirect_urls`). Sign in with Apple is implemented but hidden behind `--dart-define=ENABLE_APPLE_SIGN_IN=true` (no Apple Developer account yet). `main.dart` initialises Supabase only when `SUPABASE_URL` and `SUPABASE_ANON_KEY` are defined; otherwise `UnconfiguredAuthRepository` shows a "not available" error.
 - **Router gate** (`core/router/app_gate.dart`, `redirectFor` in `app_router.dart`): signed out → login; signed in → age confirmation → consent (versioned text `consentBodyV<n>`, sent with `age_confirmed: true`) → pseudonym → home. Under 18 and declined consent are dead ends with sign-out. The age answer is kept in memory only and stored by the backend together with the consent. The email address is never part of a route and never persisted by the app.
 - `ApiClient` sends the Supabase access token as `Authorization: Bearer` and throws `ApiException(statusCode)` (`null` = network error).
@@ -74,6 +78,7 @@ Dev-only: `httpx2` (HTTP client required by Starlette's `TestClient`; Starlette 
 | `flutter_localizations`, `intl` | Generated, type-safe localizations from ARB files (en, de). |
 | `go_router` | Declarative routing with deep-link support (invite links in Task 09). |
 | `http` | Small, well-supported HTTP client with a built-in `MockClient` for tests; no interceptors needed yet (chosen over `dio`). |
+| `url_launcher` | Opens fact-box source links in the external browser. |
 | `supabase_flutter` | Supabase Auth client (email OTP, OAuth deep links, session persistence and token refresh); the app uses Supabase only for auth, all game data goes through the backend. |
 
 Dev-only: `mocktail`, `alchemist` (golden screenshots).
@@ -86,6 +91,7 @@ Dev-only: `mocktail`, `alchemist` (golden screenshots).
 - `profiles`: one row per `auth.users` id (`pseudonym`, `language` `en`/`de`, `created_at`); clients may only `SELECT` their own row, all writes go through the backend.
 - The backend connects as the database owner (`postgres`) and therefore bypasses RLS; access control for game data is enforced in backend code.
 - `llm_calls`: usage log without any text (see LLM layer); backend-only. `room_id` gets its foreign key once `rooms` exists.
+- `topic_areas` (seeded slugs) and `questions` (fact box and sources as `jsonb`, validated by the backend models; check constraints for enums, tradeoff options and rejection reason): backend-only.
 - `consents`: append-only (`user_id`, `consent_version`, `age_confirmed`, `granted_at`), newest row counts; backend-only (RLS on, no grants). Profiles and consents are deleted with the auth user (`ON DELETE CASCADE`).
 - **Local Auth** (`supabase/config.toml`): tokens are signed with an ES256 key from `supabase/signing_keys.json` (git-ignored; create once with `echo '[]' > supabase/signing_keys.json && npx supabase gen signing-key --algorithm ES256`), so local tokens are verified via JWKS exactly like in the cloud. Email sign-in sends a 6-digit code (template `supabase/templates/sign_in_code.html`, en + de); local mails land in Mailpit (http://127.0.0.1:54324). Google is prepared in `[auth.external.google]` but `enabled = false` until OAuth client data exists in `.env`. The cloud project needs the same settings in the dashboard (Task 17).
 

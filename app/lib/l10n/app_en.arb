@@ -194,5 +194,102 @@
   "genericError": "Something went wrong. Please try again.",
   "@genericError": {
     "description": "Generic error message."
+  },
+  "topicArea_politics": "Politics",
+  "@topicArea_politics": {
+    "description": "Topic area name."
+  },
+  "topicArea_economy": "Economy",
+  "@topicArea_economy": {
+    "description": "Topic area name."
+  },
+  "topicArea_society": "Society",
+  "@topicArea_society": {
+    "description": "Topic area name."
+  },
+  "topicArea_environment": "Environment",
+  "@topicArea_environment": {
+    "description": "Topic area name."
+  },
+  "topicArea_technology": "Technology",
+  "@topicArea_technology": {
+    "description": "Topic area name."
+  },
+  "topicArea_sports": "Sports",
+  "@topicArea_sports": {
+    "description": "Topic area name."
+  },
+  "topicArea_culture": "Culture",
+  "@topicArea_culture": {
+    "description": "Topic area name."
+  },
+  "topicArea_education": "Education",
+  "@topicArea_education": {
+    "description": "Topic area name."
+  },
+  "topicArea_health": "Health",
+  "@topicArea_health": {
+    "description": "Topic area name."
+  },
+  "topicAreaOther": "Other",
+  "@topicAreaOther": {
+    "description": "Fallback for an unknown topic area."
+  },
+  "questionFormatScale": "Rate it from clearly against to clearly in favour, and explain why.",
+  "@questionFormatScale": {
+    "description": "How to answer a for/against question."
+  },
+  "questionFormatProposal": "Make a concrete proposal and explain it.",
+  "@questionFormatProposal": {
+    "description": "How to answer a proposal question."
+  },
+  "questionFormatTradeoff": "Decide which should have priority, and explain why.",
+  "@questionFormatTradeoff": {
+    "description": "How to answer a tradeoff question."
+  },
+  "optionALabel": "Option A",
+  "@optionALabel": {
+    "description": "Label of the first option of a tradeoff question."
+  },
+  "optionBLabel": "Option B",
+  "@optionBLabel": {
+    "description": "Label of the second option of a tradeoff question."
+  },
+  "factBoxTitle": "Facts",
+  "@factBoxTitle": {
+    "description": "Heading of the fact box below a question."
+  },
+  "factSourceRefs": "Sources: {refs}",
+  "@factSourceRefs": {
+    "description": "Source numbers a fact is based on, e.g. 'Sources: 1, 2'.",
+    "placeholders": {
+      "refs": {
+        "type": "String",
+        "example": "1, 2"
+      }
+    }
+  },
+  "sourcesTitle": "Sources",
+  "@sourcesTitle": {
+    "description": "Heading of the source list."
+  },
+  "sourceLinkLabel": "Source {number}: {title}, {outlet}. Opens in your browser.",
+  "@sourceLinkLabel": {
+    "description": "Screen reader label of a source link.",
+    "placeholders": {
+      "number": {
+        "type": "int"
+      },
+      "title": {
+        "type": "String"
+      },
+      "outlet": {
+        "type": "String"
+      }
+    }
+  },
+  "sourceOpenFailed": "The link could not be opened.",
+  "@sourceOpenFailed": {
+    "description": "Shown when a source link cannot be opened."
   }
 }
