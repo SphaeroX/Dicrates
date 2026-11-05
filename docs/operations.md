@@ -15,7 +15,17 @@ uv run dicrates-admin questions retire <id>              # approved -> retired (
 uv run dicrates-admin questions edit <id> --text "..." [--option-a ... --option-b ...]
 uv run dicrates-admin questions edit <id> --content-file fix.json   # replace e.g. facts and sources
 uv run dicrates-admin questions import question.json     # create a draft by hand
+uv run dicrates-admin questions generate --from-news --limit 3   # fetch feeds, draft questions now
 ```
+
+`questions list` marks drafts whose sources all come from one outlet with `[single source]`; check those extra carefully.
+
+## News pipeline
+
+- **Sources:** `backend/config/news_sources.toml` (approved 2026-11-05): tagesschau.de, Deutschlandfunk, DER SPIEGEL, Süddeutsche Zeitung, Frankfurter Allgemeine, WELT, taz, Neue Zürcher Zeitung, BBC News, The Guardian, DW, POLITICO Europe, The Telegraph. Edit the file to add or remove outlets; keep the political spectrum balanced (`leaning`). Feed terms must be confirmed before the public release (`terms_note`). As of 2026-11-05 the Telegraph feed refuses automated requests (skipped and logged).
+- **Schedule:** the worker runs `news_questions` every 6 hours (needs the worker running, see `docs/testing.md`), at most 3 new questions per run. Nothing is published without `questions approve`.
+- **Flow:** feeds → `news_items` (7 days) → LLM topic candidates → bilingual draft with fact box (facts cite only the stored feed entries) → automatic neutrality/safety check (one revision allowed) → `draft` or `rejected` ("Automatic check: ...").
+- **Cost per run** (measured 2026-11-05 with `gemini-3.1-flash-lite`, 3 questions): 7 LLM calls, about 14,000 input and 1,100 output tokens. Check real numbers with `SELECT task, count(*), sum(input_tokens), sum(output_tokens) FROM llm_calls WHERE created_at > now() - interval '1 day' GROUP BY task;`.
 
 ## Question review checklist
 

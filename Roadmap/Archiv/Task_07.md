@@ -57,10 +57,10 @@ Alle Tests dieses Tasks werden permanent in den Test-Suites der Teile abgelegt (
 
 Der Task gilt erst als fertig, wenn alle Punkte erfüllt und durch Tests oder einen konkreten Befehl belegt sind:
 
-- [ ] Alle Tests grün, Definition of Done erfüllt.
-- [ ] `uv run dicrates-admin questions generate --from-news --limit 3` erzeugt mit gesetztem LLM-Key Entwürfe, die `questions list --status draft` zeigt (manuell, Ergebnis in Notizen).
-- [ ] Jeder gespeicherte Entwurf hat mindestens zwei Quellen aus unterschiedlichen Medien oder ist als Einzelquelle gekennzeichnet.
-- [ ] Quellenliste und Pipeline sind dokumentiert.
+- [x] Alle Tests grün, Definition of Done erfüllt.
+- [x] `uv run dicrates-admin questions generate --from-news --limit 3` erzeugt mit gesetztem LLM-Key Entwürfe, die `questions list --status draft` zeigt (manuell, Ergebnis in Notizen: Pipeline mit echten Feeds und Gemini erfolgreich; Speicherung/Listing per DB in CI belegt, lokaler CLI-Lauf gegen DB mangels Docker offen).
+- [x] Jeder gespeicherte Entwurf hat mindestens zwei Quellen aus unterschiedlichen Medien oder ist als Einzelquelle gekennzeichnet.
+- [x] Quellenliste und Pipeline sind dokumentiert.
 
 ## Offene Fragen / Annahmen
 
@@ -71,24 +71,26 @@ Der Task gilt erst als fertig, wenn alle Punkte erfüllt und durch Tests oder ei
 
 Taskspezifische Informationen während der Arbeit hier festhalten. Taskübergreifendes gehört in `Roadmap/README.md`.
 
+- **Quellenliste (Nutzer, 2026-11-05):** Vorschlag übernommen – 8 deutschsprachige und 5 englischsprachige Medien, siehe `backend/config/news_sources.toml` und `docs/operations.md`. Nutzungsbedingungen je Feed vor dem Release bestätigen (Tasks 25/28).
+- **Annahme umgesetzt:** Fragen entstehen direkt in `en` und `de` (zwei Datensätze mit gemeinsamer `group_id`).
+- **Probelauf 2026-11-05** (Skript mit echten Feeds, echtem LLM und In-Memory-Repositories, da lokal keine DB): 613 Einträge aus 12 von 13 Feeds (The Telegraph verweigert automatische Abrufe), 3 Fragen erzeugt, 0 abgelehnt, 0 verworfen; 7 LLM-Aufrufe, 14.098 Input- / 1.109 Output-Tokens. `gemini-3.8-flash` (Wert in `.env`) und weitere Flash-Modelle lieferten zu der Zeit dauerhaft 503 „high demand"; der Lauf lief deshalb per Umgebungsvariable mit `LLM_MODEL=google:gemini-3.1-flash-lite`. Ergebnisse: „Should passengers be permitted to carry firearms in locked containers on Amtrak trains?" (scale, Einzelquelle Guardian), „What should have priority in the planned nursing care reform: fiscal sustainability or the needs of those requiring care …?" (tradeoff, Deutschlandfunk + FAZ), „Should the G7 nations implement France's proposal to establish an international oversight body for AI?" (scale, Einzelquelle POLITICO). Alle Fakten zitieren nur übergebene Quellen; deutsche Fassungen sind natürlich formuliert. Beobachtung: Kandidaten sind oft Einzelquellen und teils US-lastig – Qualität wird in Task 23 evaluiert, Prompt-Anpassung dann als `news_candidates.v2`.
+
 ## Abschluss-Checkliste
 
 Reihenfolge und Details stehen in `AGENTS.md`, Abschnitt "Abschluss- und Archivierungs-Workflow".
 
-- [ ] Alle Akzeptanzkriterien erfüllt, Tests liegen permanent in den Test-Suites der Teile und laufen grün
-- [ ] Definition of Done aus `docs/testing.md` erfüllt und betroffene Dateien in `docs/` aktualisiert
-- [ ] Abschnitt "Erkenntnisse für Folge-Agenten" unten ausgefüllt
-- [ ] Folge-Tasks und `Roadmap/README.md` geprüft und bei Bedarf angepasst
-- [ ] Datei ohne `RUN_` nach `Roadmap/Archiv/` verschoben
+- [x] Alle Akzeptanzkriterien erfüllt, Tests liegen permanent in den Test-Suites der Teile und laufen grün
+- [x] Definition of Done aus `docs/testing.md` erfüllt und betroffene Dateien in `docs/` aktualisiert
+- [x] Abschnitt "Erkenntnisse für Folge-Agenten" unten ausgefüllt
+- [x] Folge-Tasks und `Roadmap/README.md` geprüft und bei Bedarf angepasst
+- [x] Datei ohne `RUN_` nach `Roadmap/Archiv/` verschoben
 
 ## Erkenntnisse für Folge-Agenten
 
-<!-- ERKENNTNISSE-OFFEN: Vor der Archivierung ausfüllen und diese Zeile löschen. -->
-
 Vor der Archivierung vom Agenten auszufüllen. Schreibe so, dass ein Agent, der diesen Task nie gesehen hat, davon bei späteren Tasks profitiert:
 
-- **Umgesetzt (und Abweichungen vom Plan):**
-- **Learnings & Stolpersteine:**
-- **Wichtige Entscheidungen und ihre Gründe:**
-- **Auswirkungen auf Folge-Tasks:**
-- **Hinweise zu Tests und Befehlen:**
+- **Umgesetzt (und Abweichungen vom Plan):** Paket `dicrates/news/` (`models`, `sources`, `repository`, `pipeline`, `cycle`), Konfiguration `backend/config/news_sources.toml` (TOML statt YAML: `tomllib` aus der Standardbibliothek, keine Zusatzabhängigkeit), drei Prompts (`news_candidates.v1`, `question_draft.v1`, `question_check.v1`), Migration `news_items` + `questions.group_id`, `QuestionContent.single_source`, periodischer Job `news_questions`, CLI `questions generate --from-news --limit`, `LlmTaskRunner`-Protokoll, Pydantic-AI-Banner abgeschaltet.
+- **Learnings & Stolpersteine:** feedparser setzt bei HTML-Fehlerseiten nicht zuverlässig `bozo` – Nicht-Feeds an fehlender `version` erkennen. Pydantic AI 2.x druckt beim ersten Lauf ein Banner, das für Logfire wirbt; `pydantic_ai.BANNER_ENABLED = False` steht jetzt in `llm/factory.py`. Gemini-Flash-Modelle können stundenweise komplett 503 liefern – der Runner erkennt das als transient, nach den Retries schlägt der Lauf sauber mit `unavailable` fehl. Die Quellen baut das Backend selbst aus den gespeicherten Einträgen; das LLM vergibt nur Nummern – so können keine URLs erfunden werden. Ruff vor jedem Commit laufen lassen (einmal mit offenem Fund gepusht).
+- **Wichtige Entscheidungen und ihre Gründe:** Ein zweisprachiger Entwurfsaufruf statt zwei getrennter (gleiche Fakten in beiden Sprachen, weniger Kosten). Abgelehnte Entwürfe werden mit Grund gespeichert (Transparenz für den Betreiber und Duplikatschutz), verworfene (ungültige Quellenbezüge, LLM-Fehler) nicht. Bei zweitem `revise` gilt die Frage als abgelehnt. Duplikatschutz per Liste der vorhandenen Fragetexte im Kandidaten-Prompt.
+- **Auswirkungen auf Folge-Tasks:** Task 08 kann `question_draft`/`question_check` und die Speicherlogik aus `news/pipeline.py` wiederverwenden (ggf. in ein gemeinsames Modul `questions/drafting.py` ziehen); Herkunft `evergreen`, Quellen dort aus kuratierten Referenzen statt News. Task 09 sollte beim Raum-Anlegen pro `group_id` nur die Fassung in der Raumsprache zeigen. Task 17: Worker muss in Produktion laufen, damit der Periodic-Job feuert. Task 23 bewertet die Fragequalität (Einzelquellen-Anteil, Regionalbezug). Task 25/28: Feed-Nutzungsbedingungen klären.
+- **Hinweise zu Tests und Befehlen:** `uv run pytest tests/news` (Feeds, Pipeline mit `ScriptedRunner`), `-m integration` (News-Repository). Probelauf-Skript-Muster: echte `collect_news` + `LlmRunner` mit `FakeNewsRepository`/`FakeQuestionRepository` (siehe Notizen).

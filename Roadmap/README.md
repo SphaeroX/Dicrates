@@ -16,7 +16,7 @@ Ziel dieser Roadmap ist **Produktionsreife des MVP (Phase 1)**: Nach einer gesch
 
 ## Aktueller Status
 
-Stand: 2026-11-05 – Tasks 01–06 erledigt (M1 Fundament abgeschlossen).
+Stand: 2026-11-05 – Tasks 01–07 erledigt (M1 Fundament abgeschlossen).
 
 | Task | Titel | Status |
 |---|---|---|
@@ -26,7 +26,7 @@ Stand: 2026-11-05 – Tasks 01–06 erledigt (M1 Fundament abgeschlossen).
 | 04 | Anmeldung end to end | erledigt |
 | 05 | LLM-Schicht | erledigt |
 | 06 | Fragenbibliothek + Admin-CLI | erledigt |
-| 07 | News-Pipeline für Streitfragen | offen |
+| 07 | News-Pipeline für Streitfragen | erledigt |
 | 08 | Zeitlose und historische Streitfragen | offen |
 | 09 | Freundesraum anlegen und beitreten | offen |
 | 10 | Zustandsautomat der Runden | offen |
@@ -84,6 +84,8 @@ Globale Informationen, Architekturentscheidungen und Wissen, das für das gesamt
 
 **Fragen und Betreiber-CLI (Task 06):** Streitfragen in `questions` (Faktenkasten/Quellen als `jsonb`, Status `draft → approved|rejected`, `approved → retired`). Pipelines legen nur Entwürfe an; Freigabe ausschließlich per `uv run dicrates-admin questions approve <id>` (siehe `docs/operations.md`). Betreiber-Befehle kommen als Typer-Unter-Apps in `dicrates/admin/cli.py`. App-Widget `QuestionCard` für alle Rundenscreens.
 
+**News-Pipeline (Task 07):** Quellen in `backend/config/news_sources.toml` (vom Nutzer bestätigt). Job `news_questions` alle 6 h bzw. `dicrates-admin questions generate --from-news`. Fragen entstehen zweisprachig (en+de, gemeinsame `group_id`); Quellen baut das Backend aus gespeicherten Feed-Einträgen, das LLM vergibt nur Quellennummern. LLM-Features hängen vom Protokoll `LlmTaskRunner` ab, Tests nutzen `tests/llm/scripted_runner.py`.
+
 **Bestehende Projektregeln:** Root-`AGENTS.md` (TDD, Umgebungen, Privacy, i18n, Screenshots) und `docs/` (Architektur, Testing, Code-Style, Konventionen, Brief) gelten für jeden Task.
 
 ## Auffälligkeiten & Details
@@ -102,5 +104,6 @@ Dinge, die global noch zu beachten sind: Besonderheiten, bekannte Einschränkung
 - **Kein Android-Gerät/AVD (Task 03):** Gerätetests (`flutter run`, `integration_test`) sind auf dem Rechner derzeit nicht möglich; Nutzer müsste ein AVD anlegen oder ein Gerät anschließen.
 - **uvicorn unter Windows mit DB (Task 04):** psycopg async braucht die Selector-Event-Loop; uvicorn nutzt unter Windows standardmäßig Proactor. Für lokalen Dev-Server mit DB eine Lösung schaffen, sobald Docker lokal läuft (z. B. `--loop` mit eigener Factory) – in CI/Produktion (Linux) kein Problem.
 - **Google-OAuth-Client fehlt (Task 04):** Google-Login ist im Code fertig, lokal aber deaktiviert, bis der Nutzer einen OAuth-Client anlegt (siehe Archiv/Task_04.md, Notizen).
+- **Gemini-Verfügbarkeit (Task 07):** `google:gemini-3.8-flash` (in `.env`) war am 2026-11-05 zeitweise dauerhaft überlastet (503); `google:gemini-3.1-flash-lite` lief. Für manuelle Läufe ggf. per `LLM_MODEL=...` überschreiben. Produktion braucht ohnehin Mistral.
 - **Kein Root-Ordner `tests/`:** Das Prüfskript des Roadmap-Skills meldet dessen Fehlen als Fehler; das ist hier gewollt (siehe Entscheidung oben).
 - **Ausblick Phase 2/3 (nicht Teil dieser Roadmap):** Interessen und Matching-Warteschlange, öffentliche Räume, Rating und Trust-Score mit Troll-Pool und Reset-Regeln, Web-Admin, Verteilungsanzeige per A/B-Test, optionale Anonymität in Freundesräumen, europäische Räume, Live-Modus, Leichte Sprache, Statistiken, Saisons, Bildungs- und Premium-Angebote.
